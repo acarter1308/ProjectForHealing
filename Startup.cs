@@ -48,6 +48,11 @@ namespace ProjectForHealing
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    name: "about",
+                //    pattern: "about",
+                //    new { controller = "Home", action = "About" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
