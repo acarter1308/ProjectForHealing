@@ -45,6 +45,19 @@ namespace ProjectForHealing.Controllers
             return View();
         }
 
+        public IActionResult ModelDemo()
+        {
+            var model = new ModelDemoModel()
+            {
+                FName = "Khalil",
+                LName = "McCall",
+                IsEmployee = true
+
+            };
+            return View(model);
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
