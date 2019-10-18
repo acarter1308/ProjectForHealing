@@ -11,6 +11,6 @@ namespace ProjectForHealing.Models
         public string Email { get; set; }
         public string Pnumber { get; set; }
         public string EditorPassWord { get; set; }
-        public byte[] ProfilePic { get; set; }
+        public string ProfilePicUrl { get; set; }
     }
 }

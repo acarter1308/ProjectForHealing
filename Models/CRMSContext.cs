@@ -69,7 +69,7 @@ namespace ProjectForHealing.Models
             modelBuilder.Entity<Editor>(entity =>
             {
                 entity.HasKey(e => e.UserName)
-                    .HasName("PK__Editor__C9F28457B0666DAC");
+                    .HasName("PK__tmp_ms_x__C9F284579E4AD40A");
 
                 entity.Property(e => e.UserName)
                     .HasMaxLength(50)
@@ -99,7 +99,7 @@ namespace ProjectForHealing.Models
                     .IsUnicode(false)
                     .IsFixedLength();
 
-                entity.Property(e => e.ProfilePic).HasColumnType("image");
+                entity.Property(e => e.ProfilePicUrl).IsUnicode(false);
             });
 
             modelBuilder.Entity<Resource>(entity =>
