@@ -1,18 +1,26 @@
-﻿@{
+﻿@model ProjectForHealing.Models.Resource
+
+
+@{
     ViewData["Title"] = "Resource Form";
 }
 
 <div class="text-center">
     <h1 class="display-4">Resource Form</h1>
-    <p>If you would like to join Project For Healing as a resource for immagrants and refugees, please complete the application below
-    and someone will get back with you as soon as possible.
+    <p>
+        If you would like to join Project For Healing as a resource for immagrants and refugees, please complete the application below
+        and someone will get back with you as soon as possible.
     </p>
 </div>
 
-<form>
+@{Html.BeginForm("ResourceForm", "Home", FormMethod.Post); }
+ 
+@Html.ValidationSummary()
+
     <div class="form-group">
-        <label for="FName">First Name</label>
-        <input type="text" class="form-control" id="FName" placeholder="First Name">
+        @Html.LabelFor(i => i.Fname, "First Name")
+        @Html.TextBoxFor(i => i.Fname, new { placeholder = "First Name", @class = "form-control" })
+    
     </div>
     <div class="form-group">
         <label for="LName">Last Name</label>
@@ -58,5 +66,5 @@
         <textarea class="form-control" rows="3" id="Services"> What services/resources can you provide to immigrants in need? Any extra services you can proved?</textarea>
     </div>
 
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+    <button type="submit" class="btn btn-primary">Submit</button>
+@{Html.EndForm();}
