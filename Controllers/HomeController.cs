@@ -9,15 +9,16 @@ using ProjectForHealing.Models;
 
 namespace ProjectForHealing.Controllers
 {
+
+    
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+     
 
-        public HomeController(ILogger<HomeController> logger)
+        public IActionResult Resource()
         {
-            _logger = logger;
+            return View();
         }
-
         public IActionResult Index()
         {
             return View();
@@ -31,35 +32,7 @@ namespace ProjectForHealing.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult ResourceForm()
-        {
-            using (var context = new CRMSContext())
-            {
-                // find 1 by primary key
-               // var resource = context.Resource.Find(1);
-                // get all
-                // var resources = context.Resource.All(i => true);
-            }
 
-            var model = new Resource();
-
-            return View(model);
-        }
-        [HttpPost]
-        public IActionResult ResourceForm(Resource model)
-        {
-            ModelState.AddModelError("", "Not writing to database yet");
-
-
-            using (var context = new CRMSContext()) 
-            {
-                // insert new resource
-               // context.Resource.Add(model);
-            }
-
-             return View(model);
-        }
 
         public IActionResult Login()
         {
