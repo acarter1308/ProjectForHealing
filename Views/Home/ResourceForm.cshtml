@@ -23,24 +23,24 @@
     
     </div>
     <div class="form-group">
-        <label for="LName">Last Name</label>
-        <input type="text" class="form-control" id="LName" placeholder="Last Name">
+        @Html.LabelFor(i => i.Lname, "Last Name")
+        @Html.TextBoxFor(i => i.Lname, new { placeholder = "Last Name", @class = "form-control" })
     </div>
     <div class="form-group">
-        <label for="EmailAdd">Email address</label>
-        <input type="email" class="form-control" id="EmailAdd" placeholder="Email">
+        @Html.LabelFor(i => i.RepEmail, "Email Address")
+        @Html.TextBoxFor(i => i.RepEmail, new { placeholder = "Email", @class = "form-control" })
     </div>
     <div class="form-group">
-        <label for="PhoneNum">Phone Number</label>
-        <input type="text" class="form-control" id="PhoneNum" placeholder="Phone Number">
+        @Html.LabelFor(i => i.RepNumber, "Phone Number")
+        @Html.TextBoxFor(i => i.RepNumber, new { placeholder = "Phone Number", @class = "form-control" })
     </div>
     <div class="form-group">
-        <label for="Organization">Organization</label>
-        <input type="text" class="form-control" id="Organization" placeholder="Organization">
+        @Html.LabelFor(i => i.OrgName, "Organization")
+        @Html.TextBoxFor(i => i.OrgName, new { placeholder = "Organization", @class = "form-control" })
     </div>
     <div class="form-group">
-        <label for="webLink">Link</label>
-        <input type="text" class="form-control" id="webLink" placeholder="Link to Your Organizations Website">
+        @Html.LabelFor(i => i.WebsiteUrl, "Link")
+        @Html.TextBoxFor(i => i.WebsiteUrl, new { placeholder = "Link to Your Organization's Website", @class = "form-control" })
     </div>
     <label>Type of Work Your Organization Provide</label>
     <div class="checkbox">
@@ -62,8 +62,9 @@
         </label>
     </div>
     <div class="form-group">
-        <label for="Services">Services Provided</label>
-        <textarea class="form-control" rows="3" id="Services"> What services/resources can you provide to immigrants in need? Any extra services you can proved?</textarea>
+        @Html.LabelFor(i => i.OrgDescription, "Services Provided")
+        @Html.TextAreaFor(i => i.OrgDescription, new { placeholder = "What services/resources can you provide to immigrants in need? Any extra services you can proved?", @class = "form-control" })
+        
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
