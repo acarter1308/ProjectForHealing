@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ProjectForHealing.Models.Admin
+
+@{
     ViewData["Title"] = "Login";
 }
 
@@ -7,58 +9,52 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
-            background-color: #f1f1f1;
+            color: #f1f1f1;
         }
 
         .bslf {
             width: 350px;
             margin: 120px auto;
             padding: 25px 20px;
-            background: #424242;
             box-shadow: 3px 3px 5px #3d3d3d;
             border-radius: 5px;
             color: #fff;
         }
 
-            .bslf h2 {
-                margin-top: 0px;
-                margin-bottom: 15px;
-                padding-bottom: 5px;
+        .bslf h2 {
+            margin-top: 0px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            color: #000000;
             }
 
-            .bslf a {
-                color: #1f79a6;
-            }
+        .bslf a {
+            color: #1f79a6;
+        }
 
-                .bslf a:hover {
-                    text-decoration: none;
-                    color: #275987;
-                }
-
-            .bslf .checkbox-inline {
-                padding-top: 7px;
-            }
+        .bslf a:hover {
+            text-decoration: none;
+            color: #275987;
+        }
     </style>
 </head>
 <body>
     <div class="bslf">
-        <form action="" method="post">
-            <h2 class="text-center">CRMS Login</h2>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="required">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
-            </div>
-            <div class="form-group clearfix">
-                <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
-                <button type="submit" class="btn btn-primary pull-right">Log in</button>
-            </div>
-            <div class="clearfix">
-                <a href="#" class="pull-left">Forgot Password?</a>
-            </div>
-        </form>
+        @{Html.BeginForm("Login", "Admins", FormMethod.Post); }
+
+        @Html.ValidationSummary()
+
+        <h2 class="text-center">CRMS Login</h2>
+        <div class="form-group">
+            @Html.TextBoxFor(i => i.UserName, new { placeholder = "Username", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(i => i.AdminPassWord, new { placeholder = "Password", @class = "form-control" })
+        </div>
+        <div class="form-group clearfix">
+            <a href="#" class="pull-left">Forgot Password?</a>
+            <button type="submit" class="btn btn-primary pull-right">Log in</button>
+        </div>
+        @{Html.EndForm();}
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

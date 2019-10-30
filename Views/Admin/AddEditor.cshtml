@@ -1,0 +1,60 @@
+﻿@model ProjectForHealing.Models.Editor
+
+@{
+    ViewData["Title"] = "Editor";
+}
+
+<h1>Editor</h1>
+
+<h4>Editor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Admin" asp-action="AddEditor" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fname" class="control-label"></label>
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lname" class="control-label"></label>
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pnumber" class="control-label"></label>
+                <input asp-for="Pnumber" class="form-control" />
+                <span asp-validation-for="Pnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EditorPassWord" class="control-label"></label>
+                <input asp-for="EditorPassWord" class="form-control" />
+                <span asp-validation-for="EditorPassWord" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfilePicUrl" class="control-label"></label>
+                <input asp-for="ProfilePicUrl" class="form-control" />
+                <span asp-validation-for="ProfilePicUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

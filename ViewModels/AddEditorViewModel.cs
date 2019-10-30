@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ProjectForHealing.Models
+namespace ProjectForHealing.ViewModels
 {
-    public partial class Editor
+    public class AddEditorViewModel
     {
-        [Key]
         public string UserName { get; set; }
         public string Fname { get; set; }
         public string Lname { get; set; }
@@ -14,12 +14,5 @@ namespace ProjectForHealing.Models
         public string Pnumber { get; set; }
         public string EditorPassWord { get; set; }
         public byte[] ProfilePicUrl { get; set; }
-
-        
-        public Editor()
-        {
-
-        }
     }
-
 }
