@@ -5,13 +5,14 @@
             <h1 class="display-4">Welcome</h1>
         </div>
 
-        <form class="form-inline md-form mr-0 mr-auto mb-4">
-            <h1 class="text-center d-block w-100"> Search for a resource</h1>
+        <form class="form-inline md-form mr-0 mr-auto mb-4" asp-controller="Home" asp-action="Search" method="post">
+            <h1 class="text-center d-block w-100"> Testing to see if git hub repo is working</h1>
             <div class="text-center w-100">
-                <input class="form-control d-inline-block" type="text" placeholder="Search" aria-label="Search">
-                <input class="form-control d-inline-block" type="text" placeholder="Zip code" aria-label="Zip code">
+                <input class="form-control d-inline-block" type="text" name="search" placeholder="Search" aria-label="Search">
+               
                 <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
             </div>
 
         </form>
-        
+  
+    

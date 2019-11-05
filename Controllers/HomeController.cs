@@ -13,17 +13,33 @@ namespace ProjectForHealing.Controllers
     
     public class HomeController : Controller
     {
-     
+        private CRMSContext context;
 
-        public IActionResult Resource()
+        //asking to get instance of CRMS context
+        public HomeController(CRMSContext dbContext)
         {
-            return View();
+            context = dbContext;
         }
+
         public IActionResult Index()
         {
+            
             return View();
         }
+        [HttpPost]
+        [Route("/Home/Index")]
+        public IActionResult Search(string search) {
+            List<Resource> resources = context.Resource.ToList();
+           
+       
+          
+           // ViewBag.Title =  search;
 
+           
+            return View(resources.Where(x => x.OrgName.Contains(search)));      
+       }
+
+       
         public IActionResult Privacy()
         {
             return View();
@@ -38,28 +54,6 @@ namespace ProjectForHealing.Controllers
         {
             return View();
         }
-        public IActionResult ResourceManage()
-        {
-            return View();
-        }
-
-        public IActionResult ModelDemo()
-        {
-            var model = new ModelDemoModel()
-            {
-                FName = "Khalil",
-                LName = "McCall",
-                IsEmployee = true
-
-            };
-            return View(model);
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+   
     }
 }
