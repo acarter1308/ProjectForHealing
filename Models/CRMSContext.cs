@@ -1,10 +1,11 @@
 ﻿using System;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ProjectForHealing.Models
 {
-    public partial class CRMSContext : DbContext
+    public partial class CRMSContext :DbContext
     {
         public CRMSContext()
         {
