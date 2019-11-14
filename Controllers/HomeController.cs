@@ -31,14 +31,13 @@ namespace ProjectForHealing.Controllers
         }
         [HttpPost]
         [Route("/Home/Index")]
-        public IActionResult Search(string search) {
-           // List<Resource> resources = context.Resource.ToList();
-
-           // List<Resource> zips = resources.Where(x => x.OrgZip == zip).ToList();
+        public IActionResult Search(string search, string zip) {
+     
             var sources = context.Resource.Where(x => x.OrgName.Contains(search)
-                                            && x.OrgZip == "32207" /* todo: unhard code */).ToList();
+                                            && x.OrgZip == zip).ToList();
 
-          ViewBag.Title =  search;
+            ViewBag.Org =  search;
+            ViewBag.Zip = zip;
 
 
             return View(sources);      
