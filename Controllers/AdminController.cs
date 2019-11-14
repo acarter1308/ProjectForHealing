@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using ProjectForHealing.Models;
@@ -40,12 +41,19 @@ namespace ProjectForHealing.Controllers
             
             base.OnActionExecuting(context);
         }
-
+        public IActionResult Index()
+        {
+           ViewBag.name = HttpContext.Session.GetString("fname") + " " + HttpContext.Session.GetString("lname");
+           ViewBag.email = HttpContext.Session.GetString("email");
+            ViewBag.number = HttpContext.Session.GetString("pnumber");
+            ViewBag.role = HttpContext.Session.GetString("role");
+            return View();
+        }
         public IActionResult AddEditor()
         {
             return View();
         }
-
+        
 
         [HttpPost]
         [Route("/Admin/AddEditor")]
@@ -76,9 +84,6 @@ namespace ProjectForHealing.Controllers
 
         }
 
-        public IActionResult Created()
-        {
-            return View();
-        }
+       
     }
 }

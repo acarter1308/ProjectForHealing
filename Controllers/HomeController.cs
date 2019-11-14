@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjectForHealing.Models;
@@ -60,18 +61,42 @@ namespace ProjectForHealing.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public IActionResult Login(Admin adminP)
         {
             // todo: check for login
-            HttpContext.Session.Set("username", Encoding.UTF8.GetBytes(model.Email));
+            var admin = context.Admin.SingleOrDefault(x => x.UserName == adminP.UserName && x.AdminPassWord == adminP.AdminPassWord);
 
-            return Redirect("/");
+            if (admin == null)
+            {
+                ViewBag.Message = "Incorrect UserName or Password";
+                return View();
+            }
+            else
+            {
+                
+                HttpContext.Session.Set("username", Encoding.UTF8.GetBytes(admin.UserName));
+                HttpContext.Session.SetString("fname", admin.Fname);
+                HttpContext.Session.SetString("lname", admin.Lname);
+                HttpContext.Session.SetString("email", admin.Email);
+                HttpContext.Session.SetString("pnumber", admin.Pnumber);
+                if (admin.SuperUser == true)
+                {
+                    HttpContext.Session.SetString("role", "Master Admin");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("role", "Staff");
+                }
+
+
+                return Redirect("/Admin/Index");
+            }
+            
         }
-
-        [HttpGet]
-        public IActionResult EditorLogin()
+        public IActionResult Logout()
         {
-            return View();
+            HttpContext.Session.Clear();
+            return Redirect("/Home/Login");
         }
 
    

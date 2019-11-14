@@ -40,16 +40,17 @@
 </head>
 <body>
     <div class="bslf">
-        @{Html.BeginForm("Login", "Admins", FormMethod.Post); }
+        @{Html.BeginForm("Login", "Home", FormMethod.Post); }
 
         @Html.ValidationSummary()
 
         <h2 class="text-center">CRMS Login</h2>
+        <h2>@ViewBag.Message</h2>
         <div class="form-group">
             @Html.TextBoxFor(i => i.UserName, new { placeholder = "Username", @class = "form-control" })
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(i => i.AdminPassWord, new { placeholder = "Password", @class = "form-control" })
+            @Html.PasswordFor(i => i.AdminPassWord, new { placeholder = "Password", @class = "form-control" })
         </div>
         <div class="form-group clearfix">
             <a href="#" class="pull-left">Forgot Password?</a>
