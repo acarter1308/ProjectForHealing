@@ -84,6 +84,36 @@ namespace ProjectForHealing.Controllers
 
         }
 
-       
+        public IActionResult ResourceManage()
+        {
+
+            List<Resource> resources = context.Resource.ToList();
+
+
+            return View(resources);
+        }
+
+        public IActionResult Remove()
+        {
+            ViewBag.resources = context.Resource.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Remove(int[] resourceIDs)
+        {
+            foreach (int resourceID in resourceIDs)
+            {
+                // ResourceData.Remove(resourceID);
+                // Resources.RemoveAll(x => x.ResourceID == resourceID);
+                Resource theResource = context.Resource.Single(x => x.ResourceID == resourceID);
+                context.Resource.Remove(theResource);
+
+            }
+            context.SaveChanges();
+            return Redirect("/Admin/ResourceManage");
+        }
+
+
     }
 }

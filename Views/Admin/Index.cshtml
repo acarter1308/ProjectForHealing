@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
 
 @{
     ViewData["Title"] = "Index";
@@ -10,4 +10,14 @@
 <h1>Email: @ViewBag.email</h1>
 <h1>Role: @ViewBag.role</h1>
 
+<ul>
+    <li><a href="#">content</a></li>
+    <li><a href="/Admin/ResourceManage">Edit Resources</a></li>
+    <li><a href="/Admin/Remove">Delete/Approve Resources</a></li>
+    @if (Context.Session.GetString("role") == "Master Admin")
+    {
+        <li><a href="/Admin/AddEditor">Create New Admin</a></li>
+    }
+
+</ul>
 
