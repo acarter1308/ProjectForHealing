@@ -13,37 +13,38 @@
         <form asp-controller="Admin" asp-action="AddEditor" method="post">
             @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
+
+                <label asp-for="UserName" class="control-label"> Username </label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fname" class="control-label"></label>
+                <label asp-for="Fname" class="control-label">First Name</label>
                 <input asp-for="Fname" class="form-control" />
                 <span asp-validation-for="Fname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Lname" class="control-label"></label>
+                <label asp-for="Lname" class="control-label">Last Name</label>
                 <input asp-for="Lname" class="form-control" />
                 <span asp-validation-for="Lname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+                <label asp-for="Email" class="control-label">Email Address</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pnumber" class="control-label"></label>
+                <label asp-for="Pnumber" class="control-label">Phone Number</label>
                 <input asp-for="Pnumber" class="form-control" />
                 <span asp-validation-for="Pnumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EditorPassWord" class="control-label"></label>
+                <label asp-for="EditorPassWord" class="control-label">Create Password</label>
                 <input asp-for="EditorPassWord" class="form-control" />
                 <span asp-validation-for="EditorPassWord" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProfilePicUrl" class="control-label"></label>
+                <label asp-for="ProfilePicUrl" class="control-label">Profile Picture URL</label>
                 <input asp-for="ProfilePicUrl" class="form-control" />
                 <span asp-validation-for="ProfilePicUrl" class="text-danger"></span>
             </div>
