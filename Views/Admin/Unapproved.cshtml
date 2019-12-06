@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjectForHealing.Models.Resource>
+@{
+
+}
+
+@if (Model.Count() == 0)
+{
+    <p>No recent submissions! </p>
+}
+else
+{
+    <table class="table">
+
+        <div class="text-center">
+            <h2 class="">Resources Awaiting Approval</h2>
+        </div>
+        <thead>
+            <tr>
+
+                <th scope="col">Organization</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address/Zip</th>
+                <th scope="col">STE</th>
+                <th scope="col">Description</th>
+                <th scope="col">Website</th>
+                <th scope="col">Representative</th>
+                <th scope="col">Rep Contact info</th>
+                <th scope="col">Approve</th>
+                <th scope="col">Unapprove</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+            
+                @foreach (var resource in Model)
+                {
+                <tr>
+                    <td>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</td>
+                    <td>@resource.OrgEmail</td>
+                    <td>@resource.OrgNumber</td>
+                    <td>@resource.OrgAddress  @resource.OrgZip </td>
+                    <td>@resource.OrgSte</td>
+                    <td>@resource.OrgDescription</td>
+                    <td>@resource.WebsiteUrl</td>
+                    <td>@resource.Fname   @resource.Lname</td>
+                    <td>@resource.RepNumber   @resource.RepEmail</td>
+                    <td>@Html.ActionLink("Approve", "Approve", new { id = resource.ResourceID })</td>
+                    <td>@Html.ActionLink("Delete", "Remove", new { id = resource.ResourceID })</td>
+                </tr>
+                }
+             
+        </tbody>
+
+    </table>
+}
+
+
+
+

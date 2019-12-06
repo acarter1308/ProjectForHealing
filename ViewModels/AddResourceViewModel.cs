@@ -35,7 +35,9 @@ namespace ProjectForHealing.ViewModels
         [Required]
         [Display(Name = "Organization's Link")]
         public string WebsiteUrl { get; set; }
-        public bool? IsApproved { get; set; }
+        [Required]
+        [Display(Name = "Organization's City")]
+        public string OrgCity { get; set; }
         [Required]
         [Display(Name = "Your First Name")]
         public string Fname { get; set; }

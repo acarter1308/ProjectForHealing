@@ -1,18 +1,18 @@
-﻿@model ProjectForHealing.ViewModels.AddResourceViewModel
+﻿@model ProjectForHealing.Models.Resource
 
 @{
-    ViewData["Title"] = "View";
+   
 }
 
-<h1>View</h1>
+<h1>@ViewBag.Title</h1>
 
 <h4>Resource</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Resource" asp-action="Add" method="post">
-
-            @*<div asp-validation-summary="All"></div>*@
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ResourceID" />
             <div class="form-group">
                 <label asp-for="OrgName" class="control-label"></label>
                 <input asp-for="OrgName" class="form-control" />
@@ -20,12 +20,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="OrgNumber" class="control-label"></label>
-                <input asp-for="OrgNumber" class="form-control" />
+                <input asp-for="OrgNumber" class="form-control" type="tel" pattern="[0-9]{10}" title="10 numbers"  required />
                 <span asp-validation-for="OrgNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OrgEmail" class="control-label"></label>
-                <input asp-for="OrgEmail" class="form-control" />
+                <input asp-for="OrgEmail" class="form-control" type="email" required/>
                 <span asp-validation-for="OrgEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,7 +33,6 @@
                 <input asp-for="OrgAddress" class="form-control" />
                 <span asp-validation-for="OrgAddress" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="OrgCity" class="control-label"></label>
                 <input asp-for="OrgCity" class="form-control" />
@@ -41,12 +40,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="OrgZip" class="control-label"></label>
-                <input asp-for="OrgZip" class="form-control" />
+                <input asp-for="OrgZip" class="form-control" type="text" pattern="[0-9]{5}" title="Five digit zip code" required/>
                 <span asp-validation-for="OrgZip" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OrgSte" class="control-label"></label>
-                <input asp-for="OrgSte" class="form-control" />
+                <input asp-for="OrgSte" class="form-control" type="text" maxlength="5" />
                 <span asp-validation-for="OrgSte" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -59,7 +58,11 @@
                 <input asp-for="WebsiteUrl" class="form-control" />
                 <span asp-validation-for="WebsiteUrl" class="text-danger"></span>
             </div>
-
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
+                </label>
+            </div>
             <div class="form-group">
                 <label asp-for="Fname" class="control-label"></label>
                 <input asp-for="Fname" class="form-control" />
@@ -72,16 +75,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="RepNumber" class="control-label"></label>
-                <input asp-for="RepNumber" class="form-control" />
+                <input asp-for="RepNumber" class="form-control" type="tel" pattern="[0-9]{10}" title="10 numbers" required />
                 <span asp-validation-for="RepNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="RepEmail" class="control-label"></label>
-                <input asp-for="RepEmail" class="form-control" />
+                <input asp-for="RepEmail" class="form-control" type="email" required />
                 <span asp-validation-for="RepEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Submit Form" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

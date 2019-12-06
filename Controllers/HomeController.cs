@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -21,6 +22,7 @@ namespace ProjectForHealing.Controllers
         //asking to get instance of CRMS context
         public HomeController(CRMSContext dbContext)
         {
+          
             context = dbContext;
         }
 
@@ -32,15 +34,25 @@ namespace ProjectForHealing.Controllers
         [HttpPost]
         [Route("/Home/Index")]
         public IActionResult Search(string search, string zip) {
-     
-            var sources = context.Resource.Where(x => x.OrgName.Contains(search)
-                                            && x.OrgZip == zip).ToList();
 
-            ViewBag.Org =  search;
-            ViewBag.Zip = zip;
+            if (zip == null)
+            {
+                var sources = context.Resource.Where(x => x.OrgName.Contains(search)&& x.IsApproved == true).ToList();
+                ViewBag.Org = search;
+                ViewBag.Zip = zip;
+                return View(sources);
+            }
+            else
+            {
+                var sources = context.Resource.Where(x => x.OrgName.Contains(search)
+                                            && x.OrgZip == zip && x.IsApproved == true).ToList();
+                ViewBag.Org = search;
+                ViewBag.Zip = zip;
+                return View(sources);
+            }
+            
 
-
-            return View(sources);      
+               
        }
 
        
@@ -56,14 +68,15 @@ namespace ProjectForHealing.Controllers
        [HttpGet] 
         public IActionResult Login()
         {
+            HttpContext.Session.Clear();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(Admin adminP)
+        public IActionResult Login(LoginViewModel model)
         {
             // todo: check for login
-            var admin = context.Admin.SingleOrDefault(x => x.UserName == adminP.UserName && x.AdminPassWord == adminP.AdminPassWord);
+            var admin = context.Admin.SingleOrDefault(x => x.UserName == model.UserName && x.AdminPassWord == model.AdminPassWord);
 
             if (admin == null)
             {
@@ -98,7 +111,12 @@ namespace ProjectForHealing.Controllers
             return Redirect("/Home/Login");
         }
 
-   
-   
+        [HttpGet]
+        public IActionResult ViewSource(int id)
+        {
+            var source = context.Resource.SingleOrDefault(x => x.ResourceID == id);
+            return View(source);
+        }
+
     }
 }

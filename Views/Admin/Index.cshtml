@@ -3,21 +3,30 @@
 @{
     ViewData["Title"] = "Index";
 }
+    
+    <div class="w-75 d-inline-block">
+        <img class="img-fluid w-25 float-left" src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600112/29213222-stock-vector-male-silhouette-avatar-profile-picture.jpg?ver=6" alt="Alternate Text" />
 
-<h1>Hello @ViewBag.name</h1>
 
-<h1>Phone Number: @ViewBag.number</h1>
-<h1>Email: @ViewBag.email</h1>
-<h1>Role: @ViewBag.role</h1>
 
-<ul>
-    <li><a href="#">content</a></li>
-    <li><a href="/Admin/ResourceManage">Edit Resources</a></li>
-    <li><a href="/Admin/Remove">Delete/Approve Resources</a></li>
+        <div class="display-3 w-40 d-inline-block float-right">
+            <h1>Hello @ViewBag.name</h1>
+
+            <h1>Phone Number: @ViewBag.number</h1>
+            <h1>Email: @ViewBag.email</h1>
+            <h1>Role: @ViewBag.role</h1>
+        </div>
+    </div>
+
+<ul class="d-inline-block w-75 display-4 list-unstyled">
+ 
+    <li><a href="/Admin/ResourceManage">Manage Resources</a></li>
+    <li><a href="/Admin/Unapproved">Approve/Unapprove Resources</a></li>
     @if (Context.Session.GetString("role") == "Master Admin")
     {
-        <li><a href="/Admin/AddEditor">Create New Admin</a></li>
+        <li><a href="/Admin/AddAdmin">Create New Admin</a></li>
     }
+    <li><a href="/Home/Logout">Logout</a></li>
 
 </ul>
 

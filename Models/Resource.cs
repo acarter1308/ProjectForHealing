@@ -12,6 +12,7 @@ namespace ProjectForHealing.Models
         public string OrgNumber { get; set; }
         public string OrgEmail { get; set; }
         public string OrgAddress { get; set; }
+        public string OrgCity { get; set; }
         public string OrgZip { get; set; }
         public string OrgSte { get; set; }
         public string OrgDescription { get; set; }

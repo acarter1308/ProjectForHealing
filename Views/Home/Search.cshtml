@@ -11,25 +11,24 @@
 }
 else
 {
-    <table>
+    <div class="w-50">
         @foreach (var resource in Model)
         {
-            <tr>
-
-                <td>@resource.OrgName</td>
-                <td>@resource.OrgEmail</td>
-                <td>@resource.OrgNumber</td>
-                <td>@resource.OrgAddress  @resource.OrgZip </td>
-                <td>@resource.OrgSte</td>
-                <td>@resource.OrgDescription</td>
-                <td>@resource.WebsiteUrl</td>
-                <td>@resource.Fname   @resource.Lname</td>
-                <td>@resource.RepNumber   @resource.RepEmail</td>
-            </tr>
+           <ul class="list-unstyled">
+               <li class="display-4">@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</li>
+               <li>@resource.OrgAddress</li>
+               @if(resource.OrgSte != null)
+               {
+                   <li> Suite @resource.OrgSte</li>
+               }
+               <li>@resource.OrgCity, @resource.OrgZip</li>
+               <li>@resource.OrgNumber</li>
+           </ul>
+            
         }
 
 
-    </table>
+    </div>
 }
 
 

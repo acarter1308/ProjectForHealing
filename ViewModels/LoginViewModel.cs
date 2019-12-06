@@ -10,11 +10,11 @@ namespace ProjectForHealing.ViewModels
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        public string password { get; set; }
+        public string AdminPassWord { get; set; }
 
         [Display(Name = "Remember me")]
         public bool RememberMe { get; set; }
