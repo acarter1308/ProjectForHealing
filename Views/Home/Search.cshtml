@@ -11,11 +11,11 @@
 }
 else
 {
-    <div class="w-50">
+    <div class="w-75 m-0 m-auto">
         @foreach (var resource in Model)
         {
            <ul class="list-unstyled">
-               <li class="display-4">@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</li>
+               <li><h1>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</h1></li>
                <li>@resource.OrgAddress</li>
                @if(resource.OrgSte != null)
                {
