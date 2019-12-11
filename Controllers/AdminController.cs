@@ -86,6 +86,12 @@ namespace ProjectForHealing.Controllers
             }
 
         }
+        public IActionResult Created()
+        {
+            return View();
+        }
+
+
         [HttpGet]
         public IActionResult Edit(int id)
         {

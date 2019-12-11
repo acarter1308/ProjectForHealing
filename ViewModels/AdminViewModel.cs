@@ -23,13 +23,13 @@ namespace ProjectForHealing.ViewModels
     
         public string Pnumber { get; set; }
 
-        public string AdminPassWord { get; set; }
-        public byte[] ProfilePic { get; set; }
-        public bool? SuperUser { get; set; }
-
         [Required]
         [Display(Name = "Password")]
-        public string EditorPassWord { get; set; }
+        public string AdminPassWord { get; set; }
+        public byte[] ProfilePic { get; set; }
+        [Required]
+        [Display(Name = "SuperUser")]
+        public bool? SuperUser { get; set; }
         
         public byte[] ProfilePicUrl { get; set; }
 
