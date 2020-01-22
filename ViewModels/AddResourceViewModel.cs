@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -51,5 +52,6 @@ namespace ProjectForHealing.ViewModels
         [Required]
         [Display(Name = "Contact Email")]
         public string RepEmail { get; set; }
+        public IFormFile UploadedFile { get; set; }
     }
 }

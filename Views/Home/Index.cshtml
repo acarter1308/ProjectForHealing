@@ -1,19 +1,64 @@
 ﻿@{
     ViewData["Title"] = "Welcome";
 }
-        <div class="text-center">
-            <h1 class="display-4">Welcome</h1>
-        </div>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
 
-        <form class="form-inline md-form mr-0 mr-auto mb-4" asp-controller="Home" asp-action="Search" method="post">
-            <h1 class="text-center d-block w-100"> Search for a resource</h1>
-            <div class="text-center w-100">
-                <input class="form-control d-inline-block" type="text" name="search" placeholder="Search" aria-label="Search">
-                <input class="form-control d-inline-block" type="number" size="5" name="zip" placeholder="Zip" aria-label="Search">
+<form class="form-inline md-form mr-0 mr-auto mb-4" asp-controller="Home" asp-action="Search" method="post">
+    <h1 class="text-center d-block w-100"> Search for a resource</h1>
+    <div class="text-center w-100">
+        <input class="form-control d-inline-block" type="text" name="search" placeholder="Search" aria-label="Search">
+        <input class="form-control d-inline-block" type="number" size="5" name="zip" placeholder="Zip" aria-label="Search">
 
-                <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-            </div>
+        <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+    </div>
+</form>
 
-        </form>
-  
-    
+<div id="mapDiv" class="container" style="height: 400px; width: 500px;"></div>
+
+
+<script>
+            var map, infoWindow;
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('mapDiv'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 11
+                });
+
+                infoWindow = new google.maps.InfoWindow; // marker displayed to mark the new center
+
+                // Try to use HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                        };
+
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent('Location found.');
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+                    },
+                    function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {// If the browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
+
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);
+            }
+
+            $(document).ready(initMap());
+</script>
+
+

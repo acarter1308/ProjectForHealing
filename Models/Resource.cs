@@ -22,29 +22,7 @@ namespace ProjectForHealing.Models
         public string Lname { get; set; }
         public string RepNumber { get; set; }
         public string RepEmail { get; set; }
-      
-
-      
-/*
-        public Resource(int resourceId, string orgName, string orgNumber, string orgEmail, string orgAddress, string orgCity, string orgZip, string orgSte, string orgDescription, string websiteUrl, bool? isApproved, string fname, string lname, string repNumber, string repEmail)
-        {
-            ResourceId = resourceId;
-            OrgName = orgName;
-            OrgNumber = orgNumber;
-            OrgEmail = orgEmail;
-            OrgAddress = orgAddress;
-            OrgCity = orgCity;
-            OrgZip = orgZip;
-            OrgSte = orgSte;
-            OrgDescription = orgDescription;
-            WebsiteUrl = websiteUrl;
-            IsApproved = isApproved;
-            Fname = fname;
-            Lname = lname;
-            RepNumber = repNumber;
-            RepEmail = repEmail;
-        }
-        */
+        public string PhotoPath { get; set; }
         public Resource()
         {
            
