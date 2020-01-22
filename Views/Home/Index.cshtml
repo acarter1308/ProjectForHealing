@@ -1,19 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Welcome";
 }
-        <div class="text-center">
-            <h1 class="display-4">Welcome</h1>
-        </div>
 
-        <form class="form-inline md-form mr-0 mr-auto mb-4" asp-controller="Home" asp-action="Search" method="post">
-            <h1 class="text-center d-block w-100"> Search for a resource</h1>
-            <div class="text-center w-100">
-                <input class="form-control d-inline-block" type="text" name="search" placeholder="Search" aria-label="Search">
-                <input class="form-control d-inline-block" type="number" size="5" name="zip" placeholder="Zip" aria-label="Search">
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
 
-                <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-            </div>
+<form class="form-inline md-form mr-0 mr-auto mb-4" asp-controller="Home" asp-action="Search" method="post">
+    <h1 class="text-center d-block w-100"> Search for a resource</h1>
+    <div class="text-center w-100">
+        <input class="form-control d-inline-block" type="text" name="search" placeholder="Search" aria-label="Search">
+        <input class="form-control d-inline-block" type="number" size="5" name="zip" placeholder="Zip" aria-label="Search">
 
-        </form>
-  
-    
+        <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+    </div>
+
+</form>
+
+<div id="map"></div>
+
+
+
+
+
+
+
