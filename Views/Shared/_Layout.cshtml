@@ -7,10 +7,8 @@
     <title>@ViewData["Title"] - Project For Healing</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
-
-
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 
 </head>
 <body>
@@ -66,11 +64,9 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 
-    @if (IsSectionDefined("Scripts"))
-    {
-        @RenderSection("Scripts", required: true)
-    }
+
 
 </body>
 </html>
