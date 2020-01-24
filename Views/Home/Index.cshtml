@@ -64,8 +64,20 @@
                         name: 'ESOL',
                         icon: iconBase + 'ESOLEducation111.png'
                     },
+                    volunteering: {
+                        name: 'Volunteering',
+                        icon: iconBase + 'Volunteering.png'
+                    },
+                     pfh: {
+                        name: 'PFH',
+                        icon: iconBase + 'PFH.png'
+                    },
+                     children: {
+                        name: 'Children',
+                        icon: iconBase + 'Children.png'
+                    },
                     employement: {
-                        name: 'Employement',
+                        name: 'employement',
                         icon: iconBase + 'Employement1.png'
                     }
                 };
@@ -78,9 +90,20 @@
                         position: new google.maps.LatLng(30.328930, -81.655520),
                         type: 'esol'
                     }, {
+                        position: new google.maps.LatLng(30.352270, -81.652700),
+                        type: 'volunteering'
+                    }, {
+                        position: new google.maps.LatLng(30.260620, -81.623280),
+                        type: 'pfh'
+                    },{
+                        position: new google.maps.LatLng(30.282250, -81.601870),
+                        type: 'children'
+                    },
+                    {
                         postion: new google.maps.LatLng(30.266280, -81.618320),
                         type: 'employement'
                     }
+
                 ];
 
                 features.forEach(function(feature) {
