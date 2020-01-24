@@ -6,7 +6,7 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 
-<div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 30%;"></div>
+<div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 35%;"></div>
 
 <div class="container" id='map' style="height: 550px;"></div>
 <div id="legend"><h3>Legend</h3></div>
@@ -75,10 +75,6 @@
                      children: {
                         name: 'Children',
                         icon: iconBase + 'Children.png'
-                    },
-                    employment: {
-                        name: 'Employment',
-                        icon: iconBase + 'Employment1.png'
                     }
                 };
 
@@ -95,41 +91,42 @@
                     }, {
                         position: new google.maps.LatLng(30.260620, -81.623280),
                         type: 'pfh'
-                    },{
+                    }, {
                         position: new google.maps.LatLng(30.282250, -81.601870),
                         type: 'children'
-                    },
-                    {
-                        postion: new google.maps.LatLng(30.266280, -81.618320),
-                        type: 'employment'
                     }
-
                 ];
 
-                features.forEach(function(feature) {
+                features.forEach(function (feature) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: feature.type
+                    });
                     var marker = new google.maps.Marker({
                         position: feature.position,
                         icon: icons[feature.type].icon,
                         map: map,
                         title: icons[feature.type].name
                     });
+                    marker.addListener('click', function () {
+                        infoWindow.open(map, marker);
+                    });
                 });
 
                 var legend = document.getElementById('legend');
                     for (var key in icons) {
-                    var type = icons[key];
-                    var name = type.name;
-                    var icon = type.icon;
-                    var div = document.createElement('div');
-                    div.innerHTML = '<img src="' + icon + '"> ' + name;
-                    legend.appendChild(div);
-                }
+                        var type = icons[key];
+                        var name = type.name;
+                        var icon = type.icon;
+                        var div = document.createElement('div');
+                        div.innerHTML = '<img src="' + icon + '"> ' + name;
+                        legend.appendChild(div);
+                    }
 
                 map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
             });
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
 }
 
 
