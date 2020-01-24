@@ -9,6 +9,7 @@
 <div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 30%;"></div>
 
 <div class="container" id='map' style="height: 550px;"></div>
+<div id="legend"><h3>Legend</h3></div>
 
 @section Scripts    {
     <script type="text/javascript">
@@ -52,6 +53,56 @@
                     infoWindow.open(map);
 
                 };
+
+                var iconBase = './Images/';
+                var icons = {
+                    housing: {
+                        name: 'Housing',
+                        icon: iconBase + 'Housing1.png'
+                    },
+                    esol: {
+                        name: 'ESOL',
+                        icon: iconBase + 'ESOLEducation111.png'
+                    },
+                    employement: {
+                        name: 'Employement',
+                        icon: iconBase + 'Employement1.png'
+                    }
+                };
+
+                var features = [
+                    {
+                        position: new google.maps.LatLng(30.332630, -81.664250),
+                        type: 'housing'
+                    }, {
+                        position: new google.maps.LatLng(30.328930, -81.655520),
+                        type: 'esol'
+                    }, {
+                        postion: new google.maps.LatLng(30.266280, -81.618320),
+                        type: 'employement'
+                    }
+                ];
+
+                features.forEach(function(feature) {
+                    var marker = new google.maps.Marker({
+                        position: feature.position,
+                        icon: icons[feature.type].icon,
+                        map: map,
+                        title: icons[feature.type].name
+                    });
+                });
+
+                var legend = document.getElementById('legend');
+                    for (var key in icons) {
+                    var type = icons[key];
+                    var name = type.name;
+                    var icon = type.icon;
+                    var div = document.createElement('div');
+                    div.innerHTML = '<img src="' + icon + '"> ' + name;
+                    legend.appendChild(div);
+                }
+
+                map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
             });
         }
     </script>
