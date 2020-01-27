@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -27,11 +28,10 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Password")]
         public string AdminPassWord { get; set; }
         public byte[] ProfilePic { get; set; }
-        [Required]
-        [Display(Name = "SuperUser")]
+     
         public bool? SuperUser { get; set; }
         
         public byte[] ProfilePicUrl { get; set; }
-
+        public IFormFile UploadedFile { get; set; }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -17,9 +19,10 @@ namespace ProjectForHealing.Controllers
     {
 
         private CRMSContext context;
-
-        public AdminController(CRMSContext dbContext)
+        private readonly IHostingEnvironment hostingEnvironment;
+        public AdminController(CRMSContext dbContext, IHostingEnvironment hostingEnvironment)
         {
+            this.hostingEnvironment = hostingEnvironment;
             context = dbContext;
         }
         
@@ -49,6 +52,11 @@ namespace ProjectForHealing.Controllers
            ViewBag.email = HttpContext.Session.GetString("email");
             ViewBag.number = HttpContext.Session.GetString("pnumber");
             ViewBag.role = HttpContext.Session.GetString("role");
+            if (HttpContext.Session.GetString("pic") != "null")
+            {
+                ViewBag.pic = HttpContext.Session.GetString("pic");
+            }
+           
             return View();
         }
         public IActionResult AddAdmin()
@@ -61,9 +69,18 @@ namespace ProjectForHealing.Controllers
         [Route("/Admin/AddAdmin")]
         public IActionResult AddAdmin(AdminViewModel model)
         {
-
+        
             if (ModelState.IsValid)
             {
+                string uniqueFileName = null;
+                //if the actual file is not null
+                if (model.UploadedFile != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "ProfilePictures");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.UploadedFile.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.UploadedFile.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
                 Admin newAdmin = new Admin
                 {
                     //  ResourceID = addEditorViewModel.ResourceID,
@@ -74,7 +91,8 @@ namespace ProjectForHealing.Controllers
                     Pnumber = model.Pnumber,
                     AdminPassWord = model.AdminPassWord,
                     ProfilePic = model.ProfilePic,
-                    SuperUser = model.SuperUser
+                    SuperUser = model.SuperUser,
+                    PhotoPath = uniqueFileName
                 };
                 context.Admin.Add(newAdmin);
                 context.SaveChanges();
