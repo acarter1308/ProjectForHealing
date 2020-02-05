@@ -1,15 +1,30 @@
 ﻿@{
     ViewData["Title"] = "Welcome";
 }
-
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 </div>
+<div class="jumbotron">
+    <h1 class="display-3">Project For Healing, Inc.</h1>
+    <p class="lead">
+        Project for Healing, Inc offers counseling services in four locations, psychoeducation classes, behavioral case management,
+        psychiatric support services, medication management and group treatment.
+        Two licensed social workers, specially trained in refugee mental health care, provide over 500 sessions annually
+    </p>
+    <p class="lead">Our aim is for all North Florida refugees tohave healthy, happy lives..</p>
+    <hr class="my-4">
+    <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Resource</a>
+        <a class="btn btn-primary btn-lg" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
 
+    </p>
+</div>
 <div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 30%;"></div>
 
 <div class="container" id='map' style="height: 550px;"></div>
 <div id="legend"><h3>Legend</h3></div>
+
 
 @section Scripts    {
     <script type="text/javascript">
@@ -66,7 +81,7 @@
                     },
                     volunteering: {
                         name: 'Volunteering',
-                        icon: iconBase + 'Volunteering.png'
+                        icon: ' class="fab fa-accessible-icon'
                     },
                      pfh: {
                         name: 'PFH',
