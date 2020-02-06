@@ -9,11 +9,12 @@
 }
 else
 {
+    <div class="text-left">
+        <h2 class="">Approved Resources</h2>
+    </div>
     <table class="table table-hover">
 
-        <div class="text-left" >
-            <h2 class="">Approved Resources</h2>
-        </div>
+
         <thead>
             <tr>
 
@@ -22,7 +23,7 @@ else
                 <th scope="col">Phone Number</th>
                 <th scope="col">Address/Zip</th>
                 <th scope="col">STE</th>
-                <th style="width:150px" scope="col">Description</th>
+                <th scope="col">Description</th>
                 <th scope="col">Website</th>
                 <th scope="col">Representative</th>
                 <th scope="col">Rep Contact info</th>
@@ -34,24 +35,24 @@ else
         </thead>
 
         <tbody>
-           
-                @foreach (var resource in Model)
-                {
-                    <tr class="table-light">
-                        <td>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</td>
-                        <td>@resource.OrgEmail</td>
-                        <td>@resource.OrgNumber</td>
-                        <td class="module line-clamp">@resource.OrgAddress  @resource.OrgZip </td>
-                        <td>@resource.OrgSte</td>
-                        <td class="moduletable line-clamp">@resource.OrgDescription</td>
-                        <td>@resource.WebsiteUrl</td>
-                        <td>@resource.Fname   @resource.Lname</td>
-                        <td>@resource.RepNumber   @resource.RepEmail</td>
-                        <td>@Html.ActionLink("Edit", "Edit", new { id = resource.ResourceID })</td>
-                        <td>@Html.ActionLink("Delete", "Remove", new { id = resource.ResourceID })</td>
-                    </tr>
-                }
-         
+
+            @foreach (var resource in Model)
+            {
+                <tr class="table-light">
+                    <td>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</td>
+                    <td>@resource.OrgEmail</td>
+                    <td>@resource.OrgNumber</td>
+                    <td class="module line-clamp">@resource.OrgAddress  @resource.OrgZip </td>
+                    <td>@resource.OrgSte</td>
+                    <td class="moduletable line-clamp">@resource.OrgDescription</td>
+                    <td>@resource.WebsiteUrl</td>
+                    <td>@resource.Fname   @resource.Lname</td>
+                    <td>@resource.RepNumber   @resource.RepEmail</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new { id = resource.ResourceID })</td>
+                    <td>@Html.ActionLink("Delete", "Remove", new { id = resource.ResourceID })</td>
+                </tr>
+            }
+
         </tbody>
 
     </table>

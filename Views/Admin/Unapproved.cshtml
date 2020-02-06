@@ -9,11 +9,12 @@
 }
 else
 {
+
+    <div class="text-left">
+        <h2 class="">Resources Awaiting Approval</h2>
+    </div>
     <table class="table table-hover left">
 
-        <div class="text-center">
-            <h2 class="">Resources Awaiting Approval</h2>
-        </div>
         <thead>
             <tr>
 
@@ -34,9 +35,9 @@ else
         </thead>
 
         <tbody>
-            
-                @foreach (var resource in Model)
-                {
+
+            @foreach (var resource in Model)
+            {
                 <tr class="table-light">
                     <td>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</td>
                     <td>@resource.OrgEmail</td>
@@ -50,8 +51,8 @@ else
                     <td>@Html.ActionLink("Approve", "Approve", new { id = resource.ResourceID })</td>
                     <td>@Html.ActionLink("Delete", "Remove", new { id = resource.ResourceID })</td>
                 </tr>
-                }
-             
+            }
+
         </tbody>
 
     </table>
