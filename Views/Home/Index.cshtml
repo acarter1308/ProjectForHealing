@@ -73,27 +73,43 @@
                 var icons = {
                     housing: {
                         name: 'Housing',
-                        icon: 'fa-accessible-icon'
+                        icon: 'fas fa-home'
                     },
                     esol: {
                         name: 'ESOL',
-                         icon: 'fa-accessible-icon'
+                         icon: 'fas fa-language'
                     },
                     volunteering: {
                         name: 'Volunteering',
-                         icon: 'fa-accessible-icon'
+                         icon: 'fas fa-people-carry'
+                    },
+                    disablility: {
+                        name: 'Disablility Services',
+                          icon: 'fab fa-accessible-icon'
                     },
                      pfh: {
-                        name: 'PFH',
-                         icon: 'fa-accessible-icon'
+                        name: 'Project For Healing',
+                         icon: 'fab fa-hire-a-helper'
                     },
                      children: {
                         name: 'Children',
-                         icon: 'fa-accessible-icon'
+                         icon: 'fas fa-baby-carriage'
                     },
                     employment: {
                         name: 'Employment',
-                         icon: 'fa-accessible-icon'
+                         icon: 'fab fa-accessible-icon'
+                    },
+                    medical: {
+                        name: 'Medical',
+                         icon: 'fas fa-ambulance'
+                    },
+                    dental: {
+                        name: 'Dental Health',
+                        icon: 'fas fa-tooth'
+                    },
+                    mental: {
+                        name: 'Mental Health',
+                         icon: 'fas fa-brain'
                     }
                 };
 
@@ -136,7 +152,7 @@
                     var name = type.name;
                     var icon = type.icon;
                     var div = document.createElement('div');
-                    div.innerHTML = '<i class="fab ' + icon + '"></i>' + name;
+                    div.innerHTML = '<i class=" ' + icon + '"></i>' + name;
                     legend.appendChild(div);
                 }
 
