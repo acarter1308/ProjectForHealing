@@ -16,5 +16,8 @@ namespace ProjectForHealing.Models
         public string AdminPassWord { get; set; }
         public byte[] ProfilePic { get; set; }
         public bool? SuperUser { get; set; }
+        public string PhotoPath { get; set; }
+
+
     }
 }

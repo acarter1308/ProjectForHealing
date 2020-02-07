@@ -90,6 +90,7 @@ namespace ProjectForHealing.Controllers
                 HttpContext.Session.SetString("fname", admin.Fname);
                 HttpContext.Session.SetString("lname", admin.Lname);
                 HttpContext.Session.SetString("email", admin.Email);
+               
                 HttpContext.Session.SetString("pnumber", admin.Pnumber);
                 if (admin.SuperUser == true)
                 {
@@ -100,6 +101,14 @@ namespace ProjectForHealing.Controllers
                     HttpContext.Session.SetString("role", "Staff");
                 }
 
+                if(admin.PhotoPath != null)
+                {
+                    HttpContext.Session.SetString("pic", admin.PhotoPath);
+                }
+                else
+                {
+                    HttpContext.Session.SetString("pic", "null");
+                }
 
                 return Redirect("/Admin/Index");
             }
