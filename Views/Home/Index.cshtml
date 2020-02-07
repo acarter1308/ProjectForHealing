@@ -23,7 +23,7 @@
 <div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 30%;"></div>
 <div class="container" id='map' style="height: 550px;"></div>
 <div id="legend"><h3>Legend</h3></div>
-
+<div class="container" id="categories"></div>
 
 @section Scripts    {
     <script type="text/javascript">
@@ -167,12 +167,15 @@
                     var name = type.name;
                     var icon = type.icon;
                     var div = document.createElement('div');
-                    // div.innerHTML = '<input type="checkbox" checked onchange="toggleMarker(this, ' + features[i].type + '\')><i class="fab ' + icon + '"></i>' + name;
-                    div.innerHTML = '<i class="fab ' + icon + '"></i>' + name;
+                    div.innerHTML = '<input type="checkbox" checked onchange="toggleMarker(this, ' + features[i].type + ')><i class="fab ' + icon + '"></i>' + name;
+                    // div.innerHTML = '<i class="fab ' + icon + '"></i>' + name;
                     legend.appendChild(div);
                 }
 
                 map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
+                var categories = document.getElementById('categories');
+                
             });
         }
     </script>
