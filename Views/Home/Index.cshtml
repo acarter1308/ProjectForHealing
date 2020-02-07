@@ -11,7 +11,7 @@
         psychiatric support services, medication management and group treatment.
         Two licensed social workers, specially trained in refugee mental health care, provide over 500 sessions annually
     </p>
-    <p class="lead">Our aim is for all North Florida refugees tohave healthy, happy lives..</p>
+    <p class="lead">Our aim is for all North Florida refugees to have healthy, happy lives..</p>
     <hr class="my-4">
     <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
     <p class="lead">
@@ -20,10 +20,9 @@
 
     </p>
 </div>
-<div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 30%;"></div>
-<div class="container" id='map' style="height: 550px;"></div>
+<div class="container mt-2" id='map' style="height: 550px;"></div>
 <div id="legend"><h3>Legend</h3></div>
-<div class="container" id="categories"></div>
+<div class="container mt-lg-5 mb-lg-5" id="categories" style="display:flex; width:100%; margin:auto;"></div>
 
 @section Scripts    {
     <script type="text/javascript">
@@ -85,36 +84,62 @@
                 
                 var icons = {
                     housing: {
-                        name: 'Housing',
-                        icon: './Images/houzz-brands.svg'
+                        name: 'Housing',                  
+                        icon: 'fas fa-home'                      
                     },
                     esol: {
-                        name: 'ESOL',
-                         icon: 'fa-accessible-icon'
+                        name: 'ESOL',                         
+                        icon: 'fas fa-language'                       
                     },
                     volunteering: {
-                        name: 'Volunteering',
-                         icon: 'fa-accessible-icon'
+                        name: 'Volunteering',                         
+                            icon: 'fas fa-people-carry'
+                    },
+                    disablility: {
+                        name: 'Disablility Services',
+                            icon: 'fab fa-accessible-icon'
                     },
                     pfh: {
-                        name: 'PFH',
-                         icon: 'fa-accessible-icon'
+                        name: 'PFH',                        
+                        icon: 'fab fa-hire-a-helper'
                     },
                     children: {
-                        name: 'Children',
-                        icon: 'fa-accessible-icon'
+                        name: 'Children',                         
+                        icon: 'fas fa-baby-carriage'
                     },
                     employment: {
-                        name: 'Employment',
-                         icon: 'fa-accessible-icon'
+                        name: 'Employment',                         
+                        icon: 'fab fa-wordpress-simple'
+                    },
+                    medical: {
+                        name: 'Medical',
+                        icon: 'fas fa-ambulance'
+                    },
+                    dental: {
+                        name: 'Dental Health',
+                        icon: 'fas fa-tooth'
+                    },
+                    mental: {
+                        name: 'Mental Health',
+                        icon: 'fas fa-brain'
                     }
                 };
 
                 function addMarker(feature) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: 'Name: <br>Address: <br>Link:'
+                    });
                     var marker = new google.maps.Marker({
                         position: feature.position,
-                        icon: icons[feature.type].icon,
-                        map: map
+                        map: map,
+                        title: icons[feature.type].name,
+                        label: {
+                            fontFamily: 'Fontawesome',
+                            text: '\uf299'
+                         }
+                    });
+                    marker.addListener('click', function () {
+                        infoWindow.open(map, marker);
                     });
                     markers.push({
                         marker: marker,
@@ -145,37 +170,26 @@
                     addMarker(feature);
                 }
 
-                features.forEach(function (feature) {
-                    var infoWindow = new google.maps.InfoWindow({
-                        content: feature.type
-                    });
-                    var marker = new google.maps.Marker({
-                        position: feature.position,
-                        icon: icons[feature.type].icon,
-                        map: map,
-                        title: icons[feature.type].name
-                    });
-                    marker.addListener('click', function () {
-                        infoWindow.open(map, marker);
-                    });
-                });
-
                 var legend = document.getElementById('legend');
+                var categories = document.getElementById('categories');
                 var i = 0;
                 for (var key in icons) {
                     var type = icons[key];
                     var name = type.name;
                     var icon = type.icon;
                     var div = document.createElement('div');
-                    div.innerHTML = '<input type="checkbox" checked onchange="toggleMarker(this, ' + features[i].type + ')><i class="fab ' + icon + '"></i>' + name;
-                    // div.innerHTML = '<i class="fab ' + icon + '"></i>' + name;
+                    var cdiv = document.createElement('div');
+
+                    div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
+                    cdiv.className = "container ";
+                    cdiv.innerHTML = '<i class=" ' + icon + ' fa-4x" style="color:#2780E3;"></i><br><h4>' + name + '</h4>';
+                    cdiv.className = "container text-center";                
                     legend.appendChild(div);
+                    categories.appendChild(cdiv);
                 }
 
                 map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 
-                var categories = document.getElementById('categories');
-                
             });
         }
     </script>
