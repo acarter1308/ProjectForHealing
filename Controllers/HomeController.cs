@@ -32,7 +32,6 @@ namespace ProjectForHealing.Controllers
             return View();
         }
         [HttpPost]
-        [Route("/Home/Index")]
         public IActionResult Search(string search, string zip) {
 
             if (zip == null)
