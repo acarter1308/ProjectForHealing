@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Welcome";
+        ViewData["Title"] = "Welcome";
 }
 
 <div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 35%;"></div>
@@ -38,7 +38,6 @@
                 }
             }
         }
-
         function initMap() {
             $(document).ready(function () {
                 map = new google.maps.Map(document.getElementById('map'), {
@@ -70,47 +69,57 @@
                         'Error: Your browser doesn\'t support geolocation.');
                     infoWindow.open(map);
                 }
-
                 var icons = {
                     housing: {
                         name: 'Housing',
-                        icon: 'fas fa-home'
+                        icon: 'fas fa-home',
+                        text:'\uf015'
+
                     },
                     esol: {
                         name: 'ESOL',
-                        icon: 'fas fa-language'
+                        icon: 'fas fa-language',
+                        text:'\uf1ab'
                     },
                     volunteering: {
                         name: 'Volunteering',
-                        icon: 'fas fa-people-carry'
+                        icon: 'fas fa-people-carry',
+                        text:'\uf4ce'
                     },
                     disablility: {
                         name: 'Disablility Services',
-                        icon: 'fab fa-accessible-icon'
+                        icon: 'fab fa-accessible-icon',
+                        text:'\uf368'
                     },
                     pfh: {
                         name: 'PFH',
-                        icon: 'fab fa-hire-a-helper'
+                        icon: 'fab fa-hire-a-helper',
+                        text:'\uf3b0'
                     },
                     children: {
                         name: 'Children',
-                        icon: 'fas fa-baby-carriage'
+                        icon: 'fas fa-baby-carriage',
+                        text:'\uf015'
                     },
                     employment: {
                         name: 'Employment',
-                        icon: 'fab fa-wordpress-simple'
+                        icon: 'fab fa-wordpress-simple',
+                        text:'\uf411'
                     },
                     medical: {
                         name: 'Medical',
-                        icon: 'fas fa-ambulance'
+                        icon: 'fas fa-ambulance',
+                        text:'\uf0f9'
                     },
                     dental: {
                         name: 'Dental Health',
-                        icon: 'fas fa-tooth'
+                        icon: 'fas fa-tooth',
+                        text:'\uf5c9'
                     },
                     mental: {
                         name: 'Mental Health',
-                        icon: 'fas fa-brain'
+                        icon: 'fas fa-brain',
+                        text:'\uf5dc'
                     }
                 };
                 function addMarker(feature) {
@@ -121,10 +130,19 @@
                         position: feature.position,
                         map: map,
                         title: icons[feature.type].name,
+                        icon: {
+                      //  path: MAP_PIN,
+                       // fillColor: '#00CCBB',
+                        //fillOpacity: 1,
+                        //strokeColor: '',
+                       //strokeWeight: 0
+                        },
+                        map_icon_label: '<i class=" ' + icons[feature.type].icon + ' fa-lg"></i>',
                         label: {
                             fontFamily: 'Fontawesome',
-                            text: '\uf299'
+                            text: icons[feature.type].text
                         }
+
                     });
                     marker.addListener('click', function () {
                         infoWindow.open(map, marker);
@@ -176,7 +194,6 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
 }
-
 
 
 
