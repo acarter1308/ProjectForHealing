@@ -9,7 +9,19 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/bootstrap.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/map-font-icons.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <style>
+        .map-icon-label i {
+            font-size: 24px;
+            color: #FFFFFF;
+            line-height: 55px;
+            text-align: center;
+            white-space: nowrap;
+        }
+    </style>
     <script src="https://kit.fontawesome.com/2004ec8e2c.js" crossorigin="anonymous"></script>
+
     <style>
         #legend {
             font-family: Arial, sans-serif;
@@ -44,14 +56,15 @@
                         <li class="nav-item active">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home<span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Resource" asp-action="Add">Resource Form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
                             @if (Context.Session.GetString("username") == null)

@@ -9,24 +9,18 @@
 
 
 
-        <div class="display-3 w-40 d-inline-block float-right">
-            <h1>Hello @ViewBag.name</h1>
-
-            <h1>Phone Number: @ViewBag.number</h1>
-            <h1>Email: @ViewBag.email</h1>
-            <h1>Role: @ViewBag.role</h1>
+        <div class="list-group" >
+            \
+            <a href="#" class="list-group-item list-group-item-action disabled active">Hello, @ViewBag.name</a>
+            <a href="#" class="list-group-item list-group-item-action disabled">Phone Number: @ViewBag.number</a>
+            <a href="#" class="list-group-item list-group-item-action disabled active ">Email: @ViewBag.email</a>
+            <a href="#" class="list-group-item list-group-item-action disabled">Role: @ViewBag.role</a>
+            <a href="/Admin/ResourceManage" class="list-group-item list-group-item-action active">Manage Resources</a>
+            <a href="/Admin/Unapproved" class="list-group-item list-group-item-action">Approve/Unapprove Resources</a>
+            @if (Context.Session.GetString("role") == "Master Admin")
+            {
+                <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action active">Create New Admin</a>
+            }
+            <a href="/Home/Logout" class="list-group-item list-group-item-action">Logout</a>
         </div>
     </div>
-
-<ul class="d-inline-block w-75 display-4 list-unstyled">
- 
-    <li><a href="/Admin/ResourceManage">Manage Resources</a></li>
-    <li><a href="/Admin/Unapproved">Approve/Unapprove Resources</a></li>
-    @if (Context.Session.GetString("role") == "Master Admin")
-    {
-        <li><a href="/Admin/AddAdmin">Create New Admin</a></li>
-    }
-    <li><a href="/Home/Logout">Logout</a></li>
-
-</ul>
-

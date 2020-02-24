@@ -49,6 +49,13 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+.map-icon-label i {
+    font-size: 24px;
+    color: #FFFFFF;
+    line-height: 55px;
+    text-align: center;
+    white-space: nowrap;
+}
 
 html {
   font-family: sans-serif;
