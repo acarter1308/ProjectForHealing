@@ -63,26 +63,7 @@
                     <input class="form-check-input" asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="Fname" class="control-label"></label>
-                <input asp-for="Fname" class="form-control" />
-                <span asp-validation-for="Fname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Lname" class="control-label"></label>
-                <input asp-for="Lname" class="form-control" />
-                <span asp-validation-for="Lname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RepNumber" class="control-label"></label>
-                <input asp-for="RepNumber" class="form-control" type="tel" pattern="[0-9]{10}" title="10 numbers" required />
-                <span asp-validation-for="RepNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RepEmail" class="control-label"></label>
-                <input asp-for="RepEmail" class="form-control" type="email" required />
-                <span asp-validation-for="RepEmail" class="text-danger"></span>
-            </div>
+          
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

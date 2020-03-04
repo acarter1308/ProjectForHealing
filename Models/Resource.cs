@@ -18,10 +18,9 @@ namespace ProjectForHealing.Models
         public string OrgDescription { get; set; }
         public string WebsiteUrl { get; set; }
         public bool IsApproved { get; set; }
-        public string Fname { get; set; }
-        public string Lname { get; set; }
-        public string RepNumber { get; set; }
-        public string RepEmail { get; set; }
+        public int RType1 { get; set; }
+        public int RType2 { get; set; }
+        public int RType3 { get; set; }
         public string PhotoPath { get; set; }
         public Resource()
         {

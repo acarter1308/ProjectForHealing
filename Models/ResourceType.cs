@@ -7,6 +7,6 @@ namespace ProjectForHealing.Models
 {
     public enum ResourceType
     {
-        Medical, Financial
+        Medical, Financial, Shelter, Food, Clothing, Employment, Disabilities, Education, Trafficking, SocialSecurity, Counseling, Children
     }
 }

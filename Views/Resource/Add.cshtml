@@ -60,26 +60,20 @@
                 <span asp-validation-for="WebsiteUrl" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Fname" class="control-label"></label>
-                <input asp-for="Fname" class="form-control" />
-                <span asp-validation-for="Fname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Lname" class="control-label"></label>
-                <input asp-for="Lname" class="form-control" />
-                <span asp-validation-for="Lname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RepNumber" class="control-label"></label>
-                <input asp-for="RepNumber" class="form-control" />
-                <span asp-validation-for="RepNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RepEmail" class="control-label"></label>
-                <input asp-for="RepEmail" class="form-control" />
-                <span asp-validation-for="RepEmail" class="text-danger"></span>
-            </div>
+
+            <legend>What type of services do you provide?</legend>
+            <input type="checkbox" name="ResourceTypes" value="0" onclick="return ValidateSelection();">Medical<br>
+            <input type="checkbox" name="ResourceTypes" value="1" onclick="return ValidateSelection();">Financial<br>
+            <input type="checkbox" name="ResourceTypes" value="2" onclick="return ValidateSelection();">Shelter<br>
+            <input type="checkbox" name="ResourceTypes" value="3" onclick="return ValidateSelection();">Food<br>
+            <input type="checkbox" name="ResourceTypes" value="4" onclick="return ValidateSelection();">Clothing<br>
+            <input type="checkbox" name="ResourceTypes" value="5" onclick="return ValidateSelection();">Employment<br>
+            <input type="checkbox" name="ResourceTypes" value="6" onclick="return ValidateSelection();">Disabilities<br>
+            <input type="checkbox" name="ResourceTypes" value="7" onclick="return ValidateSelection();">Education<br>
+            <input type="checkbox" name="ResourceTypes" value="8" onclick="return ValidateSelection();">Trafficking<br>
+            <input type="checkbox" name="ResourceTypes" value="9" onclick="return ValidateSelection();">Social Security<br>
+            <input type="checkbox" name="ResourceTypes" value="10" onclick="return ValidateSelection();">Counseling<br>
+            <input type="checkbox" name="ResourceTypes" value="11" onclick="return ValidateSelection();">Children<br>
 
             <div class="form-group">
                 <div class="custom-file">
@@ -91,18 +85,33 @@
             <div class="form-group">
                 <input type="submit" value="Submit Form" class="btn btn-primary" />
             </div>
-            @section Scripts{ 
-                        <script type="text/javascript">
-                            $(document).ready(function () {
-                                //selecting html element with custom file input class
-                                //changing text when file name changes
-                                $('.custom-file-input').on("change", function () {
-                                  //  var fileName = $(this).val.().split("\\").pop();
-                                    var fileName = $('input[type=file]').val().split('\\').pop();
-                                    $(this).next('.custom-file-label').html(fileName);
-                                })
-                            });
-                        </script>
+            @section Scripts{
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        //selecting html element with custom file input class
+                        //changing text when file name changes
+                        $('.custom-file-input').on("change", function () {
+                            //  var fileName = $(this).val.().split("\\").pop();
+                            var fileName = $('input[type=file]').val().split('\\').pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        })
+                    });
+
+
+                    function ValidateSelection() {
+                        var checkboxes = new Array(3);
+                        checkboxes = document.getElementsByName("ResourceTypes");
+                        var numberOfCheckedItems = 0;
+                        for (var i = 0; i < checkboxes.length; i++) {
+                            if (checkboxes[i].checked)
+                                numberOfCheckedItems++;
+                        }
+                        if (numberOfCheckedItems > 3) {
+                            alert("You can't select more than 3 Resources!");
+                            return false;
+                        }
+                    }
+                </script>
             }
         </form>
     </div>

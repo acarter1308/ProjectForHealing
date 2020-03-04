@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ProjectForHealing.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -40,18 +41,10 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Organization's City")]
         public string OrgCity { get; set; }
         [Required]
-        [Display(Name = "Your First Name")]
-        public string Fname { get; set; }
-        [Required]
-        [Display(Name = "Your Last Name")]
-        public string Lname { get; set; }
-
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "This field must be 10 characters exactly")]
-        [Display(Name = "Contact Number")]
-        public string RepNumber { get; set; }
-        [Required]
-        [Display(Name = "Contact Email")]
-        public string RepEmail { get; set; }
+        public string[] ResourceTypes { get; set; }
+      //  public ResourceType RType1 { get; set; }
+       // public ResourceType RType2 { get; set; }
+       // public ResourceType RType3 { get; set; }
         public IFormFile UploadedFile { get; set; }
     }
 }
