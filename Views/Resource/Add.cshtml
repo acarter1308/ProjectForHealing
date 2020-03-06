@@ -8,112 +8,130 @@
 
 
 <hr />
-<div class="row">
+<div class="container">
     <div class="col-md-4">
         <form enctype="multipart/form-data" asp-controller="Resource" asp-action="Add" method="post">
 
             @*<div asp-validation-summary="All"></div>*@
-            <div class="form-group">
-                <label asp-for="OrgName" class="control-label"></label>
-                <input asp-for="OrgName" class="form-control" />
-                <span asp-validation-for="OrgName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrgNumber" class="control-label"></label>
-                <input asp-for="OrgNumber" class="form-control" />
-                <span asp-validation-for="OrgNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrgEmail" class="control-label"></label>
-                <input asp-for="OrgEmail" class="form-control" />
-                <span asp-validation-for="OrgEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrgAddress" class="control-label"></label>
-                <input asp-for="OrgAddress" class="form-control" />
-                <span asp-validation-for="OrgAddress" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="OrgCity" class="control-label"></label>
-                <input asp-for="OrgCity" class="form-control" />
-                <span asp-validation-for="OrgCity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrgZip" class="control-label"></label>
-                <input asp-for="OrgZip" class="form-control" />
-                <span asp-validation-for="OrgZip" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrgSte" class="control-label"></label>
-                <input asp-for="OrgSte" class="form-control" />
-                <span asp-validation-for="OrgSte" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrgDescription" class="control-label"></label>
-                <textarea asp-for="OrgDescription" class="form-control"> </textarea>>
-                <span asp-validation-for="OrgDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WebsiteUrl" class="control-label"></label>
-                <input asp-for="WebsiteUrl" class="form-control" />
-                <span asp-validation-for="WebsiteUrl" class="text-danger"></span>
-            </div>
-
-
-            <legend>What type of services do you provide?</legend>
-            <input type="checkbox" name="ResourceTypes" value="0" onclick="return ValidateSelection();">Medical<br>
-            <input type="checkbox" name="ResourceTypes" value="1" onclick="return ValidateSelection();">Financial<br>
-            <input type="checkbox" name="ResourceTypes" value="2" onclick="return ValidateSelection();">Shelter<br>
-            <input type="checkbox" name="ResourceTypes" value="3" onclick="return ValidateSelection();">Food<br>
-            <input type="checkbox" name="ResourceTypes" value="4" onclick="return ValidateSelection();">Clothing<br>
-            <input type="checkbox" name="ResourceTypes" value="5" onclick="return ValidateSelection();">Employment<br>
-            <input type="checkbox" name="ResourceTypes" value="6" onclick="return ValidateSelection();">Disabilities<br>
-            <input type="checkbox" name="ResourceTypes" value="7" onclick="return ValidateSelection();">Education<br>
-            <input type="checkbox" name="ResourceTypes" value="8" onclick="return ValidateSelection();">Trafficking<br>
-            <input type="checkbox" name="ResourceTypes" value="9" onclick="return ValidateSelection();">Social Security<br>
-            <input type="checkbox" name="ResourceTypes" value="10" onclick="return ValidateSelection();">Counseling<br>
-            <input type="checkbox" name="ResourceTypes" value="11" onclick="return ValidateSelection();">Children<br>
-
-            <div class="form-group">
-                <div class="custom-file">
-                    <input asp-for="UploadedFile" class="form-control custom-file-input" type="file" name="UploadedFile" />
-                    <label class="custom-file-label">Choose File....</label>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="OrgName" class="control-label"></label>
+                        <input asp-for="OrgName" class="form-control" />
+                        <span asp-validation-for="OrgName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class=" form-group">
+                        <label asp-for="OrgNumber" class="control-label"></label>
+                        <input asp-for="OrgNumber" class="form-control" />
+                        <span asp-validation-for="OrgNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="OrgEmail" class="control-label"></label>
+                        <input asp-for="OrgEmail" class="form-control" />
+                        <span asp-validation-for="OrgEmail" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="OrgAddress" class="control-label"></label>
+                        <input asp-for="OrgAddress" class="form-control" />
+                        <span asp-validation-for="OrgAddress" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label asp-for="OrgCity" class="control-label"></label>
+                        <input asp-for="OrgCity" class="form-control" />
+                        <span asp-validation-for="OrgCity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OrgZip" class="control-label"></label>
+                        <input asp-for="OrgZip" class="form-control" />
+                        <span asp-validation-for="OrgZip" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label asp-for="OrgSte" class="control-label"></label>
+                        <input asp-for="OrgSte" class="form-control" />
+                        <span asp-validation-for="OrgSte" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OrgDescription" class="control-label"></label>
+                        <textarea asp-for="OrgDescription" class="form-control"> </textarea>>
+                        <span asp-validation-for="OrgDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label asp-for="WebsiteUrl" class="control-label"></label>
+                        <input asp-for="WebsiteUrl" class="form-control" />
+                        <span asp-validation-for="WebsiteUrl" class="text-danger"></span>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Submit Form" class="btn btn-primary" />
-            </div>
-            @section Scripts{
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        //selecting html element with custom file input class
-                        //changing text when file name changes
-                        $('.custom-file-input').on("change", function () {
-                            //  var fileName = $(this).val.().split("\\").pop();
-                            var fileName = $('input[type=file]').val().split('\\').pop();
-                            $(this).next('.custom-file-label').html(fileName);
-                        })
-                    });
+
+                <h4>What type of services do you provide?</h4>
+                <input type="checkbox" name="ResourceTypes" value="0" onclick="return ValidateSelection();">Medical<br>
+                <input type="checkbox" name="ResourceTypes" value="1" onclick="return ValidateSelection();">Financial<br>
+                <input type="checkbox" name="ResourceTypes" value="2" onclick="return ValidateSelection();">Shelter<br>
+                <input type="checkbox" name="ResourceTypes" value="3" onclick="return ValidateSelection();">Food<br>
+                <input type="checkbox" name="ResourceTypes" value="4" onclick="return ValidateSelection();">Clothing<br>
+                <input type="checkbox" name="ResourceTypes" value="5" onclick="return ValidateSelection();">Employment<br>
+                <input type="checkbox" name="ResourceTypes" value="6" onclick="return ValidateSelection();">Disabilities<br>
+                <input type="checkbox" name="ResourceTypes" value="7" onclick="return ValidateSelection();">Education<br>
+                <input type="checkbox" name="ResourceTypes" value="8" onclick="return ValidateSelection();">Trafficking<br>
+                <input type="checkbox" name="ResourceTypes" value="9" onclick="return ValidateSelection();">Social Security<br>
+                <input type="checkbox" name="ResourceTypes" value="10" onclick="return ValidateSelection();">Counseling<br>
+                <input type="checkbox" name="ResourceTypes" value="11" onclick="return ValidateSelection();">Children<br>
+
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input asp-for="UploadedFile" class="form-control custom-file-input" type="file" name="UploadedFile" />
+                        <label class="custom-file-label">Choose File....</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Submit Form" class="btn btn-primary" />
+                </div>
+                @section Scripts{
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            //selecting html element with custom file input class
+                            //changing text when file name changes
+                            $('.custom-file-input').on("change", function () {
+                                //  var fileName = $(this).val.().split("\\").pop();
+                                var fileName = $('input[type=file]').val().split('\\').pop();
+                                $(this).next('.custom-file-label').html(fileName);
+                            })
+                        });
 
 
-                    function ValidateSelection() {
-                        var checkboxes = new Array(3);
-                        checkboxes = document.getElementsByName("ResourceTypes");
-                        var numberOfCheckedItems = 0;
-                        for (var i = 0; i < checkboxes.length; i++) {
-                            if (checkboxes[i].checked)
-                                numberOfCheckedItems++;
+                        function ValidateSelection() {
+                            var checkboxes = new Array(3);
+                            checkboxes = document.getElementsByName("ResourceTypes");
+                            var numberOfCheckedItems = 0;
+                            for (var i = 0; i < checkboxes.length; i++) {
+                                if (checkboxes[i].checked)
+                                    numberOfCheckedItems++;
+                            }
+                            if (numberOfCheckedItems > 3) {
+                                alert("You can't select more than 3 Resources!");
+                                return false;
+                            }
                         }
-                        if (numberOfCheckedItems > 3) {
-                            alert("You can't select more than 3 Resources!");
-                            return false;
-                        }
-                    }
-                </script>
-            }
-        </form>
+                    </script>
+                }
+</form>
     </div>
 </div>
 
