@@ -71,75 +71,89 @@
                     housing: {
                         name: 'Housing',
                         icon: 'fas fa-home',
-                        text:'\uf015'
-
+                        text: '\uf015',
+                        color: 'SlateGrey'
+                       
                     },
                     esol: {
                         name: 'ESOL',
                         icon: 'fas fa-language',
-                        text:'\uf1ab'
+                        text: '\uf1ab',
+                        color: 'orange'
                     },
                     volunteering: {
                         name: 'Volunteering',
                         icon: 'fas fa-people-carry',
-                        text:'\uf4ce'
+                        text:'\uf4ce',
+                        color: 'Plum'
                     },
                     disablility: {
                         name: 'Disablility Services',
                         icon: 'fab fa-accessible-icon',
-                        text:'\uf368'
+                        text:'\uf368',
+                        color: 'blue'
                     },
                     pfh: {
                         name: 'PFH',
                         icon: 'fab fa-hire-a-helper',
-                        text:'\uf3b0'
+                        text:'\uf3b0',
+                        color: 'Tomato'
                     },
                     children: {
                         name: 'Children',
                         icon: 'fas fa-baby-carriage',
-                        text:'\uf015'
+                        text:'\uf77d',
+                        color: 'Turquoise'
                     },
                     employment: {
                         name: 'Employment',
                         icon: 'fab fa-wordpress-simple',
-                        text:'\uf411'
+                        text:'\uf411',
+                        color: 'green'
                     },
                     medical: {
                         name: 'Medical',
                         icon: 'fas fa-ambulance',
-                        text:'\uf0f9'
+                        text:'\uf0f9',
+                        color: 'red'
                     },
                     dental: {
                         name: 'Dental Health',
                         icon: 'fas fa-tooth',
-                        text:'\uf5c9'
+                        text:'\uf5c9',
+                        color: 'MediumSpringGreen'
                     },
                     mental: {
                         name: 'Mental Health',
                         icon: 'fas fa-brain',
-                        text:'\uf5dc'
+                        text:'\uf5dc',
+                        color: 'SkyBlue'
                     }
                 };
                 function addMarker(feature) {
                     var infoWindow = new google.maps.InfoWindow({
                         content: 'Name: <br>Address: <br>Link:'
                     });
-                    var marker = new google.maps.Marker({
-                        position: feature.position,
-                        map: map,
-                        title: icons[feature.type].name,
-                        icon: {
-                      //  path: MAP_PIN,
-                       // fillColor: '#00CCBB',
-                        //fillOpacity: 1,
-                        //strokeColor: '',
-                       //strokeWeight: 0
-                        },
-                        map_icon_label: '<i class=" ' + icons[feature.type].icon + ' fa-lg"></i>',
-                        label: {
-                            fontFamily: 'Fontawesome',
-                            text: icons[feature.type].text
-                        }
+                    var icon = {
+        path: "M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0z", //SVG path of awesomefont marker
+        fillColor: icons[feature.type].color, //color of the marker
+        fillOpacity: 1,
+        strokeWeight: 0,
+        scale: 0.09, //size of the marker, careful! this scale also affects anchor and labelOrigin
+        anchor: new google.maps.Point(200,510), //position of the icon, careful! this is affected by scale
+        labelOrigin: new google.maps.Point(205,190) //position of the label, careful! this is affected by scale
+    }
+
+    var marker = new google.maps.Marker({
+      position: feature.position,
+      map: map,
+      icon: icon,
+      label: {
+        fontFamily: "'Fontawesome'",
+        text: icons[feature.type].text, //icon code
+        fontWeight: '900', //careful! some icons in FA5 only exist for specific font weights
+        color: '#FFFFFF', //color of the text inside marker
+      },
 
                     });
                     marker.addListener('click', function () {
@@ -182,7 +196,7 @@
                     var cdiv = document.createElement('div');
                     div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
                     cdiv.className = "container ";
-                    cdiv.innerHTML = '<i class=" ' + icon + ' fa-4x" style="color:#2780E3;"></i><br><h4>' + name + '</h4>';
+                    cdiv.innerHTML = '<i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i><br><h4>' + name + '</h4>';
                     cdiv.className = "container text-center";
                     legend.appendChild(div);
                     categories.appendChild(cdiv);
