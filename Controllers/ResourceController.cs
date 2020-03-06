@@ -50,6 +50,13 @@ namespace ProjectForHealing.Controllers
                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     addResourceViewModel.UploadedFile.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
+                int[] holding = new int[3];
+                int i = 0;
+               while(i < addResourceViewModel.ResourceTypes.Length)
+                {
+                    holding[i] = int.Parse(addResourceViewModel.ResourceTypes[i]);
+                    i++;
+                }
                 Resource newResource = new Resource
                 {
                     //  ResourceID = addResourceViewModel.ResourceID,
@@ -61,11 +68,14 @@ namespace ProjectForHealing.Controllers
                     OrgSte = addResourceViewModel.OrgSte,
                     OrgDescription = addResourceViewModel.OrgDescription,
                     WebsiteUrl = addResourceViewModel.WebsiteUrl,
-                    Fname = addResourceViewModel.Fname,
-                    Lname = addResourceViewModel.Lname,
-                    RepNumber = addResourceViewModel.RepNumber,
-                    RepEmail = addResourceViewModel.RepEmail,
-                   PhotoPath = uniqueFileName
+                   PhotoPath = uniqueFileName,
+                   RType1 = holding[0],
+ 
+                    RType2 = holding[1],
+         
+                    RType3 = holding[2]
+               
+                   
                 };
                 context.Resource.Add(newResource);
                 context.SaveChanges();

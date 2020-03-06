@@ -15,14 +15,16 @@
     <hr class="my-4">
     <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Resource</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Submit Resource</a>
         <a class="btn btn-primary btn-lg" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
 
     </p>
 </div>
 <div class="container mt-2" id='map' style="height: 550px;"></div>
 <div id="legend"><h3>Legend</h3></div>
-<div class="container mt-lg-5 mb-lg-5" id="categories" style="display:flex; width:100%; margin:auto;"></div>
+<div class="container" id="categories" style="padding-top:15px">
+    <div class="row" id="cats"></div>
+</div>
 
 @section Scripts    {
     <script type="text/javascript">
@@ -186,7 +188,7 @@
                     addMarker(feature);
                 }
                 var legend = document.getElementById('legend');
-                var categories = document.getElementById('categories');
+                var categories = document.getElementById('cats');
                 var i = 0;
                 for (var key in icons) {
                     var type = icons[key];
@@ -197,7 +199,7 @@
                     div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
                     cdiv.className = "container ";
                     cdiv.innerHTML = '<i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i><br><h4>' + name + '</h4>';
-                    cdiv.className = "container text-center";
+                    cdiv.className = "col-sm text-center";
                     legend.appendChild(div);
                     categories.appendChild(cdiv);
                 }
