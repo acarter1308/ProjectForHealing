@@ -10,8 +10,8 @@ namespace ProjectForHealing.ViewModels
 {
     public class AddResourceViewModel
     {
-       [Required]
-       [Display(Name ="Organization's Name")]
+        [Required]
+        [Display(Name = "Organization's Name")]
         public string OrgName { get; set; }
         [Required]
         [Display(Name = "Organization's Phone Number")]
@@ -26,19 +26,20 @@ namespace ProjectForHealing.ViewModels
         public string OrgAddress { get; set; }
         [Required]
         [StringLength(5, MinimumLength = 5, ErrorMessage = "This field must be 5 characters exactly")]
-        [Display(Name = "Organization's Zip Code")]
+        [Display(Name = "Zip Code")]
         public string OrgZip { get; set; }
-       
+
         [StringLength(10, ErrorMessage = "Number must not exceed 10 characters")]
+        [Display(Name = "Suite #")]
         public string OrgSte { get; set; }
         [Required]
-        [Display(Name = "Service(s) Your Organization Provides")]
+        [Display(Name = "Description of service(s) provided")]
         public string OrgDescription { get; set; }
         [Required]
         [Display(Name = "Organization's Link")]
         public string WebsiteUrl { get; set; }
         [Required]
-        [Display(Name = "Organization's City")]
+        [Display(Name = "City")]
         public string OrgCity { get; set; }
         [Required]
         public string[] ResourceTypes { get; set; }
