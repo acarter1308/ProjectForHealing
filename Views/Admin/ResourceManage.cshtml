@@ -2,57 +2,56 @@
 @{
 
 }
-
-@if (Model.Count() == 0)
-{
-    <p>No  submissions! </p>
-}
-else
-{
-    <div class="text-left">
-        <h2 class="">Approved Resources</h2>
-    </div>
-    <table class="table table-hover">
-
-
-        <thead>
-            <tr>
-
-                <th scope="col">Organization</th>
-                <th scope="col">Email Address</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Address/Zip</th>
-                <th scope="col">STE</th>
-                <th scope="col">Description</th>
-                <th scope="col">Website</th>
-                <th scope="col">Representative</th>
-                <th scope="col">Rep Contact info</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Remove</th>
+    <div class="container ml-0">
+        @if (Model.Count() == 0)
+        {
+            <p>No  submissions! </p>
+        }
+        else
+        {
+            <div class="text-left ml-0">
+                <h2 class="">Approved Resources</h2>
+            </div>
+            <table class="table table-hover">
 
 
-            </tr>
-        </thead>
+                <thead>
+                    <tr>
 
-        <tbody>
+                        <th scope="col">Organization</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Address/Zip</th>
+                        <th scope="col">STE</th>
+                        <th scope="col" colspan="3">Description</th>
+                        <th scope="col">Website</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Remove</th>
 
-            @foreach (var resource in Model)
-            {
-                <tr class="table-light">
-                    <td>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</td>
-                    <td>@resource.OrgEmail</td>
-                    <td>@resource.OrgNumber</td>
-                    <td class="module line-clamp">@resource.OrgAddress  @resource.OrgZip </td>
-                    <td>@resource.OrgSte</td>
-                    <td class="moduletable line-clamp">@resource.OrgDescription</td>
-                    <td>@resource.WebsiteUrl</td>
-                 
-                    <td>@Html.ActionLink("Edit", "Edit", new { id = resource.ResourceID })</td>
-                    <td>@Html.ActionLink("Delete", "Remove", new { id = resource.ResourceID })</td>
-                </tr>
-            }
 
-        </tbody>
+                    </tr>
+                </thead>
 
-    </table>
-}
+                <tbody>
+
+                    @foreach (var resource in Model)
+                    {
+                        <tr class="table-light">
+                            <td>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</td>
+                            <td>@resource.OrgEmail</td>
+                            <td>@resource.OrgNumber</td>
+                            <td>@resource.OrgAddress  @resource.OrgZip </td>
+                            <td>@resource.OrgSte</td>
+                            <td colspan="3">@resource.OrgDescription</td>
+                            <td>@resource.WebsiteUrl</td>
+
+                            <td>@Html.ActionLink("Edit", "Edit", new { id = resource.ResourceID })</td>
+                            <td>@Html.ActionLink("Delete", "Remove", new { id = resource.ResourceID })</td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        }
+        </div>

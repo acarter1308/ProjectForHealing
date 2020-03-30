@@ -22,6 +22,8 @@ namespace ProjectForHealing.Models
         public int RType2 { get; set; }
         public int RType3 { get; set; }
         public string PhotoPath { get; set; }
+        public string lat { get; set; }
+        public string lng { get; set; }
         public Resource()
         {
            

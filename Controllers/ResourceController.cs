@@ -32,17 +32,22 @@ namespace ProjectForHealing.Controllers
             AddResourceViewModel addResourceViewModel = new AddResourceViewModel();
             return View(addResourceViewModel);
         }
-
+   
 
         [HttpPost]
         [Route("/Resource/Add")]
         public IActionResult Add(AddResourceViewModel addResourceViewModel)
         {
+
         
             if (ModelState.IsValid)
             {
                 string uniqueFileName = null;
                 //if the actual file is not null
+
+                
+
+
                 if(addResourceViewModel.UploadedFile != null)
                 {
                   string uploadsFolder =  Path.Combine(hostingEnvironment.WebRootPath, "ResourceFiles");
@@ -73,7 +78,9 @@ namespace ProjectForHealing.Controllers
  
                     RType2 = holding[1],
          
-                    RType3 = holding[2]
+                    RType3 = holding[2],
+                    lat = addResourceViewModel.lat,
+                    lng = addResourceViewModel.lng
                
                    
                 };

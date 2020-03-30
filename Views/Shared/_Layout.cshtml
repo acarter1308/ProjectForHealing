@@ -68,6 +68,9 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Education">Education</a>
+                        </li>
+                        <li class="nav-item">
                             @if (Context.Session.GetString("username") == null)
                             {
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
@@ -87,11 +90,11 @@
             </div>
         </nav>
     </header>
-    <div class="container middlebody">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <!--  <div class="container middlebody">-->
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+   <!-- </div>-->
 
     <footer class="border-top footer text-muted">
         <div class="container" style="max-height:15px">
