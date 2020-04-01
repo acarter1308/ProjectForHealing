@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ProjectForHealing.Models;
 
 namespace ProjectForHealing.Models
 {
@@ -28,5 +29,7 @@ namespace ProjectForHealing.Models
                     optionsBuilder.UseSqlServer("Server=projectforhealing.database.windows.net;Database=CRMS; User Id=Demo1; Password=Helprefugees1; Trusted_Connection=False;");
             }*/
         }
+
+        public DbSet<ProjectForHealing.Models.Education> Education { get; set; }
     }
 }

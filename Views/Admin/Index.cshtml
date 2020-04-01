@@ -17,6 +17,7 @@
                 <a href="#" class="list-group-item list-group-item-action disabled">Role: @ViewBag.role</a>
                 <a href="/Admin/ResourceManage" class="list-group-item list-group-item-action active">Manage Resources</a>
                 <a href="/Admin/Unapproved" class="list-group-item list-group-item-action">Approve/Unapprove Resources</a>
+                <a href="/Admin/AddEducation" class="list-group-item list-group-item-action">Add Education</a>
                 @if (Context.Session.GetString("role") == "Master Admin")
                 {
                     <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action active">Create New Admin</a>

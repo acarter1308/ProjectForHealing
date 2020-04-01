@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,19 +19,20 @@ namespace ProjectForHealing.Controllers
     public class HomeController : Controller
     {
         private CRMSContext context;
-
-        //asking to get instance of CRMS context
-        public HomeController(CRMSContext dbContext)
+        private readonly IHostingEnvironment hostingEnvironment;
+        public HomeController(CRMSContext dbContext, IHostingEnvironment hostingEnvironment)
         {
-          
+            this.hostingEnvironment = hostingEnvironment;
             context = dbContext;
         }
 
         public IActionResult Index()
         {
+            var sources = context.Resource.Where(x =>  x.IsApproved == true).ToList();
             
-            return View();
+            return View(sources);
         }
+
         [HttpPost]
         public IActionResult Search(string search, string zip) {
 
@@ -127,5 +129,27 @@ namespace ProjectForHealing.Controllers
             return View(source);
         }
 
+
+        [HttpGet]
+        public IActionResult OpenFile(string path)
+        {
+            string PDFpath = "wwwroot/EducationFiles/"+ path;
+            byte[] abc = System.IO.File.ReadAllBytes(PDFpath);
+            System.IO.File.WriteAllBytes(PDFpath, abc);
+            MemoryStream ms = new MemoryStream(abc);
+            return new FileStreamResult(ms, "application/pdf");
+        }
+
+        public IActionResult EducationIndex()
+        {
+            var Edu = context.Education.ToList();
+            return View(Edu);
+        }
+
+        public IActionResult EducationView(int ID)
+        {
+            var source = context.Education.SingleOrDefault(x => x.ID == ID);
+            return View(source);
+        }
     }
 }

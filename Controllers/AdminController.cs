@@ -178,5 +178,58 @@ namespace ProjectForHealing.Controllers
             var source = context.Resource.SingleOrDefault(x => x.ResourceID == id);
             return View(source);
         }
+
+        public IActionResult AddEducation()
+        {
+            EducationViewModel education = new EducationViewModel();
+            return View(education);
+        }
+
+        [HttpPost]
+        [Route("/Admin/AddEducation")]
+        public IActionResult AddEducation(EducationViewModel model)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                string uniqueFileName = null;
+                string uniquePictureName = null;
+                //if the actual file is not null
+                if (model.UploadedFile != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "EducationFiles");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.UploadedFile.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.UploadedFile.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+
+                if (model.PhotoPath != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "EducationPictures");
+                    uniquePictureName = Guid.NewGuid().ToString() + "_" + model.UploadedFile.FileName;
+                    string picturePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.PhotoPath.CopyTo(new FileStream(picturePath, FileMode.Create));
+                }
+
+                Education newEducation = new Education
+                {
+                    //  ResourceID = addEditorViewModel.ResourceID,
+                    Country = model.Country,
+                   Description = model.Description,
+                    FilePath = uniqueFileName,
+                    PhotoPath = uniquePictureName
+                };
+                context.Education.Add(newEducation);
+                context.SaveChanges();
+                return Redirect("/Home/EducationIndex");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
+
     }
 }
