@@ -229,9 +229,19 @@
                                 type: 'children'
                             }
                         ];
-
+                        /************************
+                         * 
+                         * Serialization
+                         * 
+                         * 
+                         * */
+                       // Stores entire list of Resource Models into Javascript array
                          var stringArray = @Html.Raw(Json.Serialize(Model));
                         console.log(stringArray);
+                        //Foreach "item" inside "stirngArray"
+                        //The features array pushes a new google postion with the 
+                        // "stringArray" items lat and lng
+                        //type is pushed as well but is static for now
                         stringArray.forEach(function(item){
                             features.push({
                                 position: new google.maps.LatLng(item.lat, item.lng),
