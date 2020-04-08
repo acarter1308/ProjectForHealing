@@ -133,7 +133,7 @@ namespace ProjectForHealing.Controllers
         [HttpGet]
         public IActionResult OpenFile(string path)
         {
-            string PDFpath = "wwwroot/EducationFiles/"+ path;
+            string PDFpath = "wwwroot/"+ path;
             byte[] abc = System.IO.File.ReadAllBytes(PDFpath);
             System.IO.File.WriteAllBytes(PDFpath, abc);
             MemoryStream ms = new MemoryStream(abc);
