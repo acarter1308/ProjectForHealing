@@ -10,6 +10,10 @@
 
         <h1>@Model.OrgEmail</h1>
         <h1>@Model.WebsiteUrl</h1>
-        @Html.ActionLink("View Files", "OpenFile", new {  path = "ResourceFiles/"+  Model.PhotoPath })
+        @if (Model.PhotoPath != null)
+        {
+            @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.PhotoPath })
+        }
+
     </div>
 

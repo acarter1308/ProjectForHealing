@@ -15,7 +15,7 @@
                 @foreach (var resource in Model)
                 {
                     <ul class="list-unstyled">
-                        <li><h1>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</h1></li>
+                        <li><h1>@Html.ActionLink(resource.OrgName, "ViewSource","Home", new { id = resource.ResourceID })</h1></li>
                         <li>@resource.OrgAddress</li>
                         @if (resource.OrgSte != null)
                         {

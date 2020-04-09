@@ -37,7 +37,7 @@
                     @foreach (var resource in Model)
                     {
                         <tr class="table-light">
-                            <td>@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</td>
+                            <td>@Html.ActionLink(resource.OrgName, "ViewSource","Home", new { id = resource.ResourceID })</td>
                             <td>@resource.OrgEmail</td>
                             <td>@resource.OrgNumber</td>
                             <td>@resource.OrgAddress  @resource.OrgZip </td>
@@ -45,8 +45,8 @@
                             <td colspan="3">@resource.OrgDescription</td>
                             <td>@resource.WebsiteUrl</td>
 
-                            <td>@Html.ActionLink("Edit", "Edit", new { id = resource.ResourceID })</td>
-                            <td>@Html.ActionLink("Delete", "Remove", new { id = resource.ResourceID })</td>
+                            <td>@Html.ActionLink("Edit", "Edit","Admin", new { id = resource.ResourceID })</td>
+                            <td>@Html.ActionLink("Delete", "Remove","Admin", new { id = resource.ResourceID })</td>
                         </tr>
                     }
 

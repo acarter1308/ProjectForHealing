@@ -20,7 +20,7 @@
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="#" role="button">Submit Resource</a>
                 <a class="btn btn-primary btn-lg" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
-
+               
             </p>
         </div>
         <div class="container mt-2" id='map' style="height: 550px;"></div>
@@ -28,9 +28,7 @@
         <div class="container" id="categories" style="padding-top:15px">
             <div class="row" id="cats"></div>
         </div>
-  
-       
-
+ 
 
         @section Scripts    {
                 <script type="text/javascript">
@@ -45,14 +43,10 @@
                     }
                 }
 
-               
-        
-           
 
-                   
 
               function initMap() {
-                    var geocoder = new google.maps.Geocoder();
+
                     $(document).ready(function () {
                         map = new google.maps.Map(document.getElementById('map'), {
                             center: { lat: -34.397, lng: 150.644 },
@@ -82,25 +76,6 @@
                                 'Error: The Geolocation service failed.' :
                                 'Error: Your browser doesn\'t support geolocation.');
                             infoWindow.open(map);
-                        }
-
-                        window.getCoordinates = function (address) {
-
-                            var coordinates;
-                            geocoder.geocode({ 'address': address }, function (results, status) {
-                                if (status == 'OK') {
-                                    /* map.setCenter(results[0].geometry.location);
-                                     var marker = new google.maps.Marker({
-                                         map: map,
-                                         position: results[0].geometry.location
-                                     });*/
-                                    coordinates = results[0].geometry.location;
-
-                                    console.log(coordinates.lat(), coordinates.lng());
-                                } else {
-                                    alert('Geocode was not successful for the following reason: ' + status);
-                                }
-                            });
                         }
 
 
@@ -173,8 +148,12 @@
 
 
                         function addMarker(feature) {
+                         // var ID =  parseInt(item.ResourceID);
+                            var ID = feature.link;
+
+                            var links = "<a href=\"/Home/ViewSource/"+ Number(ID) +"\">Edit</a>";
                             var infoWindow = new google.maps.InfoWindow({
-                                content: 'Name: <br>Address: <br>Link:'
+                                content: 'Name: ' + feature.name + ' <br> Address: ' + feature.address + ' <br><p>Link:  '+ links + '</p>'
                             });
 
                             var icon = {
@@ -209,9 +188,7 @@
                         }
 
 
-
-
-                        var features = [
+                        var features = [/*
                             {
                                 position: new google.maps.LatLng(30.332630, -81.664250),
                                 type: 'housing'
@@ -227,30 +204,35 @@
                             }, {
                                 position: new google.maps.LatLng(30.282250, -81.601870),
                                 type: 'children'
-                            }
+                            }*/
                         ];
                         /************************
-                         * 
+                         *
                          * Serialization
-                         * 
-                         * 
+                         *
+                         *
                          * */
                        // Stores entire list of Resource Models into Javascript array
                          var stringArray = @Html.Raw(Json.Serialize(Model));
-                        //console.log(stringArray);
+                        console.log(stringArray);
                         //Foreach "item" inside "stirngArray"
-                        //The features array pushes a new google postion with the 
+                        //The features array pushes a new google postion with the
                         // "stringArray" items lat and lng
                         //type is pushed as well but is static for now
-                        stringArray.forEach(function(item){
+                        stringArray.forEach(function (item) {
+                          //  var category = item.RType1.toString();
                             features.push({
+                                name: item.orgName,
+                                address: item.orgAddress,
+                                link: item.resourceID,
                                 position: new google.maps.LatLng(item.lat, item.lng),
-                                type: 'children'
+                                type: item.rType1
                             })
                                })
 
                         for (var i = 0, feature; feature = features[i]; i++) {
                             addMarker(feature);
+                            console.log(feature);
                         }
                         var legend = document.getElementById('legend');
                         var categories = document.getElementById('cats');
@@ -270,7 +252,7 @@
                         map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
                     });
                 }
-            </script>
+                </script>
 
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
 
