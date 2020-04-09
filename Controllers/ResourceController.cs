@@ -55,11 +55,11 @@ namespace ProjectForHealing.Controllers
                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     addResourceViewModel.UploadedFile.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
-                int[] holding = new int[3];
+                string[] holding = new string[3];
                 int i = 0;
                while(i < addResourceViewModel.ResourceTypes.Length)
                 {
-                    holding[i] = int.Parse(addResourceViewModel.ResourceTypes[i]);
+                    holding[i] = addResourceViewModel.ResourceTypes[i];
                     i++;
                 }
                 Resource newResource = new Resource
