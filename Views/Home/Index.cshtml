@@ -28,12 +28,13 @@
         <div class="container" id="categories" style="padding-top:15px">
             <div class="row" id="cats"></div>
         </div>
- 
+       
 
         @section Scripts    {
                 <script type="text/javascript">
                 var markers = [];
                 var map, infoWindow;
+
                 function toggleMarker(element, type) {
                     var on = element.checked;
                     for (var i = 0; i < markers.length; i++) {
@@ -42,43 +43,50 @@
                         }
                     }
                 }
+                         
+                    
+
+                    function initMap() {
+                        
+                        
+                        $(document).ready(function () {
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                center: { lat: -34.397, lng: 150.644 },
+                                zoom: 13
+                            });
+                            infoWindow = new google.maps.InfoWindow;
 
 
 
-              function initMap() {
+                            // Try HTML5 geolocation.
+                            if (!navigator.geolocation) {
+                                handleLocationError(false, infoWindow, map.getCenter());
+                                return;
+                            }
+                            navigator.geolocation.getCurrentPosition(function (position) {
+                                var pos = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude
+                                };
+                                infoWindow.setPosition(pos);
+                                infoWindow.setContent('Location found.');
+                                infoWindow.open(map);
+                                map.setCenter(pos);
+                            }, function () {
+                                handleLocationError(true, infoWindow, map.getCenter());
+                            });
+                            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                                infoWindow.setPosition(pos);
+                                infoWindow.setContent(browserHasGeolocation ?
+                                    'Error: The Geolocation service failed.' :
+                                    'Error: Your browser doesn\'t support geolocation.');
+                                infoWindow.open(map);
+                            }
+                        
 
-                    $(document).ready(function () {
-                        map = new google.maps.Map(document.getElementById('map'), {
-                            center: { lat: -34.397, lng: 150.644 },
-                            zoom: 13
-                        });
-                        infoWindow = new google.maps.InfoWindow;
-                        // Try HTML5 geolocation.
-                        if (!navigator.geolocation) {
-                            handleLocationError(false, infoWindow, map.getCenter());
-                            return;
-                        }
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            var pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            };
-                            infoWindow.setPosition(pos);
-                            infoWindow.setContent('Location found.');
-                            infoWindow.open(map);
-                            map.setCenter(pos);
-                        }, function () {
-                            handleLocationError(true, infoWindow, map.getCenter());
-                        });
-                        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                            infoWindow.setPosition(pos);
-                            infoWindow.setContent(browserHasGeolocation ?
-                                'Error: The Geolocation service failed.' :
-                                'Error: Your browser doesn\'t support geolocation.');
-                            infoWindow.open(map);
-                        }
-
-
+                           
+        
+                          
 
                         var icons = {
                             housing: {
@@ -144,14 +152,14 @@
                             }
                         };
 
+                
 
-
-
+           
                         function addMarker(feature) {
                          // var ID =  parseInt(item.ResourceID);
                             var ID = feature.link;
 
-                            var links = "<a href=\"/Home/ViewSource/"+ Number(ID) +"\">Edit</a>";
+                            var links = "<a href=\"/Home/ViewSource/"+ Number(ID) +"\">More Info</a>";
                             var infoWindow = new google.maps.InfoWindow({
                                 content: 'Name: ' + feature.name + ' <br> Address: ' + feature.address + ' <br><p>Link:  '+ links + '</p>'
                             });
@@ -183,29 +191,15 @@
                             });
                             markers.push({
                                 marker: marker,
-                                type: feature.type
+                                type: feature.type,
+                                rt1: feature.rt1,
+                                rt2: feature.rt2,
+                                rt3: feature.rt3
                             });
                         }
+                              
 
-
-                        var features = [/*
-                            {
-                                position: new google.maps.LatLng(30.332630, -81.664250),
-                                type: 'housing'
-                            }, {
-                                position: new google.maps.LatLng(30.328930, -81.655520),
-                                type: 'esol'
-                            }, {
-                                position: new google.maps.LatLng(30.352270, -81.652700),
-                                type: 'volunteering'
-                            }, {
-                                position: new google.maps.LatLng(30.260620, -81.623280),
-                                type: 'pfh'
-                            }, {
-                                position: new google.maps.LatLng(30.282250, -81.601870),
-                                type: 'children'
-                            }*/
-                        ];
+                        var features = [];
                         /************************
                          *
                          * Serialization
@@ -226,14 +220,20 @@
                                 address: item.orgAddress,
                                 link: item.resourceID,
                                 position: new google.maps.LatLng(item.lat, item.lng),
-                                type: item.rType1
+                                type: item.rType1,
+                                rt1: item.rType1,
+                                rt2: item.rType2,
+                                rt3:item.rType3
                             })
-                               })
+
+                        })
+                           
 
                         for (var i = 0, feature; feature = features[i]; i++) {
                             addMarker(feature);
                             console.log(feature);
-                        }
+                            }
+
                         var legend = document.getElementById('legend');
                         var categories = document.getElementById('cats');
                         var i = 0;
@@ -244,12 +244,51 @@
                             var div = document.createElement('div');
                             var cdiv = document.createElement('div');
                             div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
-                            cdiv.innerHTML = '<i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i><br><h4>' + name + '</h4>';
+                            cdiv.innerHTML = '<button class="buttonTypes" id="'+ name +'"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><h4>' + name + '</h4>';
                             cdiv.className = "col-sm text-center";
                             legend.appendChild(div);
                             categories.appendChild(cdiv);
                         }
-                        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+                            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
+                            var buttons = document.querySelectorAll(".buttonTypes");
+
+                            buttons.forEach(item => {
+                                    item.addEventListener("click", function () {
+                                            
+                                            var clickedType = $(this).attr('id').toLowerCase();
+                                             console.log(clickedType);
+
+                                for (var i = 0; i < markers.length; i++) {
+                                     markers[i].marker.setMap(null);
+                                    if (markers[i].rt1 == clickedType || markers[i].rt2 == clickedType || markers[i].rt3 == clickedType) {
+                                        markers[i].marker.icon.fillColor = icons[clickedType].color;
+                                        markers[i].marker.label.text = icons[clickedType].text;
+                                        markers[i].marker.setMap(map);
+                                    }
+                                }
+                           
+                            });
+
+
+
+
+
+
+
+
+
+                            });
+
+                        
+                            //**********************************
+
+
+
+
+
+
+
                     });
                 }
                 </script>

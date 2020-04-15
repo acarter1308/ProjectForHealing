@@ -9,29 +9,14 @@
         {
             <p>Nothing found for @ViewBag.Org in @ViewBag.Zip</p>
         }
-        else
-        {
-        }
-            <div class="w-75 m-0 m-auto">
-                @foreach (var resource in Model)
-                {
-                    <ul class="list-unstyled">
-                        <li><h1>@Html.ActionLink(resource.OrgName, "ViewSource","Home", new { id = resource.ResourceID })</h1></li>
-                        <li>@resource.OrgAddress</li>
-                        @if (resource.OrgSte != null)
-                        {
-                            <li> Suite @resource.OrgSte</li>
-                        }
-                        <li>@resource.OrgCity, @resource.OrgZip</li>
-                        <li>@resource.OrgNumber</li>
-                    </ul>
-
-                }
-
+       
+        
+        
+ 
     <div class="w-75 m-0 m-auto">
         @foreach (var resource in Model)
         {
-            
+
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</h4>
@@ -44,37 +29,19 @@
                     <a href="#" class="card-link">@resource.OrgNumber</a>
                     <a href="#" class="card-link">@resource.WebsiteUrl</a>
                 </div>
-
+            </div>
 
         }
 
-
-
     </div>
+
+    
 
             
-        }
+      
 
-    </div>
-    <div class="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Resource</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete this resource?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Delete Resource</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
+
     <div class="modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

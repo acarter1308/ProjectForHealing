@@ -39,7 +39,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label asp-for="OrgAddress" class="control-label"></label>
-                                <input asp-for="OrgAddress" class="form-control" oninput="window.getCoordinates();"/>
+                                <input asp-for="OrgAddress" class="form-control" oninput="window.getCoordinates();" />
                                 <span asp-validation-for="OrgAddress" class="text-danger"></span>
                             </div>
                         </div>
@@ -80,17 +80,18 @@
                     <h4>What type of services do you provide?</h4>
                     <input type="checkbox" name="ResourceTypes" value="medical" onclick="return ValidateSelection();">Medical<br>
                     <input type="checkbox" name="ResourceTypes" value="financial" onclick="return ValidateSelection();">Financial<br>
-                    <input type="checkbox" name="ResourceTypes" value="shelter" onclick="return ValidateSelection();">Shelter<br>
+                    <input type="checkbox" name="ResourceTypes" value="housing" onclick="return ValidateSelection();">housing<br>
                     <input type="checkbox" name="ResourceTypes" value="food" onclick="return ValidateSelection();">Food<br>
                     <input type="checkbox" name="ResourceTypes" value="clothing" onclick="return ValidateSelection();">Clothing<br>
                     <input type="checkbox" name="ResourceTypes" value="employment" onclick="return ValidateSelection();">Employment<br>
-                    <input type="checkbox" name="ResourceTypes" value="disabilities" onclick="return ValidateSelection();">Disabilities<br>
+                    <input type="checkbox" name="ResourceTypes" value="disability" onclick="return ValidateSelection();">Disabilities<br>
                     <input type="checkbox" name="ResourceTypes" value="education" onclick="return ValidateSelection();">Education<br>
                     <input type="checkbox" name="ResourceTypes" value="trafficking" onclick="return ValidateSelection();">Trafficking<br>
                     <input type="checkbox" name="ResourceTypes" value="socialsecurity" onclick="return ValidateSelection();">Social Security<br>
                     <input type="checkbox" name="ResourceTypes" value="counseling" onclick="return ValidateSelection();">Counseling<br>
                     <input type="checkbox" name="ResourceTypes" value="children" onclick="return ValidateSelection();">Children<br>
-
+                    <input type="checkbox" name="ResourceTypes" value="dental" onclick="return ValidateSelection();">Dental<br>
+                    <input type="checkbox" name="ResourceTypes" value="volunteering" onclick="return ValidateSelection();">Volunteering<br>
                     <div class="form-group">
                         <div class="custom-file">
                             <input asp-for="UploadedFile" class="form-control custom-file-input" type="file" name="UploadedFile" />
@@ -100,15 +101,15 @@
                     <div class="row">
                         <div class="form-group">
                             <label asp-for="lat" class="control-label"></label>
-                            <input asp-for="lat" class="form-control"  readonly/>
-                          
+                            <input asp-for="lat" class="form-control" readonly />
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label asp-for="lng" class="control-label"></label>
                             <input asp-for="lng" class="form-control" readonly />
-                           
+
                         </div>
                     </div>
 
@@ -145,12 +146,12 @@
                                              });*/
                                             coordinates = results[0].geometry.location;
                                             // [coords_obj.lat.Scopes.b, coords_obj.lat.Scopes.a];
-                                           // console.log(coordinates.lat(), coordinates.lng());
-                                           document.getElementById('lat').value = coordinates.lat();
-                                            document.getElementById('lng').value =coordinates.lng();
+                                            // console.log(coordinates.lat(), coordinates.lng());
+                                            document.getElementById('lat').value = coordinates.lat();
+                                            document.getElementById('lng').value = coordinates.lng();
                                         } //else {
-                                           // alert('Geocode was not successful for the following reason: ' + status);
-                                       // }
+                                        // alert('Geocode was not successful for the following reason: ' + status);
+                                        // }
                                     });
                                 }
 

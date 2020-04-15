@@ -157,7 +157,7 @@ namespace ProjectForHealing.Controllers
             context.Resource.Remove(theResource);
 
             context.SaveChanges();
-            return Redirect("/Admin");
+            return Redirect("/Admin/ResourceManage");
         }
 
 
