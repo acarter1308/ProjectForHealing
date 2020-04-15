@@ -46,7 +46,7 @@
                         <td>@resource.WebsiteUrl</td>
 
                         <td>@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
-                        <td><button class="btn btn-primary"  data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal" >Delete</button></td>
+                        <td><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
                     </tr>
                 }
 
@@ -55,7 +55,25 @@
         </table>
     }
 </div>
-
+<div class="modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Resources</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to save changes made to this resource?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal" id="deleteModal">
     <div class="modal-dialog" role="document">
@@ -80,15 +98,15 @@
 </div>
 @section Scripts    {
     <script type="text/javascript">
-             $('#deleteModal').on('show.bs.modal', function(e) {
+        $('#deleteModal').on('show.bs.modal', function (e) {
             $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-            
-                 $('.btn-ok').on('click', () => {
-                     alert("Resource Deleted");
-                     window.location.href = $(this).find('.btn-ok').attr('href');
-                     
+
+            $('.btn-ok').on('click', () => {
+                alert("Resource Deleted");
+                window.location.href = $(this).find('.btn-ok').attr('href');
+
             });
         });
 
-          </script>
+    </script>
 }
