@@ -98,9 +98,14 @@
                 </div>
             </div>
 
-            <h4 class="mt-2">What type of services do you provide?</h4>
 
-            <div class="row">
+            <div class="row mt-3">
+                <div class="col-9 border-top border-secondary">
+                    <h4 class="mt-2">What type of services do you provide?</h4>
+                </div>
+            </div>
+
+            <div class="row mt-1">
                 <div class="col">
                     <input type="checkbox" name="ResourceTypes" value="adult education" onclick="return ValidateSelection();"> Adult Education<br>
                     <input type="checkbox" name="ResourceTypes" value="affordable health Care" onclick="return ValidateSelection();"> Affordable Health Care<br>
@@ -170,57 +175,57 @@
             </div>
             @section Scripts{
                 <script type="text/javascript">
-                        $(document).ready(function () {
-                            //selecting html element with custom file input class
-                            //changing text when file name changes
-                            $('.custom-file-input').on("change", function () {
-                                //  var fileName = $(this).val.().split("\\").pop();
-                                var fileName = $('input[type=file]').val().split('\\').pop();
-                                $(this).next('.custom-file-label').html(fileName);
-                            })
-                        });
+                    $(document).ready(function () {
+                        //selecting html element with custom file input class
+                        //changing text when file name changes
+                        $('.custom-file-input').on("change", function () {
+                            //  var fileName = $(this).val.().split("\\").pop();
+                            var fileName = $('input[type=file]').val().split('\\').pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        })
+                    });
 
-                        function initMap() {
-                            // Google maps are now initialized.
+                    function initMap() {
+                        // Google maps are now initialized.
 
 
-                            geocoder = new google.maps.Geocoder();
+                        geocoder = new google.maps.Geocoder();
 
-                            window.getCoordinates = function () {
-                                var address = document.getElementById('OrgAddress').value;
-                                var coordinates;
-                                geocoder.geocode({ 'address': address }, function (results, status) {
-                                    if (status == 'OK') {
-                                        /* map.setCenter(results[0].geometry.location);
-                                            var marker = new google.maps.Marker({
-                                                map: map,
-                                                position: results[0].geometry.location
-                                            });*/
-                                        coordinates = results[0].geometry.location;
-                                        // [coords_obj.lat.Scopes.b, coords_obj.lat.Scopes.a];
-                                        // console.log(coordinates.lat(), coordinates.lng());
-                                        document.getElementById('lat').value = coordinates.lat();
-                                        document.getElementById('lng').value = coordinates.lng();
-                                    } else {
-                                        alert('Geocode was not successful for the following reason: ' + status);
-                                    }
-                                });
-                            }
-
+                        window.getCoordinates = function () {
+                            var address = document.getElementById('OrgAddress').value;
+                            var coordinates;
+                            geocoder.geocode({ 'address': address }, function (results, status) {
+                                if (status == 'OK') {
+                                    /* map.setCenter(results[0].geometry.location);
+                                        var marker = new google.maps.Marker({
+                                            map: map,
+                                            position: results[0].geometry.location
+                                        });*/
+                                    coordinates = results[0].geometry.location;
+                                    // [coords_obj.lat.Scopes.b, coords_obj.lat.Scopes.a];
+                                    // console.log(coordinates.lat(), coordinates.lng());
+                                    document.getElementById('lat').value = coordinates.lat();
+                                    document.getElementById('lng').value = coordinates.lng();
+                                } else {
+                                    alert('Geocode was not successful for the following reason: ' + status);
+                                }
+                            });
                         }
-                        function ValidateSelection() {
-                            var checkboxes = new Array(3);
-                            checkboxes = document.getElementsByName("ResourceTypes");
-                            var numberOfCheckedItems = 0;
-                            for (var i = 0; i < checkboxes.length; i++) {
-                                if (checkboxes[i].checked)
-                                    numberOfCheckedItems++;
-                            }
-                            if (numberOfCheckedItems > 3) {
-                                alert("You can't select more than 3 Resources!");
-                                return false;
-                            }
+
+                    }
+                    function ValidateSelection() {
+                        var checkboxes = new Array(3);
+                        checkboxes = document.getElementsByName("ResourceTypes");
+                        var numberOfCheckedItems = 0;
+                        for (var i = 0; i < checkboxes.length; i++) {
+                            if (checkboxes[i].checked)
+                                numberOfCheckedItems++;
                         }
+                        if (numberOfCheckedItems > 3) {
+                            alert("You can't select more than 3 Resources!");
+                            return false;
+                        }
+                    }
                 </script>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"
                         async defer></script>
