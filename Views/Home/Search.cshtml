@@ -2,42 +2,35 @@
 @{
 
 }
-    <div class="container middlebody">
-        <h1>Search Results for @ViewBag.Org</h1>
+<div class="container middlebody">
+    <h1>Search Results for @ViewBag.Org</h1>
 
-        @if (Model.Count() == 0)
-        {
-            <p>Nothing found for @ViewBag.Org in @ViewBag.Zip</p>
-        }
+    @if (Model.Count() == 0)
+    {
+        <p>Nothing found for @ViewBag.Org in @ViewBag.Zip</p>
+    }
+    else
+    {<div class="w-75 m-0 m-auto">
+            @foreach (var resource in Model)
+            {
 
-       
-        
-        
- 
-    <div class="w-75 m-0 m-auto">
-        @foreach (var resource in Model)
-        {
-
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">@resource.OrgAddress </h6>
-                    @if (resource.OrgSte != null)
-                    {
-                        <h6 class="card-subtitle mb-2 text-muted"> Suite: @resource.OrgSte </h6>
-                    }
-                    <p class="card-text">@resource.OrgCity, @resource.OrgZip</p>
-                    <a href="#" class="card-link">@resource.OrgNumber</a>
-                    <a href="#" class="card-link">@resource.WebsiteUrl</a>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">@resource.OrgAddress </h6>
+                        @if (resource.OrgSte != null)
+                        {
+                            <h6 class="card-subtitle mb-2 text-muted"> Suite: @resource.OrgSte </h6>
+                        }
+                        <p class="card-text">@resource.OrgCity, @resource.OrgZip</p>
+                        <a href="#" class="card-link">@resource.OrgNumber</a>
+                        <a href="@resource.WebsiteUrl" class="card-link">@resource.WebsiteUrl</a>
+                    </div>
                 </div>
-            </div>
 
-        }
+            }
+        </div>
 
-    </div>
 
-    </div>
-
-            
-   
-
+    }
+</div>
