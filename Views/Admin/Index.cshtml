@@ -3,14 +3,18 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <div class="container middlebody">
-        <div class="w-75 d-inline-block">
-            <img class="img-fluid w-25 float-left" src="~/ProfilePictures/@ViewBag.pic" alt="Alternate Text" />
+    <div>
+
+        <div class="w-75 d-inline-block m-0 m-auto">
+            <div class="w-25">
+                <img class="img-fluid w-100 float-left" src="~/ProfilePictures/@ViewBag.pic" alt="Alternate Text" />
+            </div>
 
 
 
-            <div class="list-group">
-                \
+
+            <div class="list-group w-50 float-right">
+
                 <a href="#" class="list-group-item list-group-item-action disabled active">Hello, @ViewBag.name</a>
                 <a href="#" class="list-group-item list-group-item-action disabled">Phone Number: @ViewBag.number</a>
                 <a href="#" class="list-group-item list-group-item-action disabled active ">Email: @ViewBag.email</a>
@@ -21,8 +25,15 @@
                 @if (Context.Session.GetString("role") == "Master Admin")
                 {
                     <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action active">Create New Admin</a>
+                    <a href="/Admin/AdminList" class="list-group-item list-group-item-action active">Remove Admin</a>
+
                 }
                 <a href="/Home/Logout" class="list-group-item list-group-item-action">Logout</a>
             </div>
         </div>
-        </div>
+
+
+
+    </div>
+        
+        

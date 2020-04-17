@@ -147,7 +147,26 @@ namespace ProjectForHealing.Controllers
         }
 
 
+       
+        public IActionResult AdminList()
+        {
+            var admins = context.Admin.Where(x => x.SuperUser == false);
+        
+            return View(admins);
+        }
 
+
+
+        [HttpGet]
+        public IActionResult RemoveAdmin(string UserName)
+        {
+
+            Admin admin = context.Admin.SingleOrDefault(x => x.UserName == UserName);
+            context.Admin.Remove(admin);
+
+            context.SaveChanges();
+            return Redirect("/Admin");
+        }
 
         [HttpGet]
         public IActionResult Remove(int id)
