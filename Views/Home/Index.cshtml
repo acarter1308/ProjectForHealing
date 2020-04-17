@@ -34,8 +34,13 @@
 
         @section Scripts    {
                 <script type="text/javascript">
+                var resources = [];
                 var markers = [];
                 var map, infoWindow;
+
+        
+
+
                 function toggleMarker(element, type) {
                     var on = element.checked;
                     for (var i = 0; i < markers.length; i++) {
@@ -45,12 +50,7 @@
                     }
                 }
 
-               
-        
-           
-
                    
-
               function initMap() {
                     var geocoder = new google.maps.Geocoder();
                     $(document).ready(function () {
@@ -211,24 +211,7 @@
 
 
 
-                        var features = [
-                            {
-                                position: new google.maps.LatLng(30.332630, -81.664250),
-                                type: 'housing'
-                            }, {
-                                position: new google.maps.LatLng(30.328930, -81.655520),
-                                type: 'esol'
-                            }, {
-                                position: new google.maps.LatLng(30.352270, -81.652700),
-                                type: 'volunteering'
-                            }, {
-                                position: new google.maps.LatLng(30.260620, -81.623280),
-                                type: 'pfh'
-                            }, {
-                                position: new google.maps.LatLng(30.282250, -81.601870),
-                                type: 'children'
-                            }
-                        ];
+                        var features = [];
                         /************************
                          * 
                          * Serialization
@@ -242,12 +225,12 @@
                         //The features array pushes a new google postion with the 
                         // "stringArray" items lat and lng
                         //type is pushed as well but is static for now
-                        stringArray.forEach(function(item){
+                        stringArray.forEach(function (item) {
                             features.push({
                                 position: new google.maps.LatLng(item.lat, item.lng),
-                                type: 'children'
+                                type: value.category
                             })
-                               })
+                        });
 
                         for (var i = 0, feature; feature = features[i]; i++) {
                             addMarker(feature);

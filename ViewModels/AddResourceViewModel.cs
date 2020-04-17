@@ -14,7 +14,7 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Organization's Name")]
         public string OrgName { get; set; }
         [Required]
-        [Display(Name = "Organization's Phone Number")]
+        [Display(Name = "Phone Number")]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "This field must be 10 characters exactly")]
         public string OrgNumber { get; set; }
 
@@ -36,20 +36,23 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Description of service(s) provided")]
         public string OrgDescription { get; set; }
         [Required]
-        [Display(Name = "Organization's Link")]
+        [Display(Name = "Organization's Website Link")]
         public string WebsiteUrl { get; set; }
         [Required]
         [Display(Name = "City")]
         public string OrgCity { get; set; }
         [Required]
         public string[] ResourceTypes { get; set; }
-        //  public ResourceType RType1 { get; set; }
+        // public ResourceType RType1 { get; set; }
         // public ResourceType RType2 { get; set; }
         // public ResourceType RType3 { get; set; }
         [Required]
         public string lat { get; set; }
         [Required]
         public string lng { get; set; }
+
+        [Display(Name = "Upload a PDF file (optional)")]
+
         public IFormFile UploadedFile { get; set; }
     }
 }
