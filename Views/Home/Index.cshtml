@@ -285,14 +285,14 @@
                          *
                          * */
                        // Stores entire list of Resource Models into Javascript array
-                         var stringArray = @Html.Raw(Json.Serialize(Model));
+                        var stringArray = @Html.Raw(Json.Serialize(Model));
                         console.log(stringArray);
-                        //Foreach "item" inside "stirngArray"
-                        //The features array pushes a new google postion with the
+                        // Foreach "item" inside "stirngArray"
+                        // The features array pushes a new google postion with the
                         // "stringArray" items lat and lng
-                        //type is pushed as well but is static for now
+                        // type is pushed as well but is static for now
                         stringArray.forEach(function (item) {
-                          //  var category = item.RType1.toString();
+                        //  var category = item.RType1.toString();
                             features.push({
                                 name: item.orgName,
                                 address: item.orgAddress,
@@ -322,7 +322,7 @@
                             var div = document.createElement('div');
                             var cdiv = document.createElement('div');
                             div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
-                            cdiv.innerHTML = '<button class="buttonTypes" id="'+ name +'"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><h4>' + name + '</h4>';
+                            cdiv.innerHTML = '<button class="buttonTypes " id="'+ name +'"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
                             cdiv.className = "col-sm text-center";
                             legend.appendChild(div);
                             categories.appendChild(cdiv);
