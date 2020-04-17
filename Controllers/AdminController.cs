@@ -157,7 +157,7 @@ namespace ProjectForHealing.Controllers
             context.Resource.Remove(theResource);
 
             context.SaveChanges();
-            return Redirect("/Admin");
+            return Redirect("/Admin/ResourceManage");
         }
 
 
@@ -171,14 +171,14 @@ namespace ProjectForHealing.Controllers
             context.SaveChanges();
             return Redirect("/Admin/Unapproved");
         }
-
+/*
            [HttpGet]
         public IActionResult ViewSource(int id)
         {
             var source = context.Resource.SingleOrDefault(x => x.ResourceID == id);
             return View(source);
         }
-
+        */
         public IActionResult AddEducation()
         {
             EducationViewModel education = new EducationViewModel();

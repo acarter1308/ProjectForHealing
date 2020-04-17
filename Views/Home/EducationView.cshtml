@@ -36,7 +36,11 @@
         </dd>
     </dl>
 </div>
-@Html.ActionLink("View Files", "OpenFile", new { path = Model.FilePath })
+@if (Model.FilePath != null)
+{
+    @Html.ActionLink("View Files", "OpenFile", new { path = "EducationFiles/" + Model.FilePath })
+}
+
 <div>
     <a asp-action="OpenFile" asp-controller="Home" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>

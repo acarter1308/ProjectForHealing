@@ -129,7 +129,6 @@ namespace ProjectForHealing.Controllers
             return View(source);
         }
 
-
         [HttpGet]
         public IActionResult OpenFile(string path)
         {
@@ -139,7 +138,7 @@ namespace ProjectForHealing.Controllers
             MemoryStream ms = new MemoryStream(abc);
             return new FileStreamResult(ms, "application/pdf");
         }
-
+        
         public IActionResult EducationIndex()
         {
             var Edu = context.Education.ToList();
