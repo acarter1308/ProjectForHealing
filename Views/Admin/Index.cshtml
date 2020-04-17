@@ -3,26 +3,40 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <div class="container middlebody">
+    <div class="container ">
         <div class="w-75 d-inline-block">
-            <img class="img-fluid w-25 float-left" src="~/ProfilePictures/@ViewBag.pic" alt="Alternate Text" />
+            <div class="row">
 
+                <div class="col">
+                    <img class="img-fluid h-50" src="~/ProfilePictures/@ViewBag.pic" alt="Alternate Text" />
+                </div>
+               
+                <div class="col">
 
+                    <div class="list-group">
 
-            <div class="list-group">
-                \
-                <a href="#" class="list-group-item list-group-item-action disabled active">Hello, @ViewBag.name</a>
-                <a href="#" class="list-group-item list-group-item-action disabled">Phone Number: @ViewBag.number</a>
-                <a href="#" class="list-group-item list-group-item-action disabled active ">Email: @ViewBag.email</a>
-                <a href="#" class="list-group-item list-group-item-action disabled">Role: @ViewBag.role</a>
-                <a href="/Admin/ResourceManage" class="list-group-item list-group-item-action active">Manage Resources</a>
-                <a href="/Admin/Unapproved" class="list-group-item list-group-item-action">Approve/Unapprove Resources</a>
-                <a href="/Admin/AddEducation" class="list-group-item list-group-item-action">Add Education</a>
-                @if (Context.Session.GetString("role") == "Master Admin")
-                {
-                    <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action active">Create New Admin</a>
-                }
-                <a href="/Home/Logout" class="list-group-item list-group-item-action">Logout</a>
+                        <a href="/Admin/ResourceManage" class="list-group-item list-group-item-action">Manage Resources</a>
+                        <a href="/Admin/Unapproved" class="list-group-item list-group-item-action">Approve/Unapprove Resources</a>
+                        <a href="/Admin/AddEducation" class="list-group-item list-group-item-action">Add Education</a>
+                        @if (Context.Session.GetString("role") == "Master Admin")
+                        {
+                            <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action active">Create New Admin</a>
+                        }
+                        <a href="/Home/Logout" class="list-group-item list-group-item-action">Logout</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action disabled ">Hello, @ViewBag.name</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled">Phone Number: @ViewBag.number</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled  ">Email: @ViewBag.email</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled">Role: @ViewBag.role</a>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
+    </div>
