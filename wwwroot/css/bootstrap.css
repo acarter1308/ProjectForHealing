@@ -2841,7 +2841,7 @@ fieldset:disabled a.btn {
 .btn-secondary {
   color: #fff;
   background-color: #373a3c;
-  border-color: #373a3c;
+  border-color: #fff;
 }
 
 .resrcbtn {

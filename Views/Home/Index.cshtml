@@ -18,7 +18,7 @@
             <hr class="my-4">
             <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Submit Resource</a>
+                <a class="btn btn-primary btn-lg" href="/Resource/Add" role="button">Submit Resource</a>
                 <a class="btn btn-prim btn-lg" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
                
             </p>
@@ -296,14 +296,14 @@
                          *
                          * */
                        // Stores entire list of Resource Models into Javascript array
-                        var stringArray = @Html.Raw(Json.Serialize(Model));
+                         var stringArray = @Html.Raw(Json.Serialize(Model));
                         console.log(stringArray);
-                        // Foreach "item" inside "stirngArray"
-                        // The features array pushes a new google postion with the
+                        //Foreach "item" inside "stirngArray"
+                        //The features array pushes a new google postion with the
                         // "stringArray" items lat and lng
-                        // type is pushed as well but is static for now
+                        //type is pushed as well but is static for now
                         stringArray.forEach(function (item) {
-                        //  var category = item.RType1.toString();
+                          //  var category = item.RType1.toString();
                             features.push({
                                 name: item.orgName,
                                 address: item.orgAddress,
@@ -332,10 +332,10 @@
                             var icon = type.icon;
                       
                             var cdiv = document.createElement('div');
-                          
-                            cdiv.innerHTML = '<button class="buttonTypes " id="' + key + '"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
+                         
+                           cdiv.innerHTML = '<button class="buttonTypes " id="' + key + '"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
                             cdiv.className = "container-box";
-                        
+                         
                             categories.appendChild(cdiv);
                         }
                            
