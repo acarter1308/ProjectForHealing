@@ -19,14 +19,25 @@
             <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="#" role="button">Submit Resource</a>
-                <a class="btn btn-primary btn-lg" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
+                <a class="btn btn-prim btn-lg" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
                
             </p>
         </div>
         <div class="container mt-2" id='map' style="height: 550px;"></div>
-        <div id="legend"><h3>Legend</h3></div>
+        <style>
+            #cats{
+                display:grid;
+                grid-template-columns:repeat(auto-fit, minmax(200px, 3fr) );
+                grid-auto-rows:150px;
+            }
+            .container-box{
+                text-align:center;
+            }
+        </style>
         <div class="container" id="categories" style="padding-top:15px">
-            <div class="row" id="cats"></div>
+            <div class="wrapper" id="cats">
+
+            </div>
         </div>
        
 
@@ -88,25 +99,31 @@
         
                           
 
-                        var icons = {
+                         var icons = {
                             housing: {
-                                name: 'Housing',
+                                name: 'Housing & Real Estate',
                                 icon: 'fas fa-home',
                                 text: '\uf015',
-                                color: 'SlateGrey'
+                                color: 'DARKSLATEGRAY'
 
                             },
                             esol: {
-                                name: 'ESOL',
+                                name: 'Translation & Language Assistance',
                                 icon: 'fas fa-language',
                                 text: '\uf1ab',
                                 color: 'orange'
                             },
-                            volunteering: {
-                                name: 'Volunteering',
-                                icon: 'fas fa-people-carry',
-                                text: '\uf4ce',
-                                color: 'Plum'
+                            legal: {
+                                name: 'Legal & Immigration Services',
+                                icon: 'fas fa-balance-scale',
+                                text: '\uf24e',
+                                color: 'silver'
+                            },
+                            tax: {
+                                name: 'Tax & Accounting',
+                                icon: 'fas fa-calculator',
+                                text: '\uf1ec',
+                                color: 'DARKKHAKI'
                             },
                             disablility: {
                                 name: 'Disablility Services',
@@ -114,28 +131,28 @@
                                 text: '\uf368',
                                 color: 'blue'
                             },
-                            pfh: {
-                                name: 'PFH',
-                                icon: 'fab fa-hire-a-helper',
-                                text: '\uf3b0',
+                            adult: {
+                                name: 'Adult Education',
+                                icon: 'fas fa-book-reader',
+                                text: '\uf5da',
                                 color: 'Tomato'
                             },
                             children: {
-                                name: 'Children',
-                                icon: 'fas fa-baby-carriage',
-                                text: '\uf77d',
-                                color: 'Turquoise'
+                                name: 'Youth & Children Education',
+                                icon: 'fas fa-apple-alt',
+                                text: '\uf5d1',
+                                color: 'DARKRED'
                             },
                             employment: {
-                                name: 'Employment',
-                                icon: 'fab fa-wordpress-simple',
-                                text: '\uf411',
-                                color: 'green'
+                                name: 'Employment Assistance',
+                                icon: 'fas fa-user-tie',
+                                text: '\uf508',
+                                color: 'darkgreen'
                             },
                             medical: {
-                                name: 'Medical',
-                                icon: 'fas fa-ambulance',
-                                text: '\uf0f9',
+                                name: 'Affordable Health Care',
+                                icon: 'fas fa-clinic-medical',
+                                text: '\uf7f2',
                                 color: 'red'
                             },
                             dental: {
@@ -145,10 +162,82 @@
                                 color: 'MediumSpringGreen'
                             },
                             mental: {
-                                name: 'Mental Health',
-                                icon: 'fas fa-brain',
-                                text: '\uf5dc',
+                                name: 'Mental Health & Substance Use',
+                                icon: 'fas fa-hospital-user',
+                                text: '\uf80d',
                                 color: 'SkyBlue'
+                            },
+                            business: {
+                                name: 'New Business Counseling',
+                                icon: 'fas fa-briefcase',
+                                text: '\uf0b1',
+                                color: 'sandybrown'
+                            },
+                            funeral: {
+                                name: 'Funeral & Afterlife Services',
+                                icon: 'fas fa-skull-crossbones',
+                                text: '\uf714',
+                                color: 'black'
+                            },
+                            transportation: {
+                                name: 'Transportation',
+                                icon: 'fas fa-taxi',
+                                text: '\uf4ce',
+                                color: 'pink'
+                            },
+                            religion: {
+                                name: 'Faith & Religion',
+                                icon: 'fas fa-pray',
+                                text: '\uf683',
+                                color: 'indigo'
+                            },
+                            ethnic: {
+                                name: 'Ethnic Organization',
+                                icon: 'fas fa-users',
+                                text: '\uf0c0',
+                                color: 'purple'
+                            },
+                            socialsecurity: {
+                                name: 'Social Security',
+                                icon: 'fas fa-hand-holding-heart',
+                                text: '\uf4be',
+                                color: 'Plum'
+                            },
+                            food: {
+                                name: 'Food & Meals',
+                                icon: 'fas fa-utensils',
+                                text: '\uf2e7',
+                                color: 'salmon'
+                            },
+                            disasters: {
+                                name: 'Natural Disasters',
+                                icon: 'fas fa-house-damage',
+                                text: '\uf6f1',
+                                color: 'rosybrown'
+                            },
+                            safety: {
+                                name: 'Public Safety',
+                                icon: 'fas fa-hard-hat',
+                                text: '\uf807',
+                                color: 'gold'
+                            },
+                            aid: {
+                                name: 'Financial & Material Aid',
+                                icon: 'fas fa-hands-helping',
+                                text: '\uf4c4',
+                                color: 'yellowgreen'
+                            },
+                            hotline: {
+                                name: 'Crisis Hotline',
+                                icon: 'fas fa-phone',
+                                text: '\uf095',
+                                color: 'slateblue'
+                            },
+                            volunteering: {
+                                name: 'Volunteering',
+                                icon: 'fas fa-people-carry',
+                                text: '\uf4ce',
+                                color: 'teal'
                             }
                         };
 
@@ -207,14 +296,14 @@
                          *
                          * */
                        // Stores entire list of Resource Models into Javascript array
-                         var stringArray = @Html.Raw(Json.Serialize(Model));
+                        var stringArray = @Html.Raw(Json.Serialize(Model));
                         console.log(stringArray);
-                        //Foreach "item" inside "stirngArray"
-                        //The features array pushes a new google postion with the
+                        // Foreach "item" inside "stirngArray"
+                        // The features array pushes a new google postion with the
                         // "stringArray" items lat and lng
-                        //type is pushed as well but is static for now
+                        // type is pushed as well but is static for now
                         stringArray.forEach(function (item) {
-                          //  var category = item.RType1.toString();
+                        //  var category = item.RType1.toString();
                             features.push({
                                 name: item.orgName,
                                 address: item.orgAddress,
@@ -234,22 +323,22 @@
                             console.log(feature);
                             }
 
-                        var legend = document.getElementById('legend');
+                       
                         var categories = document.getElementById('cats');
                         var i = 0;
                         for (var key in icons) {
                             var type = icons[key];
                             var name = type.name;
                             var icon = type.icon;
-                            var div = document.createElement('div');
+                      
                             var cdiv = document.createElement('div');
-                            div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
-                            cdiv.innerHTML = '<button class="buttonTypes" id="'+ name +'"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><h4>' + name + '</h4>';
-                            cdiv.className = "col-sm text-center";
-                            legend.appendChild(div);
+                          
+                            cdiv.innerHTML = '<button class="buttonTypes " id="' + key + '"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
+                            cdiv.className = "container-box";
+                        
                             categories.appendChild(cdiv);
                         }
-                            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+                           
 
                             var buttons = document.querySelectorAll(".buttonTypes");
 

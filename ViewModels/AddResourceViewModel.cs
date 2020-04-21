@@ -22,7 +22,7 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Organization's Email Address")]
         public string OrgEmail { get; set; }
         [Required]
-        [Display(Name = "Organization's Street Address")]
+        [Display(Name = "Street Address")]
         public string OrgAddress { get; set; }
         [Required]
         [StringLength(5, MinimumLength = 5, ErrorMessage = "This field must be 5 characters exactly")]
