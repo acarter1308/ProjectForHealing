@@ -62,17 +62,19 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home<span class="sr-only">(current)</span></a>
                         </li>
 
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Resource" asp-action="Add">Resource Form</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="EducationIndex">Education</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Resource" asp-action="Add">Resource Form</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="EducationIndex">Education</a>
                         </li>
                         <li class="nav-item">
                             @if (Context.Session.GetString("username") == null)
@@ -81,11 +83,32 @@
                             }
                             else
                             {
-                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">CRMS Dashboard</a>
-                            }
+                               
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CRMS Dashboard</a>
+                            <div class="dropdown-menu" style="">
+                                <a class="dropdown-item" href="/Admin/Index">Dashboard</a>
+                                <a class="dropdown-item" href="/Admin/ResourceManage">Manage Resources</a>
+                                <a class="dropdown-item" href="/Admin/Unapproved">Approve/Unapprove Resources</a>
+                                <a class="dropdown-item" href="/Admin/AddEducation">Add Education</a>
+                                <a class="dropdown-item" href="/Home/Logout">Logout</a>
+                                <div class="dropdown-divider"></div>
+                                @if (Context.Session.GetString("role") == "Master Admin")
+                                {
+                                    <a class="dropdown-item" href="/Admin/AddAdmin">Create New Admin</a>
+                                    <a class="dropdown-item" href="/Admin/AdminList">Remove Admin</a>
+
+
+                                }
+
+                            </div>
+                            
                         </li>
-                    </ul>
+                        }
+
+                        
+                        </ul>
                     <form class="form-inline my-2 my-lg-0" asp-controller="Home" asp-action="Search">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
