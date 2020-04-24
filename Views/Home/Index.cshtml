@@ -7,7 +7,7 @@
     <div class="container middlebody">
         <div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 35%;"></div>
 
-        <div class="jumbotron">
+        <div class="jumbotron text-xl-center">
             <h1 class="display-3">Project For Healing, Inc.</h1>
             <p class="lead">
                 Project for Healing, Inc offers counseling services in four locations, psychoeducation classes, behavioral case management,
@@ -19,7 +19,7 @@
             <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg rounded" href="#" role="button">Submit Resource</a>
-                <a class="btn btn-prim btn-lg rounded" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
+                <a class="btn btn-primary btn-lg rounded" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
                
             </p>
         </div>
@@ -323,7 +323,7 @@
                             var cdiv = document.createElement('div');
                             div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
                             cdiv.innerHTML = '<button class="buttonTypes " id="'+ name +'"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
-                            cdiv.className = "col-sm text-center border0 rounded";
+                            cdiv.className = "col-sm text-center";
                             legend.appendChild(div);
                             categories.appendChild(cdiv);
                         }
