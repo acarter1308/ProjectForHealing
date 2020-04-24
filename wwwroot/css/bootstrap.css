@@ -2802,6 +2802,7 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #f2bc30;
     border-color: #f2bc30;
+
 }
 
 .btn-primary:hover {
@@ -2840,7 +2841,7 @@ fieldset:disabled a.btn {
 .btn-secondary {
   color: #fff;
   background-color: #373a3c;
-  border-color: #373a3c;
+  border-color: #fff;
 }
 
 .resrcbtn {
@@ -5730,10 +5731,16 @@ a.badge-dark:focus, a.badge-dark.focus {
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #2780E3;
-  border-color: #2780E3;
+  background-color: #229dc1;
+  border-color: #229dc1;
 }
+.list-group-item.passive {
+  z-index: 2;
+  color: #fff;
+  background-color: #f2bc30;
+  border-color: #f2bc30;
 
+}
 .list-group-item + .list-group-item {
   border-top-width: 0;
 }
@@ -10540,3 +10547,9 @@ body {
   font-size: 8px;
   line-height: 8px;
 }
+
+
+
+
+
+

@@ -29,7 +29,7 @@ namespace ProjectForHealing.ViewModels
         public string AdminPassWord { get; set; }
         public byte[] ProfilePic { get; set; }
      
-        public bool? SuperUser { get; set; }
+        public bool SuperUser { get; set; }
         
         public byte[] ProfilePicUrl { get; set; }
         public IFormFile UploadedFile { get; set; }

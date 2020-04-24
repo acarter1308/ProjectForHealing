@@ -49,7 +49,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="SuperUser" class="control-label"></label>
-                <input asp-for="SuperUser" class="form-control" />
+
+                @Html.RadioButtonFor(m => m.SuperUser, true) Yes
+
+                @Html.RadioButtonFor(m => m.SuperUser, false) No
                 <span asp-validation-for="SuperUser" class="text-danger"></span>
             </div>
 

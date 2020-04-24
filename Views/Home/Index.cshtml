@@ -18,15 +18,31 @@
             <hr class="my-4">
             <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
             <p class="lead">
+<<<<<<< HEAD
                 <a class="btn btn-primary btn-lg rounded" href="#" role="button">Submit Resource</a>
                 <a class="btn btn-primary btn-lg rounded" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
+=======
+                <a class="btn btn-primary btn-lg" href="/Resource/Add" role="button">Submit Resource</a>
+                <a class="btn btn-prim btn-lg" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
+>>>>>>> 34c152ef05f589eb2fafdb422386df4da0c4bdb6
                
             </p>
         </div>
         <div class="container mt-2" id='map' style="height: 550px;"></div>
-        <div id="legend"><h3>Legend</h3></div>
+        <style>
+            #cats{
+                display:grid;
+                grid-template-columns:repeat(auto-fit, minmax(200px, 3fr) );
+                grid-auto-rows:150px;
+            }
+            .container-box{
+                text-align:center;
+            }
+        </style>
         <div class="container" id="categories" style="padding-top:15px">
-            <div class="row" id="cats"></div>
+            <div class="wrapper" id="cats">
+
+            </div>
         </div>
        
 
@@ -285,14 +301,14 @@
                          *
                          * */
                        // Stores entire list of Resource Models into Javascript array
-                        var stringArray = @Html.Raw(Json.Serialize(Model));
+                         var stringArray = @Html.Raw(Json.Serialize(Model));
                         console.log(stringArray);
-                        // Foreach "item" inside "stirngArray"
-                        // The features array pushes a new google postion with the
+                        //Foreach "item" inside "stirngArray"
+                        //The features array pushes a new google postion with the
                         // "stringArray" items lat and lng
-                        // type is pushed as well but is static for now
+                        //type is pushed as well but is static for now
                         stringArray.forEach(function (item) {
-                        //  var category = item.RType1.toString();
+                          //  var category = item.RType1.toString();
                             features.push({
                                 name: item.orgName,
                                 address: item.orgAddress,
@@ -312,22 +328,22 @@
                             console.log(feature);
                             }
 
-                        var legend = document.getElementById('legend');
+                       
                         var categories = document.getElementById('cats');
                         var i = 0;
                         for (var key in icons) {
                             var type = icons[key];
                             var name = type.name;
                             var icon = type.icon;
-                            var div = document.createElement('div');
+                      
                             var cdiv = document.createElement('div');
-                            div.innerHTML = '<i class=" ' + icon + ' fa-lg"></i>' + "  " + name;
-                            cdiv.innerHTML = '<button class="buttonTypes " id="'+ name +'"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
-                            cdiv.className = "col-sm text-center";
-                            legend.appendChild(div);
+                         
+                           cdiv.innerHTML = '<button class="buttonTypes " id="' + key + '"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
+                            cdiv.className = "container-box";
+                         
                             categories.appendChild(cdiv);
                         }
-                            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+                           
 
                             var buttons = document.querySelectorAll(".buttonTypes");
 
