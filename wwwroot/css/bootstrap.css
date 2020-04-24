@@ -5734,7 +5734,13 @@ a.badge-dark:focus, a.badge-dark.focus {
   background-color: #229dc1;
   border-color: #229dc1;
 }
+.list-group-item.passive {
+  z-index: 2;
+  color: #fff;
+  background-color: #f2bc30;
+  border-color: #f2bc30;
 
+}
 .list-group-item + .list-group-item {
   border-top-width: 0;
 }
