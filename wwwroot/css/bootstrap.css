@@ -2243,22 +2243,27 @@ pre code {
 }
 
 .form-control {
-  display: block;
-  width: 100%;
-  height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0;
-  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+
+
+    border-color: #f2bc30;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(242, 188, 48, 0.15);
+    box-shadow: 0 0 0 0.2rem rgba(242, 188, 48, 0.15);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2279,12 +2284,12 @@ pre code {
 }
 
 .form-control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #98c2f2;
-  outline: 0;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.25);
-          box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.25);
+    color: #495057;
+    background-color: #fff;
+    border-color: #98c2f2;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(152, 194, 242, 0.35);
+    box-shadow: 0 0 0 0.2rem rgba(152, 194, 242, 0.35);
 }
 
 .form-control::-webkit-input-placeholder {
@@ -3759,6 +3764,7 @@ input[type="button"].btn-block {
       flex-wrap: wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
+
           justify-content: flex-start;
 }
 
@@ -4072,25 +4078,33 @@ input[type="button"].btn-block {
   background: no-repeat 50% / 50% 50%;
 }
 
+
+
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-  border-color: #2780E3;
-  background-color: #2780E3;
+    border-color: #f2bc30;
+    background-color: #f2bc30;
 }
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #f2bc30;
+    background-color: #f2bc30;
+}
+
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
 }
 
 .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(39, 128, 227, 0.5);
+    background-color: #f2bc30;
 }
 
 .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
-  background-color: rgba(39, 128, 227, 0.5);
+    background-color: #f2bc30;
 }
 
 .custom-radio .custom-control-label::before {
@@ -7022,6 +7036,12 @@ button.bg-dark:focus {
 
 .border-primary {
   border-color: #2780E3 !important;
+}
+
+.border-primary-y {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(242, 188, 48, 0.15);
+    box-shadow: 0 0 0 0.2rem rgba(242, 188, 48, 0.15);
+    border-color: #f2bc30 !important;
 }
 
 .border-secondary {

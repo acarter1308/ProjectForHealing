@@ -20,15 +20,15 @@
             </div>
             <div class="list-group list-group-flush">
                 <a href="/Admin/ResourceManage" class="list-group-item list-group-item-action active">Manage Resources</a>
-                <a href="/Admin/Unapproved" class="list-group-item list-group-item-action passive">Approve/Unapprove Resources</a>
+                <a href="/Admin/Unapproved" class="list-group-item list-group-item-action active">Approve/Unapprove Resources</a>
                 <a href="/Admin/AddEducation" class="list-group-item list-group-item-action active">Add Education</a>
                 @if (Context.Session.GetString("role") == "Master Admin")
                 {
-                    <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action passive">Create New Admin</a>
+                    <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action active">Create New Admin</a>
                     <a href="/Admin/AdminList" class="list-group-item list-group-item-action active">Remove Admin</a>
 
                 }
-                <a href="/Home/Logout" class="list-group-item list-group-item-action passive">Logout</a>
+                <a href="/Home/Logout" class="list-group-item list-group-item-action active">Logout</a>
 
             </div>
           
