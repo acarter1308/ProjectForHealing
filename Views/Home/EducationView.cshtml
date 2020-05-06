@@ -4,44 +4,25 @@
     ViewData["Title"] = "EducationView";
 }
 
-<h1>EducationView</h1>
 
-<div>
-    <h4>Education</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PhotoPath)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PhotoPath)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FilePath)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FilePath)
-        </dd>
-    </dl>
-</div>
-@if (Model.FilePath != null)
-{
-    @Html.ActionLink("View Files", "OpenFile", new { path = "EducationFiles/" + Model.FilePath })
-}
+    <div class="container m-0 m-auto">
+        <h1>@Model.Country</h1>
+        <hr />
+        @if (Model.PhotoPath != null)
+        {
+            <img src="~/EducationPictures/@Model.PhotoPath" alt="Alternate Text" />
+        }
+        <p class="text-center">@Model.Description</p>
 
-<div>
-    <a asp-action="OpenFile" asp-controller="Home" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        @if (Model.FilePath != null)
+        {
+            @Html.ActionLink("View Files", "OpenFile", new { path = "EducationFiles/" + Model.FilePath }, new { @class = "btn btn-primary btn-lg" })
+        }
+
+    </div>
+
+                        <a asp-action="EducationIndex">Back to List</a>
+                        <div>
+ 
+                        
 </div>

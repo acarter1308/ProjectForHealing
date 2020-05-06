@@ -226,8 +226,8 @@ namespace ProjectForHealing.Controllers
                 if (model.PhotoPath != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "EducationPictures");
-                    uniquePictureName = Guid.NewGuid().ToString() + "_" + model.UploadedFile.FileName;
-                    string picturePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    uniquePictureName = Guid.NewGuid().ToString() + "_" + model.PhotoPath.FileName;
+                    string picturePath = Path.Combine(uploadsFolder, uniquePictureName);
                     model.PhotoPath.CopyTo(new FileStream(picturePath, FileMode.Create));
                 }
 

@@ -14,7 +14,7 @@
             @foreach (var resource in Model)
             {
 
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <h4 class="card-title">@Html.ActionLink(resource.OrgName, "ViewSource", new { id = resource.ResourceID })</h4>
                         <h6 class="card-subtitle mb-2 text-muted">@resource.OrgAddress </h6>
