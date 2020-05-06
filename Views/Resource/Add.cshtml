@@ -92,7 +92,7 @@
                         <label asp-for="UploadedFile" class="control-label"></label>
                         <div class="custom-file">
                             <input asp-for="UploadedFile" class="form-control custom-file-input" type="file" name="UploadedFile" />
-                            <label class="custom-file-label">Choose File....</label>
+                            <label class="custom-file-label border-primary-y">Choose File....</label>
                         </div>
                     </div>
                 </div>
@@ -110,8 +110,22 @@
                 }
             </style>
             <div class="row mt-1">
-                <div class="col">
-                    <input type="checkbox" name="ResourceTypes" value="adult" onclick="return ValidateSelection();"> Adult Education<br>
+
+                <div class="col form-group">
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="resourceTypes" name="ResourceTypes" value="adult" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="resourceTypes">Adult Education</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="healthCare" name="ResourceTypes" value="affordable health Care" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="healthCare">Affordable Healthcare</label>
+                    </div>
+                    
+
+                    <input type="checkbox" class="checkbox-primary" name="ResourceTypes" value="adult" onclick="return ValidateSelection();"> Adult Education<br>
+               
                     <input type="checkbox" name="ResourceTypes" value="aid" onclick="return ValidateSelection();"> Financial & Material Aid<br>
                     <input type="checkbox" name="ResourceTypes" value="hotline" onclick="return ValidateSelection();"> Crisis Hotline<br>
                     <input type="checkbox" name="ResourceTypes" value="food" onclick="return ValidateSelection();"> Food & Meals<br>
@@ -158,7 +172,10 @@
 
             <div class="row mt-2">
                 <div class="col-10">
-                    <input type="checkbox" name="agreed" value="Agreed" onclick="" /> I have read and agree to the terms listed above.<br>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Agreed" name="agreed" value="Agreed" onclick="">
+                        <label class="custom-control-label" for="Agreed">I have read and agree to the terms listed above.</label>
+                    </div>
                 </div>
             </div>
 

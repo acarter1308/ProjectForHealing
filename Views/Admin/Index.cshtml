@@ -5,40 +5,39 @@
 }
 
     <div class="container ">
-        <div class="w-75 d-inline-block">
-            <div class="row">
 
 
-                <div class="col">
-                    <img class="img-fluid h-50" src="~/ProfilePictures/@ViewBag.pic" alt="Alternate Text" />
-                </div>
-               
-                <div class="col">
 
-
-            <div class="list-group w-50 float-right">
-
-                <a href="#" class="list-group-item list-group-item-action disabled active">Hello, @ViewBag.name</a>
-                <a href="#" class="list-group-item list-group-item-action disabled">Phone Number: @ViewBag.number</a>
-                <a href="#" class="list-group-item list-group-item-action disabled active ">Email: @ViewBag.email</a>
-                <a href="#" class="list-group-item list-group-item-action disabled">Role: @ViewBag.role</a>
+        <div class="card mb-3">
+            <h3 class="card-header">Hello, @ViewBag.name</h3>
+            <div class="card-body">
+                <h5 class="card-title"> Email: @ViewBag.email </h5>
+                <h6 class="card-subtitle text-muted">Phone Number: @ViewBag.number</h6>
+            </div>
+            <img style="height: 25%; width: 25%; display: block;" src="~/ProfilePictures/@ViewBag.pic" alt="Profile Picture">
+            <div class="card-body">
+                <p class="card-text">Role: @ViewBag.role</p>
+            </div>
+            <div class="list-group list-group-flush">
                 <a href="/Admin/ResourceManage" class="list-group-item list-group-item-action active">Manage Resources</a>
-                <a href="/Admin/Unapproved" class="list-group-item list-group-item-action">Approve/Unapprove Resources</a>
-                <a href="/Admin/AddEducation" class="list-group-item list-group-item-action">Add Education</a>
+                <a href="/Admin/Unapproved" class="list-group-item list-group-item-action active">Approve/Unapprove Resources</a>
+                <a href="/Admin/AddEducation" class="list-group-item list-group-item-action active">Add Education</a>
                 @if (Context.Session.GetString("role") == "Master Admin")
                 {
                     <a href="/Admin/AddAdmin" class="list-group-item list-group-item-action active">Create New Admin</a>
                     <a href="/Admin/AdminList" class="list-group-item list-group-item-action active">Remove Admin</a>
 
                 }
-                <a href="/Home/Logout" class="list-group-item list-group-item-action">Logout</a>
+                <a href="/Home/Logout" class="list-group-item list-group-item-action active">Logout</a>
+
+            </div>
+          
+            <div class="card-footer text-muted">
+                2 days ago
             </div>
         </div>
 
-
-
+       
     </div>
-        </div>
-        </div>
         
 
