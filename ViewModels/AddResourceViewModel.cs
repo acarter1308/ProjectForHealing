@@ -36,20 +36,22 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Description of service(s) provided")]
         public string OrgDescription { get; set; }
         [Required]
-        [Display(Name = "Website")]
+        [Display(Name = "Organization's Website")]
         public string WebsiteUrl { get; set; }
         [Required]
         [Display(Name = "City")]
         public string OrgCity { get; set; }
         [Required]
         public string[] ResourceTypes { get; set; }
-        // public ResourceType RType1 { get; set; }
+        //  public ResourceType RType1 { get; set; }
         // public ResourceType RType2 { get; set; }
         // public ResourceType RType3 { get; set; }
         [Required]
         public string lat { get; set; }
         [Required]
         public string lng { get; set; }
+
+        [Display(Name = "Upload any PDF's related to this resource")]
         public IFormFile UploadedFile { get; set; }
     }
 }
