@@ -36,7 +36,7 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Description of service(s) provided")]
         public string OrgDescription { get; set; }
         [Required]
-        [Display(Name = "Organization's Link")]
+        [Display(Name = "Organization's Website")]
         public string WebsiteUrl { get; set; }
         [Required]
         [Display(Name = "City")]
@@ -50,6 +50,8 @@ namespace ProjectForHealing.ViewModels
         public string lat { get; set; }
         [Required]
         public string lng { get; set; }
+
+        [Display(Name = "Upload any PDF's related to this resource")]
         public IFormFile UploadedFile { get; set; }
     }
 }
