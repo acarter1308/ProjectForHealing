@@ -36,14 +36,14 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Description of service(s) provided")]
         public string OrgDescription { get; set; }
         [Required]
-        [Display(Name = "Organization's Link")]
+        [Display(Name = "Website")]
         public string WebsiteUrl { get; set; }
         [Required]
         [Display(Name = "City")]
         public string OrgCity { get; set; }
         [Required]
         public string[] ResourceTypes { get; set; }
-        //  public ResourceType RType1 { get; set; }
+        // public ResourceType RType1 { get; set; }
         // public ResourceType RType2 { get; set; }
         // public ResourceType RType3 { get; set; }
         [Required]
