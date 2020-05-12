@@ -64,22 +64,19 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Resource" asp-action="Add">Resource Form</a>
+                            <a class="nav-link" asp-area="" asp-controller="Resource" asp-action="Add">Your Service</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="EducationIndex">Education</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="EducationIndex">Additional Resources</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
                             @if (Context.Session.GetString("username") == null)
                             {
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login"></a>
                             }
                             else
                             {
@@ -126,7 +123,14 @@
 
     <footer class="border-top footer text-muted">
         <div class="container" style="max-height:15px">
-            &copy; 2019 - Project For Healing - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy;  ©2019-2020 WeaveTales. All Rights Reserved - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> -    @if (Context.Session.GetString("username") == null)
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Login">Admin Login</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Admin" asp-action="Index">Dashboard</a>
+            }
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

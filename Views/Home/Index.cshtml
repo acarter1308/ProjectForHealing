@@ -4,13 +4,12 @@
 @{
     ViewData["Title"] = "Welcome";
 }
-    <div class="container middlebody">
-        <div id="mapDiv" class="container" style="display: inline-block; height: 30%; width: 35%;"></div>
+    <div class="container middlebody" style="width: 100%;">
 
 
         <div class="jumbotron text-xl-center" style="background:white; background-size:cover;">
 
-            <h1 class="display-3">Project For Healing, Inc.</h1>
+            <h1 class="display-3"><img src="~/Images/Neighborly-logo.png " alt="Project For Healing" style="width:60%;height:25%;"></h1>
             <p class="lead">
                 Project for Healing, Inc offers counseling services in four locations, psychoeducation classes, behavioral case management,
                 psychiatric support services, medication management and group treatment.
@@ -25,11 +24,15 @@
                 <a class="btn btn-primary btn-lg rounded" href="#" role="button">Submit Resource</a>
                 <a class="btn btn-prim btn-lg rounded" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
 
-               
-               
+
+
             </p>
         </div>
-        <div class="container-lg mt-2" id='map' style="height: 650px;"></div>
+        <div class="row";>
+            <div class="col col-12">
+                <div class="container-fluid mt-2" id='map' style="height: 750px;"></div>
+            </div>
+        </div>
         <style>
             #cats{
                 display:grid;
@@ -68,7 +71,7 @@
                         
                         $(document).ready(function () {
                             map = new google.maps.Map(document.getElementById('map'), {
-                                center: { lat: -34.397, lng: 150.644 },
+                                center: { lat: 30.260973, lng: -81.623245 }, 
                                 zoom: 13
                             });
                             infoWindow = new google.maps.InfoWindow;
@@ -111,7 +114,6 @@
                                 icon: 'fas fa-home',
                                 text: '\uf015',
                                 color: 'DARKSLATEGRAY'
-
                             },
                             esol: {
                                 name: 'Translation & Language Assistance',
@@ -254,7 +256,7 @@
                          // var ID =  parseInt(item.ResourceID);
                             var ID = feature.link;
 
-                            var links = "<a href=\"/Home/ViewSource/"+ Number(ID) +"\">More Info</a>";
+                            var links = "<a href=\"/Home/ViewSource/"+ Number(ID) +"\"target='_blank'>More Info</a>";
                             var infoWindow = new google.maps.InfoWindow({
                                 content: 'Name: ' + feature.name + ' <br> Address: ' + feature.address + ' <br><p>Link:  '+ links + '</p>'
                             });

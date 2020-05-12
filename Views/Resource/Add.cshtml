@@ -89,10 +89,10 @@
             <div class="row mt-2">
                 <div class="col-5">
                     <div class="form-group">
-                        <label asp-for="UploadedFile" class="control-label"></label>
+                        <label asp-for="UploadedFile" class="control-label">Would you like to submit an informational document? </label>
                         <div class="custom-file">
                             <input asp-for="UploadedFile" class="form-control custom-file-input" type="file" name="UploadedFile" />
-                            <label class="custom-file-label border-primary-y">Choose File....</label>
+                            <label class="custom-file-label border-primary-y">(pdf - flyer - brochure)</label>
                         </div>
                     </div>
                 </div>
@@ -101,12 +101,12 @@
 
             <div class="row mt-3">
                 <div class="col-9 border-top border-secondary">
-                    <h4 class="mt-2">What type of services do you provide?</h4>
+                    <h4 class="mt-2">What type of services do you provide?(Maximum of Three)</h4>
                 </div>
             </div>
             <style>
-                input[type=checkbox]:checked{
-                    background-color:blue;
+                input[type=checkbox]:checked {
+                    background-color: blue;
                 }
             </style>
             <div class="row mt-1">
@@ -114,40 +114,106 @@
                 <div class="col form-group">
 
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="resourceTypes" name="ResourceTypes" value="adult" onclick="return ValidateSelection();">
-                        <label class="custom-control-label" for="resourceTypes">Adult Education</label>
+                        <input type="checkbox" class="custom-control-input" id="adult" name="ResourceTypes" value="adult" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="adult"> Adult Education</label>
                     </div>
 
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="healthCare" name="ResourceTypes" value="affordable health Care" onclick="return ValidateSelection();">
-                        <label class="custom-control-label" for="healthCare">Affordable Healthcare</label>
+                        <label class="custom-control-label" for="healthCare"> Affordable Healthcare</label>
                     </div>
-                    
 
-                    <input type="checkbox" class="checkbox-primary" name="ResourceTypes" value="adult" onclick="return ValidateSelection();"> Adult Education<br>
-               
-                    <input type="checkbox" name="ResourceTypes" value="aid" onclick="return ValidateSelection();"> Financial & Material Aid<br>
-                    <input type="checkbox" name="ResourceTypes" value="hotline" onclick="return ValidateSelection();"> Crisis Hotline<br>
-                    <input type="checkbox" name="ResourceTypes" value="food" onclick="return ValidateSelection();"> Food & Meals<br>
-                    <input type="checkbox" name="ResourceTypes" value="ethnic" onclick="return ValidateSelection();"> Ethnic Organization<br>
-                    <input type="checkbox" name="ResourceTypes" value="housing" onclick="return ValidateSelection();"> Housing & Real Estate<br>
-                    <input type="checkbox" name="ResourceTypes" value="legal" onclick="return ValidateSelection();"> Legal & Immigration Services<br>
-                    <input type="checkbox" name="ResourceTypes" value="disasters" onclick="return ValidateSelection();"> Natural Disasters<br>
-                    <input type="checkbox" name="ResourceTypes" value="employment" onclick="return ValidateSelection();">Employment<br>
-                    <input type="checkbox" name="ResourceTypes" value="volunteering" onclick="return ValidateSelection();">Volunteering<br>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="finance" name="ResourceTypes" value="aid" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="finance"> Financial & Material Aid</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="crisis" name="ResourceTypes" value="hotline" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="crisis"> Crisis Hotline</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="food" name="ResourceTypes" value="food" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="food"> Food & Meals</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ethnic" name="ResourceTypes" value="ethnic" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="ethnic"> Ethnic Organization</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="housing" name="ResourceTypes" value="housing" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="housing"> Housing & Real Estate</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="legal" name="ResourceTypes" value="legal" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="legal"> Legal & Immigration Services</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="naturald" name="ResourceTypes" value="disasters" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="naturald">Natural Disasters</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="employment" name="ResourceTypes" value="employment" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="employment">Employment</label>
+                    </div>
+
 
                 </div>
                 <div class="col">
-                    <input type="checkbox" name="ResourceTypes" value="children" onclick="return ValidateSelection();"> Youth & Child Education<br>
-                    <input type="checkbox" name="ResourceTypes" value="mental" onclick="return ValidateSelection();"> Mental Health & Substance Use<br>
-                    <input type="checkbox" name="ResourceTypes" value="tax" onclick="return ValidateSelection();"> Tax & Accounting<br>
-                    <input type="checkbox" name="ResourceTypes" value="safety" onclick="return ValidateSelection();"> Public Safety<br>
-                    <input type="checkbox" name="ResourceTypes" value="transportation" onclick="return ValidateSelection();"> Transportation<br>
-                    <input type="checkbox" name="ResourceTypes" value="religion" onclick="return ValidateSelection();"> Faith & Religion<br>
-                    <input type="checkbox" name="ResourceTypes" value="socialsecurity" onclick="return ValidateSelection();"> Social Security<br>
-                    <input type="checkbox" name="ResourceTypes" value="funeral" onclick="return ValidateSelection();"> Funeral & Afterlife Services<br>
-                    <input type="checkbox" name="ResourceTypes" value="esol" onclick="return ValidateSelection();"> Translation & Language Assistance<br>
-                    <input type="checkbox" name="ResourceTypes" value="medical" onclick="return ValidateSelection();"> Medical<br>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="youth" name="ResourceTypes" value="children" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="youth">Youth & Child Education</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="mental" name="ResourceTypes" value="mental" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="mental">Mental Health & Substance Use</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="tax" name="ResourceTypes" value="tax" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="tax">Tax & Accounting</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="public" name="ResourceTypes" value="safety" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="public">Public Safety</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="transportation" name="ResourceTypes" value="transportation" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="transportation">Transportation</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="faith" name="ResourceTypes" value="religion" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="faith">Faith & Religion<br></label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="social" name="ResourceTypes" value="socialsecurity" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="social">Social Security</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="funeral" name="ResourceTypes" value="funeral" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="funeral">Funeral & Afterlife Services</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="translation" name="ResourceTypes" value="esol" onclick="return ValidateSelection();" />
+                        <label class="custom-control-label" for="translation">Translation & Language Assistance</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="medical" name="ResourceTypes" value="medical" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="medical">Medical</label>
+                    </div>
                 </div>
             </div>
 
@@ -173,15 +239,15 @@
             <div class="row mt-2">
                 <div class="col-10">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="Agreed" name="agreed" value="Agreed" onclick="">
-                        <label class="custom-control-label" for="Agreed">I have read and agree to the terms listed above.</label>
+                        <input type="checkbox" class="custom-control-input" id="agreed" name="Agreed" value="Agreed" onclick="ValidateForm();">
+                        <label class="custom-control-label" for="agreed">I have read and agree to the terms listed above.</label>
                     </div>
                 </div>
             </div>
 
-            <div class="row mt-4">
+            <div class="row mt-4 mb-5">
                 <div class="col">
-                    <input type="submit" value="Submit Form" class="btn btn-primary" onclick="return window.getCoordinates();" />
+                    <input type="submit" id="submit" value="Submit Form" class="btn btn-primary" disabled onclick="return window.getCoordinates();" />
                 </div>
             </div>
 
@@ -190,13 +256,6 @@
                 <input asp-for="lng" type="hidden" class="form-control" readonly />
             </div>
 
-            <div class="row mt-4">
-                <div class="col">
-                    <div class="form-group">
-                        <a asp-action="Index">Back to List</a>
-                    </div>
-                </div>
-            </div>
             @section Scripts{
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -250,6 +309,16 @@
                             return false;
                         }
                     }
+
+                    function ValidateForm() {
+                        if (document.getElementById("agreed").checked) {
+                            document.getElementById("submit").disabled = false;
+                        }
+                        else {
+                            document.getElementById("submit").disabled = true;
+                        }
+                    }
+
                 </script>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"
                         async defer></script>
