@@ -3,13 +3,14 @@
 
 @{
     ViewData["Title"] = "Welcome";
+
 }
-    <div class="container middlebody" style="width: 100%;">
+    <div class="container middlebody" style="width: 100%;" >
 
 
-        <div class="jumbotron text-xl-center" style="background:white; background-size:cover;">
+        <div class="jumbotron text-xl-center mt-0 text-white" style="background-size:cover; background-image: url('Images/indexImage.png');">
 
-            <h1 class="display-3"><img src="~/Images/Neighborly-logo.png " alt="Project For Healing" style="width:60%;height:25%;"></h1>
+            <h1 class="display-3"><img src="~/Images/Neighborly-logo.png " alt="Neighborly" style="width:60%;height:25%;"></h1>
             <p class="lead">
                 Project for Healing, Inc offers counseling services in four locations, psychoeducation classes, behavioral case management,
                 psychiatric support services, medication management and group treatment.
@@ -20,14 +21,11 @@
             <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
             <p class="lead">
 
-
-                <a class="btn btn-primary btn-lg rounded" href="#" role="button">Submit Resource</a>
-                <a class="btn btn-prim btn-lg rounded" href="https://projectforhealing.org/about/" role="button">Learn more about PFH</a>
-
-
-
+            <a class="btn btn-prim btn-lg rounded" href="https://www.weavetales.org/what-we-do" role="button">Learn about Weavetales</a>
             </p>
         </div>
+
+
         <div class="row";>
             <div class="col col-12">
                 <div class="container-fluid mt-2" id='map' style="height: 750px;"></div>
@@ -284,7 +282,12 @@
 
                             });
                             marker.addListener('click', function () {
-                                infoWindow.open(map, marker);
+                                if (infoWindow.getMap() != null) {
+                                    infoWindow.close();
+                                }
+                                else {
+                                    infoWindow.open(map, marker);
+                                }
                             });
                             markers.push({
                                 marker: marker,
