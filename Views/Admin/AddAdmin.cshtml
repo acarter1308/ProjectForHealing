@@ -42,11 +42,7 @@
                 <input asp-for="AdminPassWord" class="form-control" />
                 <span asp-validation-for="AdminPassWord" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ProfilePic" class="control-label">Profile Picture</label>
-                <input asp-for="ProfilePic" class="form-control" />
-                <span asp-validation-for="ProfilePic" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="SuperUser" class="control-label"></label>
 
@@ -54,6 +50,9 @@
 
                 @Html.RadioButtonFor(m => m.SuperUser, false) No
                 <span asp-validation-for="SuperUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfilePic" class="control-label">Profile Picture</label>
             </div>
 
             <div class="form-group">
