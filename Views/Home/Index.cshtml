@@ -6,7 +6,7 @@
 
 }
 
-    <div class="jumbotron text-xl-center mt-0 text-white" style="background-size:cover; background-image: url('Images/indexImage.png');">
+    <div class="jumbotron text-xl-center mt-0 text-white" style="background-size:cover; border-radius:0px; background-image: url('Images/indexImage.png');">
         <div class="container-fluid">
             <div class="container middlebody">
 
@@ -22,6 +22,8 @@
                 <p class="lead">
 
                     <a class="btn btn-prim btn-lg rounded" href="https://www.weavetales.org/what-we-do" role="button">About Weavetales</a>
+                    <a class="btn btn-prim btn-lg rounded" href="#mapDiv" role="button">Get Neighborly</a>
+
                 </p>
             </div>
 
@@ -53,13 +55,22 @@
     <div class="container-fluid middlebody" >
 
         <div class="row">
-            <div class="col-2"> <a class="twitter-timeline" data-width="250" data-height="350" data-theme="dark" href="https://twitter.com/NeighborlyGuide?ref_src=twsrc%5Etfw">Tweets by NeighborlyGuide</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </div>
+            <div class="col-2">
+                <a class="twitter-timeline" data-width="250" data-height="350" data-theme="dark" href="https://twitter.com/NeighborlyGuide?ref_src=twsrc%5Etfw">Tweets by NeighborlyGuide</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+
+            <div class="col-8"></div>
+
+            <div class="col-2">
+                <a class="twitter-timeline mt-4" data-width="250" data-height="350" data-theme="dark" href="https://twitter.com/NeighborlyGuide?ref_src=twsrc%5Etfw">Tweets by NeighborlyGuide</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
         </div>
 
-        <div class="row mt-2">
-            <div class="col col-12" style="border:solid 12px #414141">
-                <div class="container-fluid m-0" id='map' style="height: 750px;"></div>
+        <div class="row m-1 justify-content-center" id="mapDiv">
+            <div class="col col-12 rounded-lg px-2 pt-5 pb-2" style="background-color:dimgray">
+                <div class="container-fluid" id='map' style="height: 750px;"></div>
             </div>
         </div>
         <style>
