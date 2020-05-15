@@ -80,6 +80,7 @@ namespace ProjectForHealing.Controllers
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + model.UploadedFile.FileName;
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     model.UploadedFile.CopyTo(new FileStream(filePath, FileMode.Create));
+              
                 }
                 Admin newAdmin = new Admin
                 {
@@ -163,7 +164,14 @@ namespace ProjectForHealing.Controllers
 
             Admin admin = context.Admin.SingleOrDefault(x => x.UserName == UserName);
             context.Admin.Remove(admin);
+            string files = Path.Combine(hostingEnvironment.WebRootPath, "ProfilePictures/");
 
+            FileInfo file = new FileInfo(files + admin.PhotoPath);
+
+            if (file.Exists)
+            {
+                file.Delete();
+            }
             context.SaveChanges();
             return Redirect("/Admin");
         }
@@ -174,7 +182,14 @@ namespace ProjectForHealing.Controllers
 
             Resource theResource = context.Resource.SingleOrDefault(x => x.ResourceID == id);
             context.Resource.Remove(theResource);
+       string files = Path.Combine(hostingEnvironment.WebRootPath, "ResourceFiles/");
 
+            FileInfo file = new FileInfo(files + theResource.PhotoPath);
+
+            if (file.Exists)
+            {
+                file.Delete();
+            }
             context.SaveChanges();
             return Redirect("/Admin/ResourceManage");
         }
@@ -247,6 +262,47 @@ namespace ProjectForHealing.Controllers
             {
                 return View(model);
             }
+        }
+
+        public IActionResult EducationList()
+        {
+            var education = context.Education.ToList();
+            return View(education);
+        }
+
+        public IActionResult DelEducation(int id )
+        {
+            var education = context.Education.SingleOrDefault(x => x.ID == id);
+            context.Education.Remove(education);
+            if (education.FilePath != null)
+            {
+                string files = Path.Combine(hostingEnvironment.WebRootPath, "EducationFiles/");
+                FileInfo file = new FileInfo(files + education.FilePath);
+                if (file.Exists)
+                {
+                    file.Delete();
+                }
+
+            }
+            if(education.PhotoPath != null)
+            {
+                string pics = Path.Combine(hostingEnvironment.WebRootPath, "EducationPictures/");
+
+                FileInfo pic = new FileInfo(pics + education.PhotoPath);
+
+
+                if (pic.Exists)
+                {
+                    pic.Delete();
+                }
+
+            }
+
+
+
+            context.SaveChanges();
+            return Redirect("/Home/EducationIndex");
+            
         }
 
 
