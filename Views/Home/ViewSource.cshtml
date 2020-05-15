@@ -9,13 +9,14 @@
         <h1 class="display-3">@Model.OrgName</h1>
         <p class="lead">@Model.OrgDescription</p>
         <hr class="my-4">
-        <p>@Model.OrgEmail</p>
+        <p class="lead">@Model.OrgEmail</p>
         <p class="lead">
-            <a class="btn btn-dark btn-lg" href="//@Model.WebsiteUrl" role="button">Learn more</a>
+            <a href="//@Model.WebsiteUrl" target="_blank" style="color:#229dc1;">@Model.WebsiteUrl</a>
+           
         </p>
         @if (Model.PhotoPath != null)
         {
-            @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.PhotoPath },new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.PhotoPath },new { @class = "btn btn-prim btn-lg" })
 
          
         }

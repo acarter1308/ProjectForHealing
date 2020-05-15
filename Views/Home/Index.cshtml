@@ -11,389 +11,391 @@
 
             <h1 class="display-3"><img src="~/Images/Neighborly-logo.png " alt="Neighborly" style="width:60%;height:25%;"></h1>
             <p class="lead">
-                Project for Healing, Inc offers counseling services in four locations, psychoeducation classes, behavioral case management,
-                psychiatric support services, medication management and group treatment.
-                Two licensed social workers, specially trained in refugee mental health care, provide over 500 sessions annually
+                Neighborly is an online resource guide created to help residents in Northeast Florida better navigate the resources available in their areas.
+                Neighborly features the locations and information on providers of core services such as food, housing, and legal aid.
             </p>
-            <p class="lead">Our aim is for all North Florida refugees to have healthy, happy lives..</p>
-            <hr class="my-4">
-            <p>Project For Healing has collaborations between many refugee resettlement agencies, you can look at the map or click the resource tab to find the right one for you.</p>
+            <p class="lead">
+                Neighborly runs on a crowdsourcing-based platform. This means that you can add service providers to our system yourself. We will then screen,
+                edit, and approve the items you requested to be added to the system. To learn more about Neighborly, click <a href="/Home/About" style="color:yellow;">here</a>
+            </p>
             <p class="lead">
 
-                <a class="btn btn-prim btn-lg rounded" href="https://www.weavetales.org/what-we-do" role="button">Learn about Weavetales</a>
+                <a class="btn btn-prim btn-lg rounded" href="https://www.weavetales.org/what-we-do" role="button">About Weavetales</a>
             </p>
+            <hr class="my-4">
+            <p class="lead">First time on Neighborly? Watch the short video below to learn how to use Neighborly.</p>
+            <iframe src="https://player.vimeo.com/video/417363915" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <p><a href="https://vimeo.com/417363915">Neighborly Easy Guide</a> from <a href="https://vimeo.com/weavetalesorg">WeaveTales</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
         </div>
-
         <div class="col-2">
             <a class="twitter-timeline" data-width="225" data-height="350" data-theme="dark" href="https://twitter.com/NeighborlyGuide?ref_src=twsrc%5Etfw">Tweets by NeighborlyGuide</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
-
     </div>
 
 
-    <div class="container-fluid middlebody" >
+    <div class="container middlebody" >
 
 
-            <div class="row justify-content-center">
-                <div class="col col-11" style="border:3px solid #000000;">
-                    <div class="container-fluid mt-2" id='map' style="height: 750px;"></div>
-                </div>
+        <div class="row">
+            <div class="col col-12">
+                <div class="container-fluid mt-2" id='map' style="height: 750px;"></div>
             </div>
-            <style>
+        </div>
+        <style>
 
-                #cats {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(200px, 3fr) );
-                    grid-auto-rows: 150px;
-                }
+            #cats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 3fr) );
+                grid-auto-rows: 150px;
+            }
 
-                .container-box {
-                    text-align: center;
-                }
-            </style>
-            <div class="container" id="categories" style="padding-top:15px">
-                <div class="wrapper" id="cats">
+            .container-box {
+                text-align: center;
+            }
+        </style>
+        <div class="container" id="categories" style="padding-top:15px">
+            <div class="wrapper" id="cats">
 
-                </div>
             </div>
+        </div>
 
 
-            @section Scripts    {
-                <script type="text/javascript">
-                var markers = [];
-                var map, infoWindow;
+        @section Scripts    {
+            <script type="text/javascript">
+            var markers = [];
+            var map, infoWindow;
 
-                function toggleMarker(element, type) {
-                    var on = element.checked;
-                    for (var i = 0; i < markers.length; i++) {
-                        if (markers[i].type == type) {
-                            markers[i].marker.setMap(on ? map : null);
-                        }
+            function toggleMarker(element, type) {
+                var on = element.checked;
+                for (var i = 0; i < markers.length; i++) {
+                    if (markers[i].type == type) {
+                        markers[i].marker.setMap(on ? map : null);
                     }
                 }
+            }
 
 
 
-                    function initMap() {
+                function initMap() {
 
 
-                        $(document).ready(function () {
-                            map = new google.maps.Map(document.getElementById('map'), {
-                                center: { lat: 30.260973, lng: -81.623245 },
-                                zoom: 13
-                            });
-                            infoWindow = new google.maps.InfoWindow;
-
-
-
-                            // Try HTML5 geolocation.
-                            if (!navigator.geolocation) {
-                                handleLocationError(false, infoWindow, map.getCenter());
-                                return;
-                            }
-                            navigator.geolocation.getCurrentPosition(function (position) {
-                                var pos = {
-                                    lat: position.coords.latitude,
-                                    lng: position.coords.longitude
-                                };
-                                infoWindow.setPosition(pos);
-                                infoWindow.setContent('Location found.');
-                                infoWindow.open(map);
-                                map.setCenter(pos);
-                            }, function () {
-                                handleLocationError(true, infoWindow, map.getCenter());
-                            });
-                            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                                infoWindow.setPosition(pos);
-                                infoWindow.setContent(browserHasGeolocation ?
-                                    'Error: The Geolocation service failed.' :
-                                    'Error: Your browser doesn\'t support geolocation.');
-                                infoWindow.open(map);
-                            }
+                    $(document).ready(function () {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            center: { lat: 30.260973, lng: -81.623245 },
+                            zoom: 13
+                        });
+                        infoWindow = new google.maps.InfoWindow;
 
 
 
-
-
-
-                         var icons = {
-                            housing: {
-                                name: 'Housing & Real Estate',
-                                icon: 'fas fa-home',
-                                text: '\uf015',
-                                color: 'DARKSLATEGRAY'
-                            },
-                            esol: {
-                                name: 'Translation & Language Assistance',
-                                icon: 'fas fa-language',
-                                text: '\uf1ab',
-                                color: 'orange'
-                            },
-                            legal: {
-                                name: 'Legal & Immigration Services',
-                                icon: 'fas fa-balance-scale',
-                                text: '\uf24e',
-                                color: 'silver'
-                            },
-                            tax: {
-                                name: 'Tax & Accounting',
-                                icon: 'fas fa-calculator',
-                                text: '\uf1ec',
-                                color: 'DARKKHAKI'
-                            },
-                            disablility: {
-                                name: 'Disablility Services',
-                                icon: 'fab fa-accessible-icon',
-                                text: '\uf368',
-                                color: 'blue'
-                            },
-                            adult: {
-                                name: 'Adult Education',
-                                icon: 'fas fa-book-reader',
-                                text: '\uf5da',
-                                color: 'Tomato'
-                            },
-                            children: {
-                                name: 'Youth & Children Education',
-                                icon: 'fas fa-apple-alt',
-                                text: '\uf5d1',
-                                color: 'DARKRED'
-                            },
-                            employment: {
-                                name: 'Employment Assistance',
-                                icon: 'fas fa-user-tie',
-                                text: '\uf508',
-                                color: 'darkgreen'
-                            },
-                            medical: {
-                                name: 'Affordable Health Care',
-                                icon: 'fas fa-clinic-medical',
-                                text: '\uf7f2',
-                                color: 'red'
-                            },
-                            dental: {
-                                name: 'Dental Health',
-                                icon: 'fas fa-tooth',
-                                text: '\uf5c9',
-                                color: 'MediumSpringGreen'
-                            },
-                            mental: {
-                                name: 'Mental Health & Substance Use',
-                                icon: 'fas fa-hospital-user',
-                                text: '\uf80d',
-                                color: 'SkyBlue'
-                            },
-                            business: {
-                                name: 'New Business Counseling',
-                                icon: 'fas fa-briefcase',
-                                text: '\uf0b1',
-                                color: 'sandybrown'
-                            },
-                            funeral: {
-                                name: 'Funeral & Afterlife Services',
-                                icon: 'fas fa-skull-crossbones',
-                                text: '\uf714',
-                                color: 'black'
-                            },
-                            transportation: {
-                                name: 'Transportation',
-                                icon: 'fas fa-taxi',
-                                text: '\uf4ce',
-                                color: 'pink'
-                            },
-                            religion: {
-                                name: 'Faith & Religion',
-                                icon: 'fas fa-pray',
-                                text: '\uf683',
-                                color: 'indigo'
-                            },
-                            ethnic: {
-                                name: 'Ethnic Organization',
-                                icon: 'fas fa-users',
-                                text: '\uf0c0',
-                                color: 'purple'
-                            },
-                            socialsecurity: {
-                                name: 'Social Security',
-                                icon: 'fas fa-hand-holding-heart',
-                                text: '\uf4be',
-                                color: 'Plum'
-                            },
-                            food: {
-                                name: 'Food & Meals',
-                                icon: 'fas fa-utensils',
-                                text: '\uf2e7',
-                                color: 'salmon'
-                            },
-                            disasters: {
-                                name: 'Natural Disasters',
-                                icon: 'fas fa-house-damage',
-                                text: '\uf6f1',
-                                color: 'rosybrown'
-                            },
-                            safety: {
-                                name: 'Public Safety',
-                                icon: 'fas fa-hard-hat',
-                                text: '\uf807',
-                                color: 'gold'
-                            },
-                            aid: {
-                                name: 'Financial & Material Aid',
-                                icon: 'fas fa-hands-helping',
-                                text: '\uf4c4',
-                                color: 'yellowgreen'
-                            },
-                            hotline: {
-                                name: 'Crisis Hotline',
-                                icon: 'fas fa-phone',
-                                text: '\uf095',
-                                color: 'slateblue'
-                            },
-                            volunteering: {
-                                name: 'Volunteering',
-                                icon: 'fas fa-people-carry',
-                                text: '\uf4ce',
-                                color: 'teal'
-                            }
-                        };
-
-
-
-
-                        function addMarker(feature) {
-                         // var ID =  parseInt(item.ResourceID);
-                            var ID = feature.link;
-
-                            var links = "<a href=\"/Home/ViewSource/"+ Number(ID) +"\"target='_blank'>More Info</a>";
-                            var infoWindow = new google.maps.InfoWindow({
-                                content: 'Name: ' + feature.name + ' <br> Address: ' + feature.address + ' <br><p>Link:  '+ links + '</p>'
-                            });
-
-                            var icon = {
-                                path: "M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0z", //SVG path of awesomefont marker
-                                fillColor: icons[feature.type].color, //color of the marker
-                                fillOpacity: 1,
-                                strokeWeight: 0,
-                                scale: 0.09, //size of the marker, careful! this scale also affects anchor and labelOrigin
-                                anchor: new google.maps.Point(200, 510), //position of the icon, careful! this is affected by scale
-                                labelOrigin: new google.maps.Point(205, 190) //position of the label, careful! this is affected by scale
-                            }
-
-                            var marker = new google.maps.Marker({
-                                position: feature.position,
-                                map: map,
-                                icon: icon,
-                                label: {
-                                    fontFamily: "'Fontawesome'",
-                                    text: icons[feature.type].text, //icon code
-                                    fontWeight: '900', //careful! some icons in FA5 only exist for specific font weights
-                                    color: '#FFFFFF', //color of the text inside marker
-                                },
-
-                            });
-                            marker.addListener('click', function () {
-                                if (infoWindow.getMap() != null) {
-                                    infoWindow.close();
-                                }
-                                else {
-                                    infoWindow.open(map, marker);
-                                }
-                            });
-                            markers.push({
-                                marker: marker,
-                                type: feature.type,
-                                rt1: feature.rt1,
-                                rt2: feature.rt2,
-                                rt3: feature.rt3
-                            });
+                        // Try HTML5 geolocation.
+                        if (!navigator.geolocation) {
+                            handleLocationError(false, infoWindow, map.getCenter());
+                            return;
+                        }
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            var pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            infoWindow.setPosition(pos);
+                            infoWindow.setContent('Location found.');
+                            infoWindow.open(map);
+                            map.setCenter(pos);
+                        }, function () {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        });
+                        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                            infoWindow.setPosition(pos);
+                            infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+                            infoWindow.open(map);
                         }
 
 
-                        var features = [];
-                        /************************
-                         *
-                         * Serialization
-                         *
-                         *
-                         * */
-                       // Stores entire list of Resource Models into Javascript array
-                         var stringArray = @Html.Raw(Json.Serialize(Model));
-                        console.log(stringArray);
-                        //Foreach "item" inside "stirngArray"
-                        //The features array pushes a new google postion with the
-                        // "stringArray" items lat and lng
-                        //type is pushed as well but is static for now
-                        stringArray.forEach(function (item) {
-                          //  var category = item.RType1.toString();
-                            features.push({
-                                name: item.orgName,
-                                address: item.orgAddress,
-                                link: item.resourceID,
-                                position: new google.maps.LatLng(item.lat, item.lng),
-                                type: item.rType1,
-                                rt1: item.rType1,
-                                rt2: item.rType2,
-                                rt3:item.rType3
-                            })
 
+
+
+
+                        var icons = {
+                        housing: {
+                            name: 'Housing & Real Estate',
+                            icon: 'fas fa-home',
+                            text: '\uf015',
+                            color: 'DARKSLATEGRAY'
+                        },
+                        esol: {
+                            name: 'Translation & Language Assistance',
+                            icon: 'fas fa-language',
+                            text: '\uf1ab',
+                            color: 'orange'
+                        },
+                        legal: {
+                            name: 'Legal & Immigration Services',
+                            icon: 'fas fa-balance-scale',
+                            text: '\uf24e',
+                            color: 'silver'
+                        },
+                        tax: {
+                            name: 'Tax & Accounting',
+                            icon: 'fas fa-calculator',
+                            text: '\uf1ec',
+                            color: 'DARKKHAKI'
+                        },
+                        disablility: {
+                            name: 'Disablility Services',
+                            icon: 'fab fa-accessible-icon',
+                            text: '\uf368',
+                            color: 'blue'
+                        },
+                        adult: {
+                            name: 'Adult Education',
+                            icon: 'fas fa-book-reader',
+                            text: '\uf5da',
+                            color: 'Tomato'
+                        },
+                        children: {
+                            name: 'Youth & Children Education',
+                            icon: 'fas fa-apple-alt',
+                            text: '\uf5d1',
+                            color: 'DARKRED'
+                        },
+                        employment: {
+                            name: 'Employment Assistance',
+                            icon: 'fas fa-user-tie',
+                            text: '\uf508',
+                            color: 'darkgreen'
+                        },
+                        medical: {
+                            name: 'Affordable Health Care',
+                            icon: 'fas fa-clinic-medical',
+                            text: '\uf7f2',
+                            color: 'red'
+                        },
+                        dental: {
+                            name: 'Dental Health',
+                            icon: 'fas fa-tooth',
+                            text: '\uf5c9',
+                            color: 'MediumSpringGreen'
+                        },
+                        mental: {
+                            name: 'Mental Health & Substance Use',
+                            icon: 'fas fa-hospital-user',
+                            text: '\uf80d',
+                            color: 'SkyBlue'
+                        },
+                        business: {
+                            name: 'New Business Counseling',
+                            icon: 'fas fa-briefcase',
+                            text: '\uf0b1',
+                            color: 'sandybrown'
+                        },
+                        funeral: {
+                            name: 'Funeral & Afterlife Services',
+                            icon: 'fas fa-skull-crossbones',
+                            text: '\uf714',
+                            color: 'black'
+                        },
+                        transportation: {
+                            name: 'Transportation',
+                            icon: 'fas fa-taxi',
+                            text: '\uf4ce',
+                            color: 'pink'
+                        },
+                        religion: {
+                            name: 'Faith & Religion',
+                            icon: 'fas fa-pray',
+                            text: '\uf683',
+                            color: 'indigo'
+                        },
+                        ethnic: {
+                            name: 'Ethnic Organization',
+                            icon: 'fas fa-users',
+                            text: '\uf0c0',
+                            color: 'purple'
+                        },
+                        socialsecurity: {
+                            name: 'Social Security',
+                            icon: 'fas fa-hand-holding-heart',
+                            text: '\uf4be',
+                            color: 'Plum'
+                        },
+                        food: {
+                            name: 'Food & Meals',
+                            icon: 'fas fa-utensils',
+                            text: '\uf2e7',
+                            color: 'salmon'
+                        },
+                        disasters: {
+                            name: 'Natural Disasters',
+                            icon: 'fas fa-house-damage',
+                            text: '\uf6f1',
+                            color: 'rosybrown'
+                        },
+                        safety: {
+                            name: 'Public Safety',
+                            icon: 'fas fa-hard-hat',
+                            text: '\uf807',
+                            color: 'gold'
+                        },
+                        aid: {
+                            name: 'Financial & Material Aid',
+                            icon: 'fas fa-hands-helping',
+                            text: '\uf4c4',
+                            color: 'yellowgreen'
+                        },
+                        hotline: {
+                            name: 'Crisis Hotline',
+                            icon: 'fas fa-phone',
+                            text: '\uf095',
+                            color: 'slateblue'
+                        },
+                        volunteering: {
+                            name: 'Volunteering',
+                            icon: 'fas fa-people-carry',
+                            text: '\uf4ce',
+                            color: 'teal'
+                        }
+                    };
+
+
+
+
+                    function addMarker(feature) {
+                        // var ID =  parseInt(item.ResourceID);
+                        var ID = feature.link;
+
+                        var links = "<a href=\"/Home/ViewSource/"+ Number(ID) +"\"target='_blank'>More Info</a>";
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: 'Name: ' + feature.name + ' <br> Address: ' + feature.address + ' <br><p>Link:  '+ links + '</p>'
+                        });
+
+                        var icon = {
+                            path: "M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0z", //SVG path of awesomefont marker
+                            fillColor: icons[feature.type].color, //color of the marker
+                            fillOpacity: 1,
+                            strokeWeight: 0,
+                            scale: 0.09, //size of the marker, careful! this scale also affects anchor and labelOrigin
+                            anchor: new google.maps.Point(200, 510), //position of the icon, careful! this is affected by scale
+                            labelOrigin: new google.maps.Point(205, 190) //position of the label, careful! this is affected by scale
+                        }
+
+                        var marker = new google.maps.Marker({
+                            position: feature.position,
+                            map: map,
+                            icon: icon,
+                            label: {
+                                fontFamily: "'Fontawesome'",
+                                text: icons[feature.type].text, //icon code
+                                fontWeight: '900', //careful! some icons in FA5 only exist for specific font weights
+                                color: '#FFFFFF', //color of the text inside marker
+                            },
+
+                        });
+                        marker.addListener('click', function () {
+                            if (infoWindow.getMap() != null) {
+                                infoWindow.close();
+                            }
+                            else {
+                                infoWindow.open(map, marker);
+                            }
+                        });
+                        markers.push({
+                            marker: marker,
+                            type: feature.type,
+                            rt1: feature.rt1,
+                            rt2: feature.rt2,
+                            rt3: feature.rt3
+                        });
+                    }
+
+
+                    var features = [];
+                    /************************
+                        *
+                        * Serialization
+                        *
+                        *
+                        * */
+                    // Stores entire list of Resource Models into Javascript array
+                        var stringArray = @Html.Raw(Json.Serialize(Model));
+                    console.log(stringArray);
+                    //Foreach "item" inside "stirngArray"
+                    //The features array pushes a new google postion with the
+                    // "stringArray" items lat and lng
+                    //type is pushed as well but is static for now
+                    stringArray.forEach(function (item) {
+                        //  var category = item.RType1.toString();
+                        features.push({
+                            name: item.orgName,
+                            address: item.orgAddress,
+                            link: item.resourceID,
+                            position: new google.maps.LatLng(item.lat, item.lng),
+                            type: item.rType1,
+                            rt1: item.rType1,
+                            rt2: item.rType2,
+                            rt3:item.rType3
                         })
 
-
-                        for (var i = 0, feature; feature = features[i]; i++) {
-                            addMarker(feature);
-                            console.log(feature);
-                            }
+                    })
 
 
-                        var categories = document.getElementById('cats');
-                        var i = 0;
-                        for (var key in icons) {
-                            var type = icons[key];
-                            var name = type.name;
-                            var icon = type.icon;
-
-                            var cdiv = document.createElement('div');
-
-                           cdiv.innerHTML = '<button class="buttonTypes " id="' + key + '"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
-                            cdiv.className = "container-box";
-
-                            categories.appendChild(cdiv);
+                    for (var i = 0, feature; feature = features[i]; i++) {
+                        addMarker(feature);
+                        console.log(feature);
                         }
 
 
-                            var buttons = document.querySelectorAll(".buttonTypes");
+                    var categories = document.getElementById('cats');
+                    var i = 0;
+                    for (var key in icons) {
+                        var type = icons[key];
+                        var name = type.name;
+                        var icon = type.icon;
 
-                            buttons.forEach(item => {
-                                    item.addEventListener("click", function () {
+                        var cdiv = document.createElement('div');
 
-                                            var clickedType = $(this).attr('id').toLowerCase();
-                                             console.log(clickedType);
+                        cdiv.innerHTML = '<button class="buttonTypes " id="' + key + '"><i class=" ' + icon + ' fa-4x" style="color:' + type.color + ';"></i></button><br><p>' + name + '<p>';
+                        cdiv.className = "container-box";
 
-                                for (var i = 0; i < markers.length; i++) {
-                                     markers[i].marker.setMap(null);
-                                    if (markers[i].rt1 == clickedType || markers[i].rt2 == clickedType || markers[i].rt3 == clickedType) {
-                                        markers[i].marker.icon.fillColor = icons[clickedType].color;
-                                        markers[i].marker.label.text = icons[clickedType].text;
-                                        markers[i].marker.setMap(map);
-                                    }
+                        categories.appendChild(cdiv);
+                    }
+
+
+                        var buttons = document.querySelectorAll(".buttonTypes");
+
+                        buttons.forEach(item => {
+                                item.addEventListener("click", function () {
+
+                                        var clickedType = $(this).attr('id').toLowerCase();
+                                            console.log(clickedType);
+
+                            for (var i = 0; i < markers.length; i++) {
+                                    markers[i].marker.setMap(null);
+                                if (markers[i].rt1 == clickedType || markers[i].rt2 == clickedType || markers[i].rt3 == clickedType) {
+                                    markers[i].marker.icon.fillColor = icons[clickedType].color;
+                                    markers[i].marker.label.text = icons[clickedType].text;
+                                    markers[i].marker.setMap(map);
                                 }
+                            }
 
-                            });
-
-
-                            });
+                        });
 
 
-                            //**********************************
+                        });
 
-                    });
-                }
-                </script>
 
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
+                        //**********************************
 
+                });
             }
+            </script>
+
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
+
+        }
 
         </div>
