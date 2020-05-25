@@ -6,7 +6,7 @@
 <div class="container middlebody">
     <h1>Create New Resource</h1>
 
-    <div class="container">
+    <div class="container" style="background-size:cover; border-radius:0px; background-image: url('Images/indexImage.png');">
         <form enctype="multipart/form-data" asp-controller="Resource" asp-action="Add" method="post">
 
             @*<div asp-validation-summary="All"></div>*@
@@ -217,6 +217,44 @@
                 </div>
             </div>
 
+            <div class="row mt-3">
+                <div class="col-9 border-top border-secondary">
+                    <h4 class="mt-2">This is where tags will go</h4>
+                </div>
+            </div>
+            <style>
+                input[type=checkbox]:checked {
+                    background-color: blue;
+                }
+            </style>
+            <div class="row mt-1">
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="1" name="ResourceTypes" value="adult" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="1"> Puer puellam amat.	 </label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="2" name="ResourceTypes" value="affordable health Care" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="2"> Puer puellam amat.	 </label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="3" name="ResourceTypes" value="aid" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="3"> Puer puellam amat.	 </label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="4" name="ResourceTypes" value="hotline" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="4"> Puer puellam amat.	 </label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="5" name="ResourceTypes" value="food" onclick="return ValidateSelection();">
+                        <label class="custom-control-label" for="5"> Puer puellam amat.	 </label>
+                    </div>
+                </div>
+            </div>
             <div class="row mt-4">
                 <div class="col-9 border-top border-secondary">
                     <p style="font-size: small;">

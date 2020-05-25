@@ -29,7 +29,7 @@ namespace ProjectForHealing.Controllers
         public IActionResult Index()
         {
             var sources = context.Resource.Where(x =>  x.IsApproved == true).ToList();
-            
+            ViewBag.WebLink = context.Resource;
             return View(sources);
         }
 

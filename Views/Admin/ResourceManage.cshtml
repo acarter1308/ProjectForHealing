@@ -96,6 +96,94 @@
             </table>
         }
     </div>
+    
+    <div class="container m-0 m-auto">
+        @if (Model.Count() == 0)
+        {
+            <p>No  submissions! </p>
+        }
+        else
+        {
+            <style>
+
+                table {
+                    table-layout: inherit;
+                }
+
+                    table th, table td {
+                        padding: 0;
+                        width: 150px;
+                        overflow: hidden;
+                    }
+
+                    table th {
+                        position: sticky;
+                        top: 0;
+                        background: #fff;
+                        border-bottom: none;
+                    }
+
+                .table thead th {
+                    border-bottom: none;
+                }
+
+                table th::after {
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    background: #ccc;
+                }
+
+                .smal {
+                    width: 100px;
+                }
+            </style>
+
+
+            <div class="container m-0 m-auto">
+                <h2 class="">Unassociated Resources</h2>
+            </div>
+            <table class="table table-hover">
+
+
+                <thead class="bg-white">
+                    <tr>
+
+                        <th scope="col">Organization</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Phone Number</th>
+
+                        <th scope="col" class="smal">Edit</th>
+                        <th scope="col" class="smal">Remove</th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var resource in Model)
+                    {
+                        <tr class="table-light">
+                            <td>@Html.ActionLink(resource.OrgName, "ViewSource", "Home", new { id = resource.ResourceID })</td>
+                            <td>@resource.OrgEmail</td>
+                            <td>@resource.OrgNumber</td>
+                           
+
+
+                            <td class="smal">@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
+                            <td class="smal"><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        }
+    </div>
 <div class="modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
