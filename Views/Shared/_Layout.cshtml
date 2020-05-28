@@ -49,7 +49,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/Images/Neighborly-logo.png " alt="Project For Healing" style="width:150px;height:75px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
@@ -58,7 +58,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home<span class="sr-only">(current)</span></a>
                         </li>
 
@@ -123,7 +123,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container" style="max-height:15px">
-            &copy;  ©2019-2020 WeaveTales. All Rights Reserved - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> -    @if (Context.Session.GetString("username") == null)
+            &copy;2019-2020 WeaveTales. All Rights Reserved - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> -    @if (Context.Session.GetString("username") == null)
             {
                 <a asp-area="" asp-controller="Home" asp-action="Login">Admin Login</a>
             }

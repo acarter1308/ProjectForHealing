@@ -2253,15 +2253,12 @@ pre code {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid #f2bc30;
     border-radius: 0;
     -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-
-
-    border-color: #f2bc30;
     -webkit-box-shadow: 0 0 0 0.2rem rgba(242, 188, 48, 0.15);
     box-shadow: 0 0 0 0.2rem rgba(242, 188, 48, 0.15);
 }
