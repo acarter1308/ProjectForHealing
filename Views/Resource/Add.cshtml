@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <label asp-for="UploadedFile" class="control-label">Would you like to submit an informational document? </label>
                         <div class="custom-file">
-                            <input asp-for="UploadedFile" class="form-control custom-file-input" type="file" name="UploadedFile" />
+                            <input asp-for="UploadedFile" class="form-control custom-file-input"> 
                             <label class="custom-file-label border-primary-y">(pdf - flyer - brochure)</label>
                         </div>
                     </div>
@@ -263,9 +263,20 @@
                         //changing text when file name changes
                         $('.custom-file-input').on("change", function () {
                             //  var fileName = $(this).val.().split("\\").pop();
-                            var fileName = $('input[type=file]').val().split('\\').pop();
+                              var ext = $('input[type=file]').val().split('.').pop().toLowerCase();
+                            if ($.inArray(ext, ['pdf', 'docx', 'doc', '.txt']) == -1) {
+                                alert('File must be in pdf, doc or docx format!');
+                                $('.custom-file-input').val(null);
+                            } else {
+                                  var fileName = $('input[type=file]').val().split('\\').pop();
+                          //  var fileName = $(this).val.().split("\\").pop();
                             $(this).next('.custom-file-label').html(fileName);
+                            }
+                         
                         })
+
+                 
+
                     });
 
                     function initMap() {
