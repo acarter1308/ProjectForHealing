@@ -1,0 +1,19 @@
+﻿@model ProjectForHealing.Models.UnassocResource
+
+@{
+    ViewData["Title"] = "EducationView";
+}
+
+    <div class="container middlebody">
+        <div class="jumbotron">
+            <h1 class="display-3">@Model.Name</h1>
+            <p class="lead">@Model.Description</p>
+            <hr class="my-4">
+            @if (Model.FilePath != null)
+            {
+                @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.FilePath }, new { @target = "_blank" })
+
+
+            }
+        </div>
+    </div>

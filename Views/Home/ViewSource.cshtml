@@ -16,7 +16,7 @@
         </p>
         @if (Model.PhotoPath != null)
         {
-            @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.PhotoPath },new { @class = "btn btn-prim btn-lg" })
+            @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.PhotoPath }, new { @target = "_blank" })
 
          
         }

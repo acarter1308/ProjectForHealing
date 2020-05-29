@@ -132,22 +132,22 @@ namespace ProjectForHealing.Controllers
         [HttpGet]
         public IActionResult OpenFile(string path)
         {
-            string PDFpath = "wwwroot/"+ path;
+            string PDFpath = "wwwroot/" + path;
             byte[] abc = System.IO.File.ReadAllBytes(PDFpath);
             System.IO.File.WriteAllBytes(PDFpath, abc);
             MemoryStream ms = new MemoryStream(abc);
             return new FileStreamResult(ms, "application/pdf");
         }
         
-        public IActionResult EducationIndex()
+        public IActionResult UnassocResourceIndex()
         {
-            var Edu = context.Education.ToList();
+            var Edu = context.UnassocResource.ToList();
             return View(Edu);
         }
 
-        public IActionResult EducationView(int ID)
+        public IActionResult UnassocResourceView(int ID)
         {
-            var source = context.Education.SingleOrDefault(x => x.ID == ID);
+            var source = context.UnassocResource.SingleOrDefault(x => x.ID == ID);
             return View(source);
         }
     }

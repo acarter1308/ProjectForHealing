@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace ProjectForHealing.ViewModels
 {
-    public class EducationViewModel
+    public class UnassocViewModel
     {
         [Required]
-        public string Country { get; set; }
+        public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-     
-        public IFormFile PhotoPath { get; set; }
         public IFormFile UploadedFile { get; set; }
     }
 }

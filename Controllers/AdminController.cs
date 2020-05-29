@@ -213,50 +213,41 @@ namespace ProjectForHealing.Controllers
             return View(source);
         }
         */
-        public IActionResult AddEducation()
+        public IActionResult AddUnassocResource()
         {
-            EducationViewModel education = new EducationViewModel();
-            return View(education);
+            UnassocViewModel rec = new UnassocViewModel();
+            return View(rec);
         }
 
         [HttpPost]
-        [Route("/Admin/AddEducation")]
-        public IActionResult AddEducation(EducationViewModel model)
+        [Route("/Admin/AddUnassocResource")]
+        public IActionResult AddUnassocResource(UnassocViewModel model)
         {
 
 
             if (ModelState.IsValid)
             {
                 string uniqueFileName = null;
-                string uniquePictureName = null;
+               
                 //if the actual file is not null
                 if (model.UploadedFile != null)
                 {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "EducationFiles");
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "ResourceFiles");
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + model.UploadedFile.FileName;
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     model.UploadedFile.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
 
-                if (model.PhotoPath != null)
-                {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "EducationPictures");
-                    uniquePictureName = Guid.NewGuid().ToString() + "_" + model.PhotoPath.FileName;
-                    string picturePath = Path.Combine(uploadsFolder, uniquePictureName);
-                    model.PhotoPath.CopyTo(new FileStream(picturePath, FileMode.Create));
-                }
-
-                Education newEducation = new Education
+                UnassocResource newRec = new UnassocResource
                 {
                     //  ResourceID = addEditorViewModel.ResourceID,
-                    Country = model.Country,
+                    Name = model.Name,
                    Description = model.Description,
-                    FilePath = uniqueFileName,
-                    PhotoPath = uniquePictureName
+                    FilePath = uniqueFileName
                 };
-                context.Education.Add(newEducation);
+                context.UnassocResource.Add(newRec);
                 context.SaveChanges();
-                return Redirect("/Home/EducationIndex");
+                return Redirect("/Resource/Submitted");
             }
             else
             {
@@ -264,19 +255,19 @@ namespace ProjectForHealing.Controllers
             }
         }
 
-        public IActionResult EducationList()
+        public IActionResult UnassocResourceList()
         {
-            var education = context.Education.ToList();
-            return View(education);
+            var rec = context.UnassocResource.ToList();
+            return View(rec);
         }
 
-        public IActionResult DelEducation(int id )
+        public IActionResult DelUnassocResource(int id )
         {
-            var education = context.Education.SingleOrDefault(x => x.ID == id);
-            context.Education.Remove(education);
+            var education = context.UnassocResource.SingleOrDefault(x => x.ID == id);
+            context.UnassocResource.Remove(education);
             if (education.FilePath != null)
             {
-                string files = Path.Combine(hostingEnvironment.WebRootPath, "EducationFiles/");
+                string files = Path.Combine(hostingEnvironment.WebRootPath, "ResourceFiles/");
                 FileInfo file = new FileInfo(files + education.FilePath);
                 if (file.Exists)
                 {
@@ -284,24 +275,12 @@ namespace ProjectForHealing.Controllers
                 }
 
             }
-            if(education.PhotoPath != null)
-            {
-                string pics = Path.Combine(hostingEnvironment.WebRootPath, "EducationPictures/");
-
-                FileInfo pic = new FileInfo(pics + education.PhotoPath);
-
-
-                if (pic.Exists)
-                {
-                    pic.Delete();
-                }
-
-            }
+        
 
 
 
             context.SaveChanges();
-            return Redirect("/Home/EducationIndex");
+            return Redirect("/Home/UnassocResources");
             
         }
 

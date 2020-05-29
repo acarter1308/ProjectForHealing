@@ -81,8 +81,9 @@
                 <div class="container-fluid form-control"  id='map' style="height: 750px; "></div>
 
                 <div class="container" id="categories" style="padding-top:15px; background-color:#b9d3c2;">
+                    
                     <div class="wrapper" id="cats">
-
+                       
                     </div>
                 </div>
             </div>
@@ -610,7 +611,7 @@
 
                     var links = "<a href=\"/Home/ViewSource/" + Number(ID) + "\"target='_blank'>" + feature.webLink; + "</a>";
                     var infoWindow = new google.maps.InfoWindow({
-                        content: 'Name: ' + feature.name.toUpperCase() + ' <br> Address: ' + feature.address.toUpperCase() + ' <br><p>Link:  '+ links + '</p>'
+                        content: 'Name: ' + "<a href=\"/Home/ViewSource/" + Number(ID) + "\"target='_blank'>" + feature.name.toUpperCase() + "</a>" + ' <br> Address: ' + feature.address.toUpperCase() + ' <br><p>Link:  '+ links + '</p>'
                     });
 
                     var icon = {
@@ -709,7 +710,15 @@
 
 
                     var buttons = document.querySelectorAll(".buttonTypes");
+                    var selectAll = document.querySelector(".selectAll");
+                    selectAll.addEventListener("click", function () {
 
+                             for (var i = 0; i < markers.length; i++) {
+                                markers[i].marker.setMap(map);
+                         
+                        }
+
+                    });
                     buttons.forEach(item => {
                             item.addEventListener("click", function () {
 
