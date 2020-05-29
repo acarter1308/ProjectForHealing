@@ -17,6 +17,21 @@
         .container-box {
             text-align: center;
         }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(245, 183, 24, .4); 
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(242, 188, 48, .6); 
+        }
+
     </style>
 
     <div class="jumbotron text-xl-center mt-0 mb-0 text-black-50" style="background-size:cover; border-radius:0px; ">
@@ -30,7 +45,7 @@
                 </p>
                 <p class="lead">
                     Neighborly runs on a crowdsourcing-based platform. This means that you can add service providers to our system yourself. We will then screen,
-                    edit, and approve the items you requested to be added to the system. To learn more about Neighborly, click <a href="/Home/About" style="color:yellow;">here</a>
+                    edit, and approve the items you requested to be added to the system. To learn more about Neighborly, click <a href="/Home/About" style="color:#2780E3;">here.</a>
                 </p>
                 <p class="lead">
 
@@ -43,7 +58,7 @@
             <div class="row">
                 <div class="col">
                     <hr class="my-4">
-                    <p class="lead">First time on Neighborly? Watch the short video below to learn how to use Neighborly.</p>
+                    <p class="lead">First time? Watch the short video below to learn how to use Neighborly.</p>
                 </div>
             </div>
 
@@ -67,33 +82,38 @@
     <div class="container-fluid middlebody mt-0">
 
         <div class="row justify-content-center" id="mapDiv">
-            <div class="col col-12 px-4 pt-3 pb-lg-5" style="background-color: #373a3c;">
-
+            <div class="col col-12 px-4 pt-3 pb-lg-5 border border-3 border-warning-outer pt-3" style="background-color: #373a3c;">
                 <div class="pb-3 row">
-                    <div class="col-2"></div>
-                    <div class="col-2">
-                        <div class="form-inline my-2 my-lg-0 pr-0">
+                    <div class="col-2 text-center border border-top-0 border-3 border-warning-outer">
+                        <h3 class="text-white">Filter Category</h3>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col-3 d-flex justify-content-end">
+                        <div class="form-inline my-lg-0 pr-0 d-inline-flex ">
                             <input class="form-control form-inline mr-sm-2" type="text" placeholder="Search an address!" id="mapSearch" name="search">
+
+                        </div>
+                        <div class="form-inline my-lg-0 pr-0 d-inline-flex ">
+                            <button class="btn btn-secondary border rounded my-2 my-sm-0 align-content-start" type="button" onclick="return setMap();">Search</button>
                         </div>
                     </div>
-                    <div class="col-1">
-                        <div class="form-inline my-2 my-lg-0 pl-0">
-                            <button class="btn btn-secondary border rounded my-2 my-sm-0" type="button" onclick="return setMap();">Search</button>
-                        </div>
-                    </div>
+
                 </div>
+
                 <div class="row">
 
                     <div class="col-2">
-                        <div class="container-fluid text-white" id="categories" style="height:750px; line-height:3em; overflow:auto; padding:5px;">
-                            <div class="wrapper" id="cats"></div>
+                        <div class="container-fluid text-white" id="categories" style="height:750px; line-height:3.2em; overflow:auto;">
+                            <div class="wrapper mx-1" id="cats"></div>
                         </div>
                     </div>
 
                     <div class="col-10">
-                        <div class="container-fluid form-control" id='map' style="height: 750px; "></div>
+                        <div class="container-fluid form-control mb-3" id='map' style="height: 750px;"></div>
                     </div>
-
+                </div>
+                <div class="row">
+                    <div class="col-2 border-bottom border-warning-outer"></div>
                 </div>
             </div>
         </div>
@@ -703,9 +723,8 @@
                     var cdiv = document.createElement('div');
                     cdiv.setAttribute
 
-                    cdiv.innerHTML = '<a class="p-1 m-0 rounded btn buttonTypes justify-content-center" style="" id="' + key + '"><i class="p-1 ' + icon + ' fa-5x" style="color:' + type.color + '; background-color:; "></i><br><small>' + name + '</small></a>';
-                    cdiv.className = "container-box border border-2 my-auto";
-                    cdiv.style.borderColor = "black";
+                    cdiv.innerHTML = '<a class="btn buttonTypes justify-content-center" id="' + key + '"><i class="p-1 ' + icon + ' fa-5x" style="color:' + type.color + ';"></i><br><small>' + name + '</small></a>';
+                    cdiv.className = "container-box border border-2 border-warning my-auto mr-3 pl-2";
 
                     categories.appendChild(cdiv);
                 }

@@ -7015,6 +7015,10 @@ button.bg-dark:focus {
   border: 0 !important;
 }
 
+.border-3 {
+  border-width: 3px !important;
+}
+
 .border-top-0 {
   border-top: 0 !important;
 }
@@ -7054,7 +7058,12 @@ button.bg-dark:focus {
 }
 
 .border-warning {
-  border-color: #FF7518 !important;
+    border-color: rgba(242, 188, 48, .4) !important;
+    box-shadow: 3px 4px 2px 2px rgba(242, 188, 48, .2);
+}
+
+.border-warning-outer {
+    border-color: rgba(242, 188, 48, .5) !important;
 }
 
 .border-danger {
