@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <label asp-for="UploadedFile" class="control-label">Would you like to submit an informational document? </label>
                         <div class="custom-file">
-                            <input asp-for="UploadedFile" class="form-control custom-file-input"> 
+                            <input asp-for="UploadedFile" class="form-control custom-file-input">
                             <label class="custom-file-label border-primary-y">(pdf - flyer - brochure)</label>
                         </div>
                     </div>
@@ -255,6 +255,49 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Tag1" class="control-label">Do you serve refugees within the first 5 years of resettlement?</label>
+
+                @Html.RadioButtonFor(m => m.Tag1, true) Yes
+
+                @Html.RadioButtonFor(m => m.Tag1, false) No
+                <span asp-validation-for="Tag1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag2" class="control-label">Do you serve LGBTQ+ populations?</label>
+
+                @Html.RadioButtonFor(m => m.Tag2, true) Yes
+
+                @Html.RadioButtonFor(m => m.Tag2, false) No
+                <span asp-validation-for="Tag2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag3" class="control-label">Do you serve people with disabilities? </label>
+
+                @Html.RadioButtonFor(m => m.Tag3, true) Yes
+
+                @Html.RadioButtonFor(m => m.Tag3, false) No
+                <span asp-validation-for="Tag3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag4" class="control-label">Do you serve undocumented immigrants? </label>
+
+                @Html.RadioButtonFor(m => m.Tag4, true) Yes
+
+                @Html.RadioButtonFor(m => m.Tag4, false) No
+                <span asp-validation-for="Tag4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag5" class="control-label">Do you provide service in languages other than English?</label>
+
+                @Html.RadioButtonFor(m => m.Tag5, true) Yes
+
+                @Html.RadioButtonFor(m => m.Tag5, false) No
+                <span asp-validation-for="Tag5" class="text-danger"></span>
+            </div>
+
+
             <div class="row mt-4">
                 <div class="col-9 border-top border-secondary">
                     <p style="font-size: small;">
@@ -301,19 +344,19 @@
                         //changing text when file name changes
                         $('.custom-file-input').on("change", function () {
                             //  var fileName = $(this).val.().split("\\").pop();
-                              var ext = $('input[type=file]').val().split('.').pop().toLowerCase();
+                            var ext = $('input[type=file]').val().split('.').pop().toLowerCase();
                             if ($.inArray(ext, ['pdf', 'docx', 'doc', '.txt']) == -1) {
                                 alert('File must be in pdf, doc or docx format!');
                                 $('.custom-file-input').val(null);
                             } else {
-                                  var fileName = $('input[type=file]').val().split('\\').pop();
-                          //  var fileName = $(this).val.().split("\\").pop();
-                            $(this).next('.custom-file-label').html(fileName);
+                                var fileName = $('input[type=file]').val().split('\\').pop();
+                                //  var fileName = $(this).val.().split("\\").pop();
+                                $(this).next('.custom-file-label').html(fileName);
                             }
-                         
+
                         })
 
-                 
+
 
                     });
 

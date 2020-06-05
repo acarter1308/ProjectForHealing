@@ -50,6 +50,16 @@ namespace ProjectForHealing.ViewModels
         public string lat { get; set; }
         [Required]
         public string lng { get; set; }
+        [Required]
+        public bool Tag1 { get; set; }
+        [Required]
+        public bool Tag2 { get; set; }
+        [Required]
+        public bool Tag3 { get; set; }
+        [Required]
+        public bool Tag4 { get; set; }
+        [Required]
+        public bool Tag5 { get; set; }
 
         [Display(Name = "Upload any PDF's related to this resource")]
         public IFormFile UploadedFile { get; set; }

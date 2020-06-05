@@ -73,16 +73,21 @@ namespace ProjectForHealing.Controllers
                     OrgSte = addResourceViewModel.OrgSte,
                     OrgDescription = addResourceViewModel.OrgDescription,
                     WebsiteUrl = addResourceViewModel.WebsiteUrl,
-                   PhotoPath = uniqueFileName,
-                   RType1 = holding[0],
- 
+                    PhotoPath = uniqueFileName,
+                    RType1 = holding[0],
+
                     RType2 = holding[1],
-         
+
                     RType3 = holding[2],
                     lat = addResourceViewModel.lat,
-                    lng = addResourceViewModel.lng
-               
-                   
+                    lng = addResourceViewModel.lng,
+                    Tag1 = addResourceViewModel.Tag1,
+                    Tag2 = addResourceViewModel.Tag2,
+                    Tag3 = addResourceViewModel.Tag3,
+                    Tag4 = addResourceViewModel.Tag4,
+                    Tag5 = addResourceViewModel.Tag5
+
+
                 };
                 context.Resource.Add(newResource);
                 context.SaveChanges();
