@@ -2,26 +2,105 @@
 @{
 
 }
-
     <div class="container m-0 m-auto">
         @if (Model.Count() == 0)
         {
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">No  submissions!</div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">No  submissions!</div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">No  submissions!</div>
+            <p>No  submissions! </p>
+        }
+        else
+        {
+            <style>
+                table {
+                    table-layout: inherit;
+                }
+
+                    table th, table td {
+                        padding:0;
+                        width:150px;
+                        overflow: hidden;
+                    }
+                    table th{
+                        position:sticky;
+                        top:0;
+                        background:#fff;
+                        border-bottom:none;
+
+                    }.table thead th{border-bottom:none;}
+                    table th::after{
+                        content:'';
+                        width:100%;
+                        height:2px;
+                        position:absolute;
+                        bottom:0;
+                        left:0;
+                        background:#ccc;
+                    }
+                    .smal{
+                        width:100px;
+                    }
+            </style>
+
+
+            <div class="container m-0 m-auto">
+                <h2 class="">Approved Resources</h2>
             </div>
+            <table class="table table-hover" >
+
+
+                <thead class="bg-white">
+                    <tr>
+
+                        <th scope="col">Organization</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Address/Zip</th>
+
+                        <th scope="col" class="smal">STE</th>
+
+                        <th scope="col">Website</th>
+                      
+                        <th scope="col"class="smal" >Edit</th>
+                        <th scope="col"class="smal" >Remove</th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var resource in Model)
+                    {
+                        <tr class="table-light">
+                            <td>@Html.ActionLink(resource.OrgName, "ViewSource", "Home", new { id = resource.ResourceID })</td>
+                            <td>@resource.OrgEmail</td>
+                            <td>@resource.OrgNumber</td>
+                            <td>@resource.OrgAddress  @resource.OrgZip </td>
+                            @if (resource.OrgSte != null)
+                            {
+                                <td>@resource.OrgSte</td>
+                            }
+                            else
+                            {
+                                <td> </td>
+                            }
+
+                            <td>@resource.WebsiteUrl</td>
+                           
+                            <td class="smal">@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
+                            <td class="smal"><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        }
+    </div>
+    
+    <div class="container m-0 m-auto">
+        @if (Model.Count() == 0)
+        {
+            <p>No  submissions! </p>
         }
         else
         {
@@ -65,148 +144,46 @@
 
 
             <div class="container m-0 m-auto">
-                <h2>Dynamic Tabs</h2>
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <table class="table table-hover">
-
-
-                            <thead class="bg-white">
-                                <tr>
-
-                                    <th scope="col">Organization</th>
-                                    <th scope="col">Email Address</th>
-                                    <th scope="col">Phone Number</th>
-                                    <th scope="col">Address/Zip</th>
-
-                                    <th scope="col" class="smal">STE</th>
-
-                                    <th scope="col">Website</th>
-
-                                    <th scope="col" class="smal">Edit</th>
-                                    <th scope="col" class="smal">Remove</th>
-
-
-                                </tr>
-                            </thead>
-
-                            <tbody>
-
-                                @foreach (var resource in Model)
-                                {
-                                    <tr class="table-light">
-                                        <td>@Html.ActionLink(resource.OrgName, "ViewSource", "Home", new { id = resource.ResourceID })</td>
-                                        <td>@resource.OrgEmail</td>
-                                        <td>@resource.OrgNumber</td>
-                                        <td>@resource.OrgAddress  @resource.OrgZip </td>
-                                        @if (resource.OrgSte != null)
-                                        {
-                                            <td>@resource.OrgSte</td>
-                                        }
-                                        else
-                                        {
-                                            <td> </td>
-                                        }
-
-                                        <td>@resource.WebsiteUrl</td>
-
-                                        <td class="smal">@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
-                                        <td class="smal"><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
-                                    </tr>
-                                }
-
-                            </tbody>
-
-                        </table>
-                    </div>
-
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <table class="table table-hover">
-
-
-                            <thead class="bg-white">
-                                <tr>
-                                    <th scope="col">Organization</th>
-                                    <th scope="col">Email Address</th>
-                                    <th scope="col">Phone Number</th>
-                                    <th scope="col" class="smal">Edit</th>
-                                    <th scope="col" class="smal">Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                @foreach (var resource in Model)
-                                {
-                                    <tr class="table-light">
-                                        <td>@Html.ActionLink(resource.OrgName, "ViewSource", "Home", new { id = resource.ResourceID })</td>
-                                        <td>@resource.OrgEmail</td>
-                                        <td>@resource.OrgNumber</td>
-                                        <td class="smal">@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
-                                        <td class="smal"><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <table class="table table-hover">
-
-
-                            <thead class="bg-white">
-                                <tr>
-
-                                    <th scope="col">Organization</th>
-                                    <th scope="col">Email Address</th>
-                                    <th scope="col">Phone Number</th>
-
-                                    <th scope="col" class="smal">Edit</th>
-                                    <th scope="col" class="smal">Remove</th>
-
-
-                                </tr>
-                            </thead>
-
-                            <tbody>
-
-                                @foreach (var resource in Model)
-                                {
-                                    <tr class="table-light">
-                                        <td>@Html.ActionLink(resource.OrgName, "ViewSource", "Home", new { id = resource.ResourceID })</td>
-                                        <td>@resource.OrgEmail</td>
-                                        <td>@resource.OrgNumber</td>
-
-
-
-                                        <td class="smal">@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
-                                        <td class="smal"><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
-                                    </tr>
-                                }
-
-                            </tbody>
-
-                        </table>
-                    </div>
-                </div>
+                <h2 class="">Unassociated Resources</h2>
             </div>
+            <table class="table table-hover">
+
+
+                <thead class="bg-white">
+                    <tr>
+
+                        <th scope="col">Organization</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Phone Number</th>
+
+                        <th scope="col" class="smal">Edit</th>
+                        <th scope="col" class="smal">Remove</th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var resource in Model)
+                    {
+                        <tr class="table-light">
+                            <td>@Html.ActionLink(resource.OrgName, "ViewSource", "Home", new { id = resource.ResourceID })</td>
+                            <td>@resource.OrgEmail</td>
+                            <td>@resource.OrgNumber</td>
+                           
+
+
+                            <td class="smal">@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
+                            <td class="smal"><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
         }
     </div>
-
-<div class="container m-0 m-auto">
-
-    
-</div>
 <div class="modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -4,79 +4,75 @@
     ViewData["Title"] = "Remove Admin";
 }
 
-<div class="container m-0 m-auto">
+<h1>Remove Admin</h1>
 
-    <h1>Remove Admin</h1>
-
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-
-    <table class="table">
-        <thead>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminPassWord)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfilePic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SuperUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoPath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Lname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Pnumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AdminPassWord)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProfilePic)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SuperUser)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PhotoPath)
-                </th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminPassWord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfilePic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SuperUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhotoPath)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Delete", "RemoveAdmin", new { UserName = item.UserName })
+                   
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Lname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Pnumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AdminPassWord)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProfilePic)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SuperUser)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PhotoPath)
-                    </td>
-                    <td>
-
-                        @Html.ActionLink("Delete", "RemoveAdmin", new { UserName = item.UserName })
-
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>

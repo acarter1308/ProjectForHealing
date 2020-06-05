@@ -142,7 +142,7 @@ namespace ProjectForHealing.Controllers
         [HttpGet]
         public IActionResult Unapproved() {
 
-            List<Resource> resources = context.Resource.Where(x => (x.IsApproved == false) ).ToList();
+            List<Resource> resources = context.Resource.Where(x => x.IsApproved == false ).ToList();
 
             return View(resources);
         }

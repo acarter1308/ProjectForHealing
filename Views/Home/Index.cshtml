@@ -6,126 +6,133 @@
 
 }
 
-<style>
+    <style>
 
-    #cats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 3fr) );
-        grid-auto-rows: 150px;
-    }
+        #cats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 3fr) );
+            grid-auto-rows: 150px;
+        }
 
-    .container-box {
-        text-align: center;
-    }
+        .container-box {
+            text-align: center;
+        }
 
-    ::-webkit-scrollbar {
-        width: 12px;
-    }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
 
-    ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(245, 183, 24, .4);
-        border-radius: 10px;
-    }
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(245, 183, 24, .4); 
+            border-radius: 10px;
+        }
 
-    ::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        -webkit-box-shadow: inset 0 0 6px rgba(242, 188, 48, .6);
-    }
-</style>
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(242, 188, 48, .6); 
+        }
 
-<div class="jumbotron text-xl-center mt-0 mb-0 text-black-50" style="background-size:cover; border-radius:0px; ">
-    <div class="container-fluid border rounded">
-        <div class="container middlebody">
+    </style>
 
-            <h1 class="display-3"><img src="~/Images/Neighborly-logo.png " alt="Neighborly" style="width:60%;height:25%;"></h1>
-            <p class="lead">
-                Neighborly is an online resource guide created to help residents in Northeast Florida better navigate the resources available in their areas.
-                Neighborly features the locations and information on providers of core services such as food, housing, and legal aid.
-            </p>
-            <p class="lead">
-                Neighborly runs on a crowdsourcing-based platform. This means that you can add service providers to our system yourself. We will then screen,
-                edit, and approve the items you requested to be added to the system. To learn more about Neighborly, click <a href="/Home/About" style="color:#2780E3;">here.</a>
-            </p>
-            <p class="lead">
+    <div class="jumbotron text-xl-center mt-0 mb-0 text-black-50" style="background-size:cover; border-radius:0px; ">
+        <div class="container-fluid border rounded">
+            <div class="container middlebody">
 
-                @*<a class="btn btn-prim btn-lg rounded" href="https://www.weavetales.org/what-we-do" role="button">About Weavetales</a>*@
-                <a class="btn btn-prim btn-lg rounded" href="#mapDiv" role="button">Get Neighborly</a>
+                <h1 class="display-3"><img src="~/Images/Neighborly-logo.png " alt="Neighborly" style="width:60%;height:25%;"></h1>
+                <p class="lead">
+                    Neighborly is an online resource guide created to help residents in Northeast Florida better navigate the resources available in their areas.
+                    Neighborly features the locations and information on providers of core services such as food, housing, and legal aid.
+                </p>
+                <p class="lead">
+                    Neighborly runs on a crowdsourcing-based platform. This means that you can add service providers to our system yourself. We will then screen,
+                    edit, and approve the items you requested to be added to the system. To learn more about Neighborly, click <a href="/Home/About" style="color:#2780E3;">here.</a>
+                </p>
+                <p class="lead">
 
-            </p>
-        </div>
+                    @*<a class="btn btn-prim btn-lg rounded" href="https://www.weavetales.org/what-we-do" role="button">About Weavetales</a>*@
+                    <a class="btn btn-prim btn-lg rounded" href="#mapDiv" role="button">Get Neighborly</a>
 
-        <div class="row">
-            <div class="col">
-                <hr class="my-4">
-                <p class="lead">First time? Watch the short video below to learn how to use Neighborly.</p>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <iframe src="https://player.vimeo.com/video/417363915" width="750" height="450" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
-
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col">
-                <a class="twitter-timeline mt-4" data-width="750" data-height="450" data-theme="dark" href="https://twitter.com/NeighborlyGuide?ref_src=twsrc%5Etfw">Tweets by NeighborlyGuide</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container-fluid middlebody mt-0">
-
-    <div class="row justify-content-center" id="mapDiv">
-        <div class="col col-12 px-4 pt-3 pb-lg-5 border border-3 border-warning-outer pt-3" style="background-color: #373a3c;">
-            <div class="pb-3 row">
-                <div class="col-2 text-center border border-top-0 border-3 border-warning-outer">
-                    <h3 class="text-white">Resource Type</h3>
-                </div>
-                <div class="col"></div>
-                <div class="col-3 d-flex justify-content-end">
-                    <div class="form-inline my-lg-0 pr-0 d-inline-flex ">
-                        <input class="form-control form-inline mr-sm-2" type="text" placeholder="Search an address!" id="mapSearch" name="search">
-
-                    </div>
-                    <div class="form-inline my-lg-0 pr-0 d-inline-flex ">
-                        <button class="btn btn-secondary border rounded my-2 my-sm-0 align-content-start" type="button" onclick="return setMap();">Search</button>
-                    </div>
-                </div>
-
+                </p>
             </div>
 
             <div class="row">
-
-                <div class="col-2">
-                    <div class="container-fluid text-white" id="categories" style="height:850px; line-height:3.2em; overflow:auto;">
-                        <div class="wrapper mx-1" id="cats"></div>
-                    </div>
-                </div>
-
-                <div class="col-10">
-                    <div class="container-fluid form-control mb-3" id='map' style="height: 850px;"></div>
+                <div class="col">
+                    <hr class="my-4">
+                    <p class="lead">First time? Watch the short video below to learn how to use Neighborly.</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-2 border-bottom border-warning-outer"></div>
+
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <iframe src="https://player.vimeo.com/video/417363915" width="750" height="450" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>               
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col">
+                    <a class="twitter-timeline mt-4" data-width="750" data-height="450" data-theme="dark" href="https://twitter.com/NeighborlyGuide?ref_src=twsrc%5Etfw">Tweets by NeighborlyGuide</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+
+    <div class="container-fluid middlebody mt-0">
+
+        <div class="row justify-content-center" id="mapDiv">
+            <div class="col col-12 px-4 pt-3 pb-lg-5 border border-3 border-warning-outer pt-3" style="background-color: #373a3c;">
+                <div class="pb-3 row">
+                    <div class="col-2 text-center border border-top-0 border-3 border-warning-outer">
+                        <h3 class="text-white">Filter Category</h3>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col-3 d-flex justify-content-end">
+                        <div class="form-inline my-lg-0 pr-0 d-inline-flex ">
+                            <input class="form-control form-inline mr-sm-2" type="text" placeholder="Search an address!" id="mapSearch" name="search">
+
+                        </div>
+                        <div class="form-inline my-lg-0 pr-0 d-inline-flex ">
+                            <button class="btn btn-secondary border rounded my-2 my-sm-0 align-content-start" type="button" onclick="return setMap();">Search</button>
+                        </div>
+                    </div>
+
+                </div>
+
+<<<<<<< HEAD
+                <div class="container" id="categories" style="padding-top:15px; background-color:#b9d3c2;">
+                    
+                    <div class="wrapper" id="cats">
+                       
+=======
+                <div class="row">
+
+                    <div class="col-2">
+                        <div class="container-fluid text-white" id="categories" style="height:750px; line-height:3.2em; overflow:auto;">
+                            <div class="wrapper mx-1" id="cats"></div>
+                        </div>
+>>>>>>> 74dddeb5d46a04ac5ab240fc743317a97345a51b
+                    </div>
+
+                    <div class="col-10">
+                        <div class="container-fluid form-control mb-3" id='map' style="height: 750px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 border-bottom border-warning-outer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+       
 
 
 
-
-
-
-@section Scripts    {
-    <script type="text/javascript">
-            var selectedMarkers = [];
+        @section Scripts    {
+            <script type="text/javascript">
             var markers = [];
             var map, infoWindow;
 
@@ -632,7 +639,7 @@
 
                     var links = "<a href=\"/Home/ViewSource/" + Number(ID) + "\"target='_blank'>" + feature.webLink; + "</a>";
                     var infoWindow = new google.maps.InfoWindow({
-                        content: 'Name: ' + feature.name.toUpperCase() + ' <br> Address: ' + feature.address.toUpperCase() + ' <br><p>Link:  '+ links + '</p>'
+                        content: 'Name: ' + "<a href=\"/Home/ViewSource/" + Number(ID) + "\"target='_blank'>" + feature.name.toUpperCase() + "</a>" + ' <br> Address: ' + feature.address.toUpperCase() + ' <br><p>Link:  '+ links + '</p>'
                     });
 
                     var icon = {
@@ -725,80 +732,50 @@
 
                     cdiv.innerHTML = '<a class="btn buttonTypes justify-content-center" id="' + key + '"><i class="p-1 ' + icon + ' fa-5x" style="color:' + type.color + ';"></i><br><small>' + name + '</small></a>';
                     cdiv.className = "container-box border border-2 border-warning my-auto mr-3 pl-2";
-                    cdiv.id = key + "1"
 
                     categories.appendChild(cdiv);
                 }
-                    
+
 
                     var buttons = document.querySelectorAll(".buttonTypes");
+                    var selectAll = document.querySelector(".selectAll");
+                    selectAll.addEventListener("click", function () {
 
+                             for (var i = 0; i < markers.length; i++) {
+                                markers[i].marker.setMap(map);
+                         
+                        }
+
+                    });
                     buttons.forEach(item => {
-                        item.addEventListener("click", function () {
+                            item.addEventListener("click", function () {
 
-                            var clickedType = $(this).attr('id').toLowerCase();
+                                    var clickedType = $(this).attr('id').toLowerCase();
+                                        console.log(clickedType);
 
-                            console.log(clickedType);
-
-                            for (var i = 0; i < markers.length; i++) {
-
+                        for (var i = 0; i < markers.length; i++) {
                                 markers[i].marker.setMap(null);
-
-                                if (markers[i].rt1 == clickedType || markers[i].rt2 == clickedType || markers[i].rt3 == clickedType) {
-
-                                    if (selectedMarkers.length < 1) {
-                                        document.getElementById(clickedType + "1").style.color = "rgba(255, 204, 0, 1)";
-                                        document.getElementById(clickedType + "1").style.borderColor = "rgba(255, 204, 0, .6)";
-
-                                        console.log("pushed empty");
-                                        selectedMarkers.push(clickedType);
-                                    }
-
-                                    else {
-
-                                        var p = 0;
-
-                                        for (var e = 0; e < selectedMarkers.length; e++) {
-                                            if (selectedMarkers[e] == clickedType) {
-                                                p = 1;
-                                                document.getElementById(clickedType + "1").style.color = "#ffffff";
-                                                document.getElementById(clickedType + "1").style.borderColor = "rgba(242, 188, 48, .5)"
-                                                selectedMarkers.splice(e);
-                                                console.log("spliced");
-                                            }
-                                            
-                                        }
-
-                                        if (p == 0) {
-                                            document.getElementById(clickedType + "1").style.color = "rgba(255, 204, 0, 1)";
-                                            document.getElementById(clickedType + "1").style.borderColor = "rgba(255, 204, 0, .6)";
-
-                                            console.log("pushed");
-                                            selectedMarkers.push(clickedType)
-                                        }
-                                    }    
-                                }
+                            if (markers[i].rt1 == clickedType || markers[i].rt2 == clickedType || markers[i].rt3 == clickedType) {
+                                markers[i].marker.icon.fillColor = icons[clickedType].color;
+                                markers[i].marker.label.text = icons[clickedType].text;
+                                markers[i].marker.setMap(map);
                             }
+                        }
 
-                            for (var e = 0; e < selectedMarkers.length; e++) {
-                                console.log("attempting add");
-                                for (var i = 0; i < markers.length; i++) {
-                                    if (selectedMarkers[e] == markers[i].rt1) {
-                                        console.log("added");
-                                        markers[i].marker.setMap(map);
-                                    }
-                                }
-                            }
-
-
-                        });
+                    });
 
 
                     });
+
+
+                        //**********************************
+
                 });
             }
-    </script>
+            </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
 
-}
+        }
+
+    </div>
