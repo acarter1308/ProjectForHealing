@@ -28,7 +28,7 @@ namespace ProjectForHealing.ViewModels
         [Display(Name = "Password")]
         public string AdminPassWord { get; set; }
         public byte[] ProfilePic { get; set; }
-     
+        [Required]
         public bool SuperUser { get; set; }
         
         public byte[] ProfilePicUrl { get; set; }

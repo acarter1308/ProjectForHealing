@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <label asp-for="UploadedFile" class="control-label">Would you like to submit an informational document? </label>
                         <div class="custom-file">
-                            <input asp-for="UploadedFile" class="form-control custom-file-input" type="file" name="UploadedFile" />
+                            <input asp-for="UploadedFile" class="form-control custom-file-input">
                             <label class="custom-file-label border-primary-y">(pdf - flyer - brochure)</label>
                         </div>
                     </div>
@@ -105,6 +105,7 @@
                 </div>
             </div>
             <style>
+
                 input[type=checkbox]:checked {
                     background-color: blue;
                 }
@@ -223,6 +224,7 @@
                 </div>
             </div>
             <style>
+
                 input[type=checkbox]:checked {
                     background-color: blue;
                 }
@@ -230,31 +232,81 @@
             <div class="row mt-1">
                 <div class="col">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="1" name="ResourceTypes" value="adult" onclick="return ValidateSelection();">
-                        <label class="custom-control-label" for="1"> Puer puellam amat.	 </label>
+                        <input asp-for="Tag1" type="checkbox" class="custom-control-input" id="Tag1" name="ResourceTypes" value="">
+                        <label asp-for="Tag1" class="custom-control-label">Do you serve refugees within the first 5 years of resettlement?</label>
                     </div>
 
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="2" name="ResourceTypes" value="affordable health Care" onclick="return ValidateSelection();">
-                        <label class="custom-control-label" for="2"> Puer puellam amat.	 </label>
+                        <input asp-for="Tag2" type="checkbox" class="custom-control-input" id="Tag2" name="ResourceTypes" value="">
+                        <label asp-for="Tag2" class="custom-control-label"> Do you serve LGBTQ+ populations? </label>
                     </div>
 
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="3" name="ResourceTypes" value="aid" onclick="return ValidateSelection();">
-                        <label class="custom-control-label" for="3"> Puer puellam amat.	 </label>
+                        <input asp-for="Tag3" type="checkbox" class="custom-control-input" id="Tag3" name="ResourceTypes" value="">
+                        <label asp-for="Tag3" class="custom-control-label"> Do you serve people with disabilities?	 </label>
                     </div>
 
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="4" name="ResourceTypes" value="hotline" onclick="return ValidateSelection();">
-                        <label class="custom-control-label" for="4"> Puer puellam amat.	 </label>
+                        <input asp-for="Tag4" type="checkbox" class="custom-control-input" id="Tag4" name="ResourceTypes" value="">
+                        <label asp-for="Tag4" class="custom-control-label"> Do you serve undocumented immigrants?	 </label>
                     </div>
 
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="5" name="ResourceTypes" value="food" onclick="return ValidateSelection();">
-                        <label class="custom-control-label" for="5"> Puer puellam amat.	 </label>
+                        <input asp-for="Tag5" type="checkbox" class="custom-control-input" id="Tag5" name="ResourceTypes" value="">
+                        <label asp-for="Tag5" class="custom-control-label"> Do you provide service in languages other than English?	 </label>
                     </div>
                 </div>
             </div>
+
+            @*<div class="form-group">
+
+                @Html.CheckBoxFor(m => m.Tag1,
+                         new
+                         {
+                           @class = "custom-control-input",
+                           @id = "Tag1",
+                         })
+            <label asp-for="Tag1" class="control-label">Do you serve refugees within the first 5 years of resettlement?</label>
+
+            @Html.RadioButtonFor(m => m.Tag1, true) Yes
+
+            @Html.RadioButtonFor(m => m.Tag1, false) No
+            <span asp-validation-for="Tag1" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tag2" class="control-label">Do you serve LGBTQ+ populations?</label>
+
+            @Html.RadioButtonFor(m => m.Tag2, true) Yes
+
+            @Html.RadioButtonFor(m => m.Tag2, false) No
+            <span asp-validation-for="Tag2" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tag3" class="control-label">Do you serve people with disabilities? </label>
+
+            @Html.RadioButtonFor(m => m.Tag3, true) Yes
+
+            @Html.RadioButtonFor(m => m.Tag3, false) No
+            <span asp-validation-for="Tag3" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tag4" class="control-label">Do you serve undocumented immigrants? </label>
+
+            @Html.RadioButtonFor(m => m.Tag4, true) Yes
+
+            @Html.RadioButtonFor(m => m.Tag4, false) No
+            <span asp-validation-for="Tag4" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tag5" class="control-label">Do you provide service in languages other than English?</label>
+
+            @Html.RadioButtonFor(m => m.Tag5, true) Yes
+
+            @Html.RadioButtonFor(m => m.Tag5, false) No
+            <span asp-validation-for="Tag5" class="text-danger"></span>
+        </div>*@
+
+
             <div class="row mt-4">
                 <div class="col-9 border-top border-secondary">
                     <p style="font-size: small;">
@@ -301,9 +353,20 @@
                         //changing text when file name changes
                         $('.custom-file-input').on("change", function () {
                             //  var fileName = $(this).val.().split("\\").pop();
-                            var fileName = $('input[type=file]').val().split('\\').pop();
-                            $(this).next('.custom-file-label').html(fileName);
+                            var ext = $('input[type=file]').val().split('.').pop().toLowerCase();
+                            if ($.inArray(ext, ['pdf', 'docx', 'doc', '.txt']) == -1) {
+                                alert('File must be in pdf, doc or docx format!');
+                                $('.custom-file-input').val(null);
+                            } else {
+                                var fileName = $('input[type=file]').val().split('\\').pop();
+                                //  var fileName = $(this).val.().split("\\").pop();
+                                $(this).next('.custom-file-label').html(fileName);
+                            }
+
                         })
+
+
+
                     });
 
                     function initMap() {

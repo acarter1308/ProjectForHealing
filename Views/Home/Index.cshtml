@@ -84,7 +84,7 @@
         <div class="col col-12 px-4 pt-3 pb-lg-5 border border-3 border-warning-outer pt-3" style="background-color: #373a3c;">
             <div class="pb-3 row">
                 <div class="col-2 text-center border border-top-0 border-3 border-warning-outer">
-                    <h3 class="text-white">Filter Category</h3>
+                    <h3 class="text-white">Resource Type</h3>
                 </div>
                 <div class="col"></div>
                 <div class="col-3 d-flex justify-content-end">
@@ -102,13 +102,13 @@
             <div class="row">
 
                 <div class="col-2">
-                    <div class="container-fluid text-white" id="categories" style="height:750px; line-height:3.2em; overflow:auto;">
+                    <div class="container-fluid text-white" id="categories" style="height:850px; line-height:3.2em; overflow:auto;">
                         <div class="wrapper mx-1" id="cats"></div>
                     </div>
                 </div>
 
                 <div class="col-10">
-                    <div class="container-fluid form-control mb-3" id='map' style="height: 750px;"></div>
+                    <div class="container-fluid form-control mb-3" id='map' style="height: 850px;"></div>
                 </div>
             </div>
             <div class="row">
@@ -725,10 +725,11 @@
 
                     cdiv.innerHTML = '<a class="btn buttonTypes justify-content-center" id="' + key + '"><i class="p-1 ' + icon + ' fa-5x" style="color:' + type.color + ';"></i><br><small>' + name + '</small></a>';
                     cdiv.className = "container-box border border-2 border-warning my-auto mr-3 pl-2";
+                    cdiv.id = key + "1"
 
                     categories.appendChild(cdiv);
                 }
-
+                    
 
                     var buttons = document.querySelectorAll(".buttonTypes");
 
@@ -746,32 +747,45 @@
                                 if (markers[i].rt1 == clickedType || markers[i].rt2 == clickedType || markers[i].rt3 == clickedType) {
 
                                     if (selectedMarkers.length < 1) {
-                                        selectedMarkers.push(markers[i]);
+                                        document.getElementById(clickedType + "1").style.color = "rgba(255, 204, 0, 1)";
+                                        document.getElementById(clickedType + "1").style.borderColor = "rgba(255, 204, 0, .6)";
+
+                                        console.log("pushed empty");
+                                        selectedMarkers.push(clickedType);
                                     }
 
                                     else {
-                                        for (var e = 0; e < selectedMarkers.length; e++) {
 
-                                            console.log(selectedMarkers.rt1);
-                                            
-                                            if (selectedMarkers[e].rt1 == clickedType) {
+                                        var p = 0;
+
+                                        for (var e = 0; e < selectedMarkers.length; e++) {
+                                            if (selectedMarkers[e] == clickedType) {
+                                                p = 1;
+                                                document.getElementById(clickedType + "1").style.color = "#ffffff";
+                                                document.getElementById(clickedType + "1").style.borderColor = "rgba(242, 188, 48, .5)"
                                                 selectedMarkers.splice(e);
+                                                console.log("spliced");
                                             }
-                                            else {
-                                            selectedMarkers.push(markers[i]);
-                                            }
-                                        }   
-                                    }
-                                    
+                                            
+                                        }
+
+                                        if (p == 0) {
+                                            document.getElementById(clickedType + "1").style.color = "rgba(255, 204, 0, 1)";
+                                            document.getElementById(clickedType + "1").style.borderColor = "rgba(255, 204, 0, .6)";
+
+                                            console.log("pushed");
+                                            selectedMarkers.push(clickedType)
+                                        }
+                                    }    
                                 }
                             }
 
-                            for (marker in selectedMarkers) {
+                            for (var e = 0; e < selectedMarkers.length; e++) {
+                                console.log("attempting add");
                                 for (var i = 0; i < markers.length; i++) {
-                                    if (marker.rt1 == clickedType) {
-                                        marker[i].marker.icon.fillColor = icons[clickedType].color;
-                                        marker[i].marker.label.text = icons[clickedType].text;
-                                        marker[i].marker.setMap(map);
+                                    if (selectedMarkers[e] == markers[i].rt1) {
+                                        console.log("added");
+                                        markers[i].marker.setMap(map);
                                     }
                                 }
                             }
@@ -781,12 +795,6 @@
 
 
                     });
-
-
-                        // markers[i].marker.icon.fillColor = icons[clickedType].color;
-                        // markers[i].marker.label.text = icons[clickedType].text;
-                        // markers[i].marker.setMap(map);
-
                 });
             }
     </script>
@@ -794,5 +802,3 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRMZHAXLXAuowcxyVA_fHwxRDqaqjX8k&callback=initMap"></script>
 
 }
-
-    </div>

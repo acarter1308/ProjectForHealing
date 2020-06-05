@@ -24,6 +24,11 @@ namespace ProjectForHealing.Models
         public string PhotoPath { get; set; }
         public string lat { get; set; }
         public string lng { get; set; }
+        public bool Tag1 { get; set; }
+        public bool Tag2 { get; set; }
+        public bool Tag3 { get; set; }
+        public bool Tag4 { get; set; }
+        public bool Tag5 { get; set; }
         public Resource()
         {
            

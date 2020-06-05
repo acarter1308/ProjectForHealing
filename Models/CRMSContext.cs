@@ -30,6 +30,6 @@ namespace ProjectForHealing.Models
             }*/
         }
 
-        public DbSet<ProjectForHealing.Models.Education> Education { get; set; }
+        public DbSet<ProjectForHealing.Models.UnassocResource> UnassocResource { get; set; }
     }
 }

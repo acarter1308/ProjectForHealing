@@ -12,13 +12,65 @@
         <p class="lead">@Model.OrgEmail</p>
         <p class="lead">
             <a href="//@Model.WebsiteUrl" target="_blank" style="color:#229dc1;">@Model.WebsiteUrl</a>
-           
+
         </p>
         @if (Model.PhotoPath != null)
         {
-            @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.PhotoPath },new { @class = "btn btn-prim btn-lg" })
+            @Html.ActionLink("View Files", "OpenFile", new { path = "ResourceFiles/" + Model.PhotoPath }, new { @target = "_blank" })
 
-         
+
+        }
+        @if (Model.Tag1 != null)
+        {
+
+            <h1>Do you serve refugees within the first 5 years of resettlement?</h1>
+
+            @if (Model.Tag1 == true)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
+
+
+            <h1>Do you serve LGBTQ+ populations?</h1>
+            @if (Model.Tag2 == true)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
+            <h1>Do you serve people with disabilities?</h1>
+            @if (Model.Tag3 == true)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
+            <h1>Do you serve undocumented immigrants?</h1>
+            @if (Model.Tag4 == true)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
+            <h1>Do you provide service in languages other than English?</h1>
+            @if (Model.Tag5 == true)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
         }
     </div>
 </div>
