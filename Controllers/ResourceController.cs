@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,7 @@ namespace ProjectForHealing.Controllers
 
         public IActionResult Submitted()
         {
+            sendEmail();
             return View();
         }
 
@@ -74,6 +76,7 @@ namespace ProjectForHealing.Controllers
                     OrgDescription = addResourceViewModel.OrgDescription,
                     WebsiteUrl = addResourceViewModel.WebsiteUrl,
                     PhotoPath = uniqueFileName,
+                    IsApproved = addResourceViewModel.IsApproved,
                     RType1 = holding[0],
 
                     RType2 = holding[1],
@@ -100,7 +103,24 @@ namespace ProjectForHealing.Controllers
             
         }
 
-     
 
+        public void sendEmail()
+        {
+
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("abc031998@gmail.com");
+            mail.To.Add("mrmain00@protonmail.com");
+            mail.Subject = "Submission Test Email";
+            mail.Body = "This is a test email from Neighborly.org ";
+
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("abc031998@gmail.com", "Xrtfvptbpzmq1308dizz1");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+
+        }
     }
 }

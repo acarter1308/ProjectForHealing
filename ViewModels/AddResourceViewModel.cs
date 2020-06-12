@@ -51,6 +51,9 @@ namespace ProjectForHealing.ViewModels
         [Required]
         public string lng { get; set; }
         [Required]
+        public bool IsApproved { get; set; }
+        [Required]
+
         public bool Tag1 { get; set; }
         [Required]
         public bool Tag2 { get; set; }

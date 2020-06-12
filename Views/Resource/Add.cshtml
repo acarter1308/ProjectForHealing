@@ -258,7 +258,6 @@
                 </div>
             </div>
 
-            <<<<<<< HEAD
             @*<div class="form-group">
 
                         @Html.CheckBoxFor(m => m.Tag1,
@@ -305,8 +304,8 @@
 
                     @Html.RadioButtonFor(m => m.Tag5, false) No
                     <span asp-validation-for="Tag5" class="text-danger"></span>
-                </div>*@
-            =======
+                </div>
+
             <div class="form-group">
                 <label asp-for="Tag1" class="control-label">Do you serve refugees within the first 5 years of resettlement?</label>
 
@@ -346,8 +345,7 @@
 
                 @Html.RadioButtonFor(m => m.Tag5, false) No
                 <span asp-validation-for="Tag5" class="text-danger"></span>
-            </div>
-            >>>>>>> 71b6420c005daab4efeb0169e4984a5b6a22be9e
+            </div>*@
 
 
             <div class="row mt-4">
@@ -387,6 +385,7 @@
             <div class="row" id="hiddens">
                 <input asp-for="lat" type="hidden" class="form-control" readonly />
                 <input asp-for="lng" type="hidden" class="form-control" readonly />
+                <input asp-for="IsApproved" type="hidden" value="false" class="form-control" readonly />
             </div>
 
             @section Scripts{

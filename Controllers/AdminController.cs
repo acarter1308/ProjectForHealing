@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -134,17 +136,23 @@ namespace ProjectForHealing.Controllers
         public IActionResult ResourceManage()
         {
 
-            List<Resource> resources = context.Resource.Where(x => x.IsApproved == true).ToList();
+            //dynamic myModel = new ExpandoObject();
+            //myModel.Resources = context.Resource.ToList();
+            //myModel.UnassocResources = context.UnassocResource.ToList();
+            var model = new ManageViewModel();
+            model.resources = context.Resource.ToList();
+            model.unassocResources = context.UnassocResource.ToList();
 
-            return View(resources);
+            return View(model);
         }
 
         [HttpGet]
         public IActionResult Unapproved() {
 
-            List<Resource> resources = context.Resource.Where(x => x.IsApproved == false ).ToList();
-
+            List<Resource> resources = context.Resource.Where(x => x.IsApproved == false).ToList();
             return View(resources);
+            
+            
         }
 
 
@@ -199,11 +207,12 @@ namespace ProjectForHealing.Controllers
         public IActionResult Approve(int id )
         {
           
-                Resource theResource = context.Resource.SingleOrDefault(x => x.ResourceID == id);
-                theResource.IsApproved = true;
+            Resource theResource = context.Resource.SingleOrDefault(x => x.ResourceID == id);
+            theResource.IsApproved = true;
+            sendEmail();
             
             context.SaveChanges();
-            return Redirect("/Admin/Unapproved");
+            return Redirect("/Admin/ResourceManage");
         }
 /*
            [HttpGet]
@@ -282,6 +291,25 @@ namespace ProjectForHealing.Controllers
             context.SaveChanges();
             return Redirect("/Home/UnassocResources");
             
+        }
+
+        public void sendEmail()
+        {
+
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("abc031998@gmail.com");
+            mail.To.Add("mrmain00@protonmail.com");
+            mail.Subject = "Approval Test Email";
+            mail.Body = "This is a test email from Neighborly.org to verify that your email has been submitted ";
+
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("abc031998@gmail.com", "Xrtfvptbpzmq1308dizz1");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+
         }
 
 
