@@ -501,7 +501,7 @@
                         text: '\uf24e',
                         color: 'silver'
                     },
-                    tax: {
+                    taxaccounting: {
                         name: 'Tax & Accounting',
                         icon: 'fas fa-calculator',
                         text: '\uf1ec',
@@ -513,7 +513,7 @@
                         text: '\uf368',
                         color: 'blue'
                     },
-                    adult: {
+                    adulteducation: {
                         name: 'Adult Education',
                         icon: 'fas fa-book-reader',
                         text: '\uf5da',
@@ -531,7 +531,7 @@
                         text: '\uf508',
                         color: 'darkgreen'
                     },
-                    medical: {
+                    healthcare: {
                         name: 'Affordable Health Care',
                         icon: 'fas fa-clinic-medical',
                         text: '\uf7f2',
@@ -543,13 +543,13 @@
                         text: '\uf5c9',
                         color: 'MediumSpringGreen'
                     },
-                    mental: {
+                    mentalhealth: {
                         name: 'Mental Health & Substance Use',
                         icon: 'fas fa-hospital-user',
                         text: '\uf80d',
                         color: 'SkyBlue'
                     },
-                    business: {
+                    businesscounceling: {
                         name: 'New Business Counseling',
                         icon: 'fas fa-briefcase',
                         text: '\uf0b1',
@@ -573,7 +573,7 @@
                         text: '\uf683',
                         color: 'indigo'
                     },
-                    ethnic: {
+                    ethnicorganization: {
                         name: 'Ethnic Organization',
                         icon: 'fas fa-users',
                         text: '\uf0c0',
@@ -591,25 +591,25 @@
                         text: '\uf2e7',
                         color: 'salmon'
                     },
-                    disasters: {
+                    naturaldisasters: {
                         name: 'Natural Disasters',
                         icon: 'fas fa-house-damage',
                         text: '\uf6f1',
                         color: 'rosybrown'
                     },
-                    safety: {
+                    publicsafety: {
                         name: 'Public Safety',
                         icon: 'fas fa-hard-hat',
                         text: '\uf807',
                         color: 'gold'
                     },
-                    aid: {
+                    financialaid: {
                         name: 'Financial & Material Aid',
                         icon: 'fas fa-hands-helping',
                         text: '\uf4c4',
                         color: 'yellowgreen'
                     },
-                    hotline: {
+                    crisishotline: {
                         name: 'Crisis Hotline',
                         icon: 'fas fa-phone',
                         text: '\uf095',
@@ -645,13 +645,14 @@
                         labelOrigin: new google.maps.Point(205, 190) //position of the label, careful! this is affected by scale
                     }
 
+                    var iText = feat.type.split(" ").join();
                     var marker = new google.maps.Marker({
                         position: feature.position,
                         map: map,
                         icon: icon,
                         label: {
                             fontFamily: "'Fontawesome'",
-                            text: icons[feature.type].text, //icon code
+                            text: iText, //icon code
                             fontWeight: '900', //careful! some icons in FA5 only exist for specific font weights
                             color: '#FFFFFF', //color of the text inside marker
                         },

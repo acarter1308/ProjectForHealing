@@ -125,6 +125,29 @@ namespace ProjectForHealing.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Form["ResourceTypes"].ToArray().Length == 1)
+                {
+                    source.RType1 = Request.Form["ResourceTypes"][0];
+
+                }
+
+                else if (Request.Form["ResourceTypes"].ToArray().Length == 2)
+                {
+                    source.RType1 = Request.Form["ResourceTypes"][0];
+                    source.RType2 = Request.Form["ResourceTypes"][1];
+                }
+                else if (Request.Form["ResourceTypes"].ToArray().Length == 3)
+                {
+                    source.RType1 = Request.Form["ResourceTypes"][0];
+                    source.RType2 = Request.Form["ResourceTypes"][1];
+                    source.RType3 = Request.Form["ResourceTypes"][2];
+                }
+                else
+                {
+
+                }
+                    
+
                 context.Entry(source).State = EntityState.Modified;
                 context.SaveChanges();
                 ViewBag.Title = "Changes Saved";
@@ -136,9 +159,7 @@ namespace ProjectForHealing.Controllers
         public IActionResult ResourceManage()
         {
 
-            //dynamic myModel = new ExpandoObject();
-            //myModel.Resources = context.Resource.ToList();
-            //myModel.UnassocResources = context.UnassocResource.ToList();
+         
             var model = new ManageViewModel();
             model.resources = context.Resource.ToList();
             model.unassocResources = context.UnassocResource.ToList();

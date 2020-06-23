@@ -43,7 +43,7 @@ namespace ProjectForHealing.ViewModels
         public string OrgCity { get; set; }
         [Required]
         public string[] ResourceTypes { get; set; }
-        //  public ResourceType RType1 { get; set; }
+        // public ResourceType RType1 { get; set; }
         // public ResourceType RType2 { get; set; }
         // public ResourceType RType3 { get; set; }
         [Required]
