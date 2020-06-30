@@ -21,8 +21,8 @@ namespace ProjectForHealing.Controllers
     {
 
         private CRMSContext context;
-        private readonly IHostingEnvironment hostingEnvironment;
-        public AdminController(CRMSContext dbContext, IHostingEnvironment hostingEnvironment)
+        private readonly IWebHostEnvironment hostingEnvironment;
+        public AdminController(CRMSContext dbContext, IWebHostEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
             context = dbContext;
@@ -54,10 +54,7 @@ namespace ProjectForHealing.Controllers
            ViewBag.email = HttpContext.Session.GetString("email");
             ViewBag.number = HttpContext.Session.GetString("pnumber");
             ViewBag.role = HttpContext.Session.GetString("role");
-            if (HttpContext.Session.GetString("pic") != "null")
-            {
-                ViewBag.pic = HttpContext.Session.GetString("pic");
-            }
+          
            
             return View();
         }
@@ -69,21 +66,13 @@ namespace ProjectForHealing.Controllers
 
         [HttpPost]
         [Route("/Admin/AddAdmin")]
-        public IActionResult AddAdmin(AdminViewModel model)
+        public IActionResult AddAccount(AdminViewModel model)
         {
         
             if (ModelState.IsValid)
             {
-                string uniqueFileName = null;
-                //if the actual file is not null
-                if (model.UploadedFile != null)
-                {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "ProfilePictures");
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.UploadedFile.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    model.UploadedFile.CopyTo(new FileStream(filePath, FileMode.Create));
-              
-                }
+               //if the actual file is not null
+                
                 Admin newAdmin = new Admin
                 {
                     //  ResourceID = addEditorViewModel.ResourceID,
@@ -93,9 +82,7 @@ namespace ProjectForHealing.Controllers
                     Email = model.Email,
                     Pnumber = model.Pnumber,
                     AdminPassWord = model.AdminPassWord,
-                    ProfilePic = model.ProfilePic,
-                    SuperUser = model.SuperUser,
-                    PhotoPath = uniqueFileName
+                    SuperUser = model.isAdmin,
                 };
                 context.Admin.Add(newAdmin);
                 context.SaveChanges();
@@ -180,7 +167,7 @@ namespace ProjectForHealing.Controllers
        
         public IActionResult AdminList()
         {
-            var admins = context.Admin.Where(x => x.SuperUser == false);
+            var admins = context.Admin;
         
             return View(admins);
         }
@@ -193,14 +180,7 @@ namespace ProjectForHealing.Controllers
 
             Admin admin = context.Admin.SingleOrDefault(x => x.UserName == UserName);
             context.Admin.Remove(admin);
-            string files = Path.Combine(hostingEnvironment.WebRootPath, "ProfilePictures/");
 
-            FileInfo file = new FileInfo(files + admin.PhotoPath);
-
-            if (file.Exists)
-            {
-                file.Delete();
-            }
             context.SaveChanges();
             return Redirect("/Admin");
         }

@@ -19,8 +19,8 @@ namespace ProjectForHealing.Controllers
     public class HomeController : Controller
     {
         private CRMSContext context;
-        private readonly IHostingEnvironment hostingEnvironment;
-        public HomeController(CRMSContext dbContext, IHostingEnvironment hostingEnvironment)
+        private readonly IWebHostEnvironment hostingEnvironment;
+        public HomeController(CRMSContext dbContext, IWebHostEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
             context = dbContext;
@@ -101,15 +101,6 @@ namespace ProjectForHealing.Controllers
                 else
                 {
                     HttpContext.Session.SetString("role", "Staff");
-                }
-
-                if(admin.PhotoPath != null)
-                {
-                    HttpContext.Session.SetString("pic", admin.PhotoPath);
-                }
-                else
-                {
-                    HttpContext.Session.SetString("pic", "null");
                 }
 
                 return Redirect("/Admin/Index");

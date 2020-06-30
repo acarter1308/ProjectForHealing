@@ -16,66 +16,57 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Fname)
+                    Username
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Lname)
+                    First Name
+                </th>
+                <th>
+                    Last Name
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Email)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Pnumber)
+                    Phone #
                 </th>
+
                 <th>
-                    @Html.DisplayNameFor(model => model.AdminPassWord)
+                    Admin
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProfilePic)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SuperUser)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PhotoPath)
-                </th>
+
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Lname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Pnumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AdminPassWord)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProfilePic)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SuperUser)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PhotoPath)
-                    </td>
-                    <td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SuperUser)
+                </td>
 
-                        @Html.ActionLink("Delete", "RemoveAdmin", new { UserName = item.UserName })
+                <td>
 
-                    </td>
-                </tr>
+                    @Html.ActionLink("Delete", "RemoveAdmin", new { UserName = item.UserName })
+
+                </td>
+            </tr>
             }
         </tbody>
     </table>

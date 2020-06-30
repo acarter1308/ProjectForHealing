@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-    <div class="container ">
+    <div class="container mt-3">
 
 
 
@@ -14,7 +14,6 @@
                 <h5 class="card-title"> Email: @ViewBag.email </h5>
                 <h6 class="card-subtitle text-muted">Phone Number: @ViewBag.number</h6>
             </div>
-            <img style="height: 25%; width: 25%; display: block;" src="~/ProfilePictures/@ViewBag.pic" alt="Profile Picture">
             <div class="card-body">
                 <p class="card-text">Role: @ViewBag.role</p>
             </div>
@@ -28,12 +27,11 @@
                     <a href="/Admin/AdminList" class="list-group-item list-group-item-action active">Remove Admin</a>
 
                 }
-                <a href="/Home/Logout" class="list-group-item list-group-item-action active">Logout</a>
 
             </div>
           
             <div class="card-footer text-muted">
-                2 days ago
+                <a href="/Home/Logout" style="color:#229dc1;">Logout</a>
             </div>
         </div>
 

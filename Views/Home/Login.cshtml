@@ -53,9 +53,15 @@
                     <div class="form-group">
                         @Html.PasswordFor(i => i.AdminPassWord, new { placeholder = "Password", @class = "form-control" })
                     </div>
-                    <div class="form-group clearfix">
-                        <a href="#" class="pull-left">Forgot Password?</a>
-                        <button type="submit" class="btn btn-primary pull-right">Log in</button>
+                    <div class="form-group clearfix row justify-content-center">
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary">Log in</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <a href="#">Forgot Password?</a>
+                        </div>                    
                     </div>
                     @{Html.EndForm();}
                 </div>

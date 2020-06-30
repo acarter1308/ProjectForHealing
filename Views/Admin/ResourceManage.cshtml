@@ -1,10 +1,7 @@
-﻿@*@model IEnumerable<ProjectForHealing.Models.Resource>*@
-
+﻿
 @model ProjectForHealing.ViewModels.ManageViewModel
 
-@{
 
-}
 
 <div class="container-fluid m-0 m-auto">
     @if (Model.resources.Count() == 0)
@@ -109,6 +106,7 @@
                             {
                                 if (resource.IsApproved == true)
                                 {
+                                    
                             <tr class="table-light">
                                 <td>@Html.ActionLink(resource.OrgName, "ViewSource", "Home", new { id = resource.ResourceID })</td>
                                 <td>@resource.OrgEmail</td>
@@ -123,7 +121,11 @@
                                     <td> </td>
                                 }
 
-                                <td>@resource.RType1 @resource.RType2 @resource.RType3</td>
+                                <td style="display:inline-block">
+                                @resource.RType1 
+                                @if (resource.RType2 != null) { <p> @resource.RType2</p> } 
+                                @if (resource.RType3 != null) { <p> @resource.RType3</p> }
+                                </td>
                                 <td>@resource.WebsiteUrl</td>
                                 <td class="smal">@Html.ActionLink("Edit", "Edit", "Admin", new { id = resource.ResourceID })</td>
                                 <td class="smal"><button class="btn btn-primary" data-target="#deleteModal" data-href="Remove/@resource.ResourceID" data-toggle="modal">Delete</button></td>
@@ -174,7 +176,13 @@
                                 {
                                     <td> </td>
                                 }
-                                <td>@resource.RType1 @resource.RType2 @resource.RType3</td>
+                                <td style="display:inline-block">
+                                    @resource.RType1
+                                    @if (resource.RType2 != null)
+                                    {<p> @resource.RType2</p>}
+                                    @if (resource.RType3 != null)
+                                    {<p> @resource.RType3</p>}
+                                </td>
 
                                 <td>@resource.WebsiteUrl</td>
                                 <td class="smal">@Html.ActionLink("Approve", "Approve", "Admin", new { id = resource.ResourceID })</td>
@@ -196,8 +204,8 @@
                         <thead class="bg-white">
                             <tr>
 
-                                <th scope="col">Organization</th>
-                                <th scope="col">Email Address</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">File Path</th>
 
                                 <th scope="col" class="smal">Edit</th>
