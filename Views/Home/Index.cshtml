@@ -632,9 +632,10 @@
                         // var ID =  parseInt(item.ResourceID);
                         var ID = feature.link;
 
-                        var links = "<a href=\"/Home/ViewSource/" + Number(ID) + "\"target='_blank'>" + feature.webLink; + "</a>";
+                        var links = "<a href=\"http://" + feature.webLink + "\"target='_blank'>" + feature.webLink; + "</a>";
+                        var nlinks= "<a href=\"/Home/ViewSource/" + Number(ID) + "\"target='_blank'> Click Here </a>";
                         var infoWindow = new google.maps.InfoWindow({
-                            content: 'Name: ' + feature.name.toUpperCase() + ' <br> Address: ' + feature.address.toUpperCase() + ' <br><p>Link:  ' + links + '</p>'
+                            content: 'Name: ' + feature.name.toUpperCase() + ' <br> Address: ' + feature.address.toUpperCase() + ' <br><p>To Learn More on Neighborly!:  ' + nlinks + ' <br>Go to their Website!: ' + links + '</p>'
                         });
 
                         var icon = {
