@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -210,7 +208,7 @@ namespace ProjectForHealing.Controllers
           
             Resource theResource = context.Resource.SingleOrDefault(x => x.ResourceID == id);
             theResource.IsApproved = true;
-            sendEmail();
+            sendEmail(theResource.OrgEmail);
             
             context.SaveChanges();
             return Redirect("/Admin/ResourceManage");
@@ -294,13 +292,13 @@ namespace ProjectForHealing.Controllers
             
         }
 
-        public void sendEmail()
+        public void sendEmail(string email)
         {
 
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("abc031998@gmail.com");
-            mail.To.Add("mrmain00@protonmail.com");
+            mail.From = new MailAddress("chingchong@gmail.com");
+            mail.To.Add(email);
             mail.Subject = "Approval Test Email";
             mail.Body = "This is a test email from Neighborly.org to verify that your email has been submitted ";
 

@@ -13,10 +13,11 @@ namespace ProjectForHealing.Controllers
 {
     public class ResourceController : Controller
     {
-       private CRMSContext context;
-        private readonly IHostingEnvironment hostingEnvironment;
+        private CRMSContext context;
+        private readonly IWebHostEnvironment hostingEnvironment;
         //asking to get instance of CRMS context
-        public ResourceController(CRMSContext dbContext, IHostingEnvironment hostingEnvironment)
+        private String emailAdd;
+        public ResourceController(CRMSContext dbContext, IWebHostEnvironment hostingEnvironment)
         {
             context = dbContext;
             this.hostingEnvironment = hostingEnvironment;
@@ -25,6 +26,7 @@ namespace ProjectForHealing.Controllers
 
         public IActionResult Submitted()
         {
+
             sendEmail();
             return View();
         }
@@ -94,6 +96,7 @@ namespace ProjectForHealing.Controllers
                 };
                 context.Resource.Add(newResource);
                 context.SaveChanges();
+                emailAdd = newResource.OrgEmail;
                 return Redirect("/Resource/Submitted");
             }
             else
@@ -109,8 +112,8 @@ namespace ProjectForHealing.Controllers
 
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("abc031998@gmail.com");
-            mail.To.Add("mrmain00@protonmail.com");
+            mail.From = new MailAddress("chingchong@gmail.com");
+            mail.To.Add("abc03199@gmail.com");
             mail.Subject = "Submission Test Email";
             mail.Body = "This is a test email from Neighborly.org ";
 
