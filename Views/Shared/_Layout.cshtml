@@ -80,63 +80,63 @@
                             }
                             else
                             {
-                               
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CRMS Dashboard</a>
-                            <div class="dropdown-menu" style="">
-                                <a class="dropdown-item" href="/Admin/Index">Dashboard</a>
-                                <a class="dropdown-item" href="/Admin/ResourceManage">Manage Resources</a>
-                                <a class="dropdown-item" href="/Home/Logout">Logout</a>
-                                
-                                @if (Context.Session.GetString("role") == "Master Admin")
-                                {   <div class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item" href="/Admin/AddAdmin">Create New Admin</a>
-                                    <a class="dropdown-item" href="/Admin/AdminList">Remove Admin</a>
 
 
-                                }
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CRMS Dashboard</a>
+                                <div class="dropdown-menu" style="">
+                                    <a class="dropdown-item" href="/Admin/Index">Dashboard</a>
+                                    <a class="dropdown-item" href="/Admin/ResourceManage">Manage Resources</a>
+                                    <a class="dropdown-item" href="/Home/Logout">Logout</a>
 
-                            </div>
-                            
-                        </li>
+                                    @if (Context.Session.GetString("role") == "Master Admin")
+                                    {<div class="dropdown-divider"></div>
+
+                                        <a class="dropdown-item" href="/Admin/AddAdmin">Create New Admin</a>
+                                        <a class="dropdown-item" href="/Admin/AdminList">Remove Admin</a>
+
+
+                                    }
+
+                                </div>
+
+                            </li>
                         }
 
-                        
+
                         </ul>
-                    <form class="form-inline my-2 my-lg-0" asp-controller="Home" asp-action="Search">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
-                        <button class="btn btn-secondary border rounded my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                        <form class="form-inline my-2 my-lg-0" asp-controller="Home" asp-action="Search">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+                            <button class="btn btn-secondary border rounded my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
+            </nav>
+        </header>
+        <!--  <div class="container middlebody">-->
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        <!-- </div>-->
+        
+        <footer class="border-top footer text-muted">
+            <div class="container" style="max-height:15px">
+                &copy;2019-2020 WeaveTales. All Rights Reserved - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> -    @if (Context.Session.GetString("username") == null)
+                {
+                    <a asp-area="" asp-controller="Home" asp-action="Login">Admin Login</a>
+                }
+                else
+                {
+                    <a asp-area="" asp-controller="Admin" asp-action="Index">Dashboard</a>
+                }
             </div>
-        </nav>
-    </header>
-    <!--  <div class="container middlebody">-->
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-    <!-- </div>-->
-
-    <footer class="border-top footer text-muted">
-        <div class="container" style="max-height:15px">
-            &copy;2019-2020 WeaveTales. All Rights Reserved - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> -    @if (Context.Session.GetString("username") == null)
-            {
-                <a asp-area="" asp-controller="Home" asp-action="Login">Admin Login</a>
-            }
-            else
-            {
-                <a asp-area="" asp-controller="Admin" asp-action="Index">Dashboard</a>
-            }
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
 
 
 
-</body>
+    </body>
 </html>

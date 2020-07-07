@@ -87,6 +87,14 @@ body {
     width: 150px;
     overflow: hidden;
 }
+.clearfooter {
+    height: 320px;
+    clear: both;
+}
+.clearfooter2 {
+    height: 430px;
+    clear: both;
+}
 .line-clamp {
     display: -webkit-box;
     -webkit-line-clamp: 10;
