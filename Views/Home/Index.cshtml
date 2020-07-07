@@ -779,22 +779,23 @@
                                     var r3 = markers[i].rt3.replace(/\s/g, '');
                                 }
                                    
-
-                                if (r1 == clickedType) {
+                                for (e = 0; e < selectedMarkers.length; e++) {
+                                    if (r1 == selectedMarkers[e]) {
                                     markers[i].marker.label.text = icons[markers[i].rt1].text;
                                     markers[i].marker.setMap(map);
+                                    }
 
-                                }
+                                    else if (r2 == selectedMarkers[e]) {
+                                        markers[i].marker.label.text = icons[markers[i].rt2].text;
+                                        markers[i].marker.setMap(map);
+                                    }
 
-                                else if (r2 == clickedType) {
-                                    markers[i].marker.label.text = icons[markers[i].rt2].text;
-                                    markers[i].marker.setMap(map);
+                                    else if (r3 == selectedMarkers[e]) {
+                                        markers[i].marker.label.text = icons[markers[i].rt3].text;
+                                        markers[i].marker.setMap(map);
+                                    }
                                 }
-
-                                else if (r3 == clickedType) {
-                                    markers[i].marker.label.text = icons[markers[i].rt3].text;
-                                    markers[i].marker.setMap(map);
-                                }
+                                
 
 
                             }
