@@ -747,15 +747,19 @@
                             var p = 0;
 
                             for (var e = 0; e < selectedMarkers.length; e++) {
-                                if (selectedMarkers[e] == clickedType ) {
+                                if (selectedMarkers[e] == clickedType) {
                                     p = 1;
                                     document.getElementById(clickedType + "1").style.color = "#ffffff";
                                     document.getElementById(clickedType + "1").style.borderColor = "rgba(242, 188, 48, .5)"
-                                    selectedMarkers.splice(e);
+                                    selectedMarkers.splice(e,1);
                                     console.log("spliced " + clickedType);
                                 }
 
                             }
+                            for (var e = 0; e < selectedMarkers.length; e++) {
+                                console.log("SM:" + selectedMarkers[e]);
+                            }
+
 
                             if (p == 0) {
                                 document.getElementById(clickedType + "1").style.color = "rgba(255, 204, 0, 1)";
@@ -765,6 +769,9 @@
                             }
                             
                             
+                            for (var e = 0; e < selectedMarkers.length; e++) {
+                                console.log("SM:" + selectedMarkers[e]);
+                            }
 
                             for (var i = 0; i < markers.length; i++) {
 
@@ -781,17 +788,21 @@
                                    
                                 for (e = 0; e < selectedMarkers.length; e++) {
                                     if (r1 == selectedMarkers[e]) {
-                                    markers[i].marker.label.text = icons[markers[i].rt1].text;
-                                    markers[i].marker.setMap(map);
-                                    }
-
-                                    else if (r2 == selectedMarkers[e]) {
-                                        markers[i].marker.label.text = icons[markers[i].rt2].text;
+                                        markers[i].marker.label.text = icons[markers[i].rt1].text;
+                                        markers[i].marker.icon.fillColor = icons[markers[i].rt1].color;
                                         markers[i].marker.setMap(map);
                                     }
 
-                                    else if (r3 == selectedMarkers[e]) {
+                                    else if (markers[i].rt2 != null && r2 == selectedMarkers[e]) {
+                                        markers[i].marker.label.text = icons[markers[i].rt2].text;
+                                        markers[i].marker.icon.fillColor = icons[markers[i].rt2].color;
+
+                                        markers[i].marker.setMap(map);
+                                    }
+
+                                    else if (markers[i].rt3 != null && r3 == selectedMarkers[e]) {
                                         markers[i].marker.label.text = icons[markers[i].rt3].text;
+                                        markers[i].marker.icon.fillColor = icons[markers[i].rt1].color;
                                         markers[i].marker.setMap(map);
                                     }
                                 }
